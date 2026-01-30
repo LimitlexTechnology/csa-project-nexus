@@ -9,7 +9,10 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "next": "^15.1.4",
     "prettier": "^3.7.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "turbo": "^2.8.0",
     "typescript": "5.9.2"
   },
