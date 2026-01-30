@@ -1,0 +1,23 @@
+
+> @repo/web@0.1.0 build
+> next build
+
+   ▲ Next.js 14.1.0
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/page.tsx
+Module not found: Package path . is not exported from package C:\Users\kobby\OneDrive\Documentos\GitHub\csa-project-nexus\node_modules\@repo\ui (see exports field in C:\Users\kobby\OneDrive\Documentos\GitHub\csa-project-nexus\node_modules\@repo\ui\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+> Build failed because of webpack errors
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path C:\Users\kobby\OneDrive\Documentos\GitHub\csa-project-nexus\apps\web
+npm error workspace @repo/web@0.1.0
+npm error location C:\Users\kobby\OneDrive\Documentos\GitHub\csa-project-nexus\apps\web
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c next build
