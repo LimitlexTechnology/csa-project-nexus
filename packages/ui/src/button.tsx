@@ -1,4 +1,6 @@
+/// <reference types="nativewind/types" />
 "use client";
+
 import { ReactNode } from "react";
 import { Pressable, Text, View, StyleSheet } from "react-native";
 

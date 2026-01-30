@@ -6,7 +6,7 @@ const config: Config = {
         "./app/**/*.{js,jsx,ts,tsx}",
         "../../packages/ui/src/**/*.{js,jsx,ts,tsx}",
     ],
-    presets: [sharedConfig],
+    presets: [sharedConfig as any],
 };
 
 export default config;
