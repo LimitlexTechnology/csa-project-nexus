@@ -8,6 +8,7 @@
     "./card": "./src/card.tsx",
     "./weather-card": "./src/weather-card.tsx",
     "./news-feed": "./src/news-feed.tsx",
+    "./knowledge-card": "./src/knowledge-card.tsx",
     "./constants": "./src/constants.ts",
     "./tailwind.config": "./tailwind.config.ts"
   },

@@ -65,3 +65,24 @@ export const NEWS_ITEMS = [
         category: "Events",
     },
 ];
+
+export const KNOWLEDGE_TIPS = [
+    {
+        id: "101",
+        title: "Drought-Resistant Maize Varieties",
+        excerpt: "Learn about the new Abontem maize that requires 30% less water.",
+        category: "Crops",
+    },
+    {
+        id: "102",
+        title: "Organic Pest Control Methods",
+        excerpt: "Use neem oil and garlic spray to combat common pests effectively.",
+        category: "Pest Control",
+    },
+    {
+        id: "103",
+        title: "Soil Moisture Conservation",
+        excerpt: "Mulching techniques to retain soil moisture during the dry season.",
+        category: "Soil Health",
+    },
+];

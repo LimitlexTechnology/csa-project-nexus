@@ -5,7 +5,8 @@ import { Typography } from "@repo/ui/typography";
 import { Card } from "@repo/ui/card";
 import { WeatherCard } from "@repo/ui/weather-card";
 import { NewsFeed } from "@repo/ui/news-feed";
-import { ONBOARDING_STEPS, WEATHER_DATA, NEWS_ITEMS } from "@repo/ui/constants";
+import { KnowledgeCard } from "@repo/ui/knowledge-card";
+import { ONBOARDING_STEPS, WEATHER_DATA, NEWS_ITEMS, KNOWLEDGE_TIPS } from "@repo/ui/constants";
 import { useState } from "react";
 
 export default function App() {
@@ -39,6 +40,17 @@ export default function App() {
           <View className="mb-8">
             <Typography variant="h3" className="mb-4">Weather Snapshot</Typography>
             <WeatherCard data={WEATHER_DATA} />
+          </View>
+
+          <View className="mb-8">
+            <Typography variant="h3" className="mb-4">Knowledge Tips</Typography>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} className="gap-4">
+              {KNOWLEDGE_TIPS.map((tip) => (
+                <View key={tip.id} className="w-64 mr-4">
+                  <KnowledgeCard item={tip} />
+                </View>
+              ))}
+            </ScrollView>
           </View>
 
           <View className="mb-20">

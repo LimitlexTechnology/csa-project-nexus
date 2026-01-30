@@ -3,7 +3,8 @@ import { Typography } from "@repo/ui/typography";
 import { Card } from "@repo/ui/card";
 import { WeatherCard } from "@repo/ui/weather-card";
 import { NewsFeed } from "@repo/ui/news-feed";
-import { APP_NAME, WEATHER_DATA, NEWS_ITEMS } from "@repo/ui/constants";
+import { KnowledgeCard } from "@repo/ui/knowledge-card";
+import { APP_NAME, WEATHER_DATA, NEWS_ITEMS, KNOWLEDGE_TIPS } from "@repo/ui/constants";
 
 export default function Dashboard() {
     return (
@@ -15,12 +16,13 @@ export default function Dashboard() {
                 </Typography>
                 <div className="flex gap-2">
                     <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Farmer Mode</span>
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Premium</span>
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
                 {/* Left Column: Weather & Quick Stats */}
-                <div className="space-y-6">
+                <div className="md:col-span-1 space-y-6">
                     <WeatherCard data={WEATHER_DATA} />
 
                     <Card className="p-4">
@@ -40,6 +42,13 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </Card>
+
+                    <div className="mt-8">
+                        <Typography variant="h3" className="mb-4">Quick Tips</Typography>
+                        {KNOWLEDGE_TIPS.slice(0, 2).map((tip) => (
+                            <KnowledgeCard key={tip.id} item={tip} />
+                        ))}
+                    </div>
                 </div>
 
                 {/* Middle Column: News Feed */}
@@ -49,6 +58,21 @@ export default function Dashboard() {
                         <Button title="View All" variant="secondary" onPress={() => { }} />
                     </div>
                     <NewsFeed items={NEWS_ITEMS} />
+                </div>
+
+                {/* Right Column: Knowledge Hub Preview */}
+                <div className="md:col-span-1 space-y-4">
+                    <Typography variant="h3">Knowledge Hub</Typography>
+                    <Card className="bg-yellow-50 border-yellow-200">
+                        <Typography variant="h3" className="text-yellow-800">Did you know?</Typography>
+                        <Typography variant="body" className="text-yellow-900 mt-2">
+                            Planting cover crops can reduce soil erosion by up to 50% in the first year alone.
+                        </Typography>
+                    </Card>
+                    {KNOWLEDGE_TIPS.slice(2).map((tip) => (
+                        <KnowledgeCard key={tip.id} item={tip} />
+                    ))}
+                    <Button title="Explore Library" variant="secondary" onPress={() => { }} />
                 </div>
             </div>
         </main>
