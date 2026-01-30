@@ -18,7 +18,7 @@ export const Typography = ({
     className = "",
     ...props
 }: TypographyProps) => {
-    const baseStyles = "text-gray-900 dark:text-gray-100";
+    const baseStyles = "text-primary-text dark:text-cloud";
 
     const variants = {
         h1: "text-4xl font-bold tracking-tight mb-4",

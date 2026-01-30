@@ -16,14 +16,14 @@ interface KnowledgeCardProps {
 
 export const KnowledgeCard = ({ item }: KnowledgeCardProps) => {
     return (
-        <Card className="bg-green-50 dark:bg-green-900 border-l-4 border-l-green-600 mb-4">
-            <Typography variant="caption" className="text-green-700 font-bold uppercase mb-1">
+        <Card className="bg-mist dark:bg-midnight/30 border-l-4 border-l-midnight mb-4">
+            <Typography variant="caption" className="text-midnight dark:text-glacier font-bold uppercase mb-1">
                 {item.category}
             </Typography>
             <Typography variant="h3" className="text-lg font-semibold mb-2">
                 {item.title}
             </Typography>
-            <Typography variant="body" className="text-gray-700 text-sm">
+            <Typography variant="body" className="text-secondary-text dark:text-mist text-sm">
                 {item.excerpt}
             </Typography>
         </Card>

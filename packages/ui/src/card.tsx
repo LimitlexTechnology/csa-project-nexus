@@ -20,9 +20,9 @@ export const Card = ({
   ...props
 }: CardProps) => {
   const variants = {
-    elevated: "bg-white dark:bg-gray-800 shadow-md",
-    outlined: "bg-transparent border border-gray-200 dark:border-gray-700",
-    flat: "bg-gray-50 dark:bg-gray-900"
+    elevated: "bg-white dark:bg-midnight shadow-md",
+    outlined: "bg-transparent border border-mist dark:border-midnight/50",
+    flat: "bg-mist dark:bg-midnight/30"
   };
 
   return (

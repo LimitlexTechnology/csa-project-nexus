@@ -16,25 +16,25 @@ interface WeatherProps {
 
 export const WeatherCard = ({ data }: WeatherProps) => {
     return (
-        <Card className="bg-blue-500 border-none">
+        <Card className="bg-glacier border-none">
             <View className="flex-row justify-between items-start mb-4">
                 <View>
-                    <Typography variant="h2" className="text-white">
+                    <Typography variant="h2" className="text-midnight">
                         {data.location}
                     </Typography>
-                    <Typography variant="body" className="text-blue-100">
+                    <Typography variant="body" className="text-midnight/70">
                         {data.condition}
                     </Typography>
                 </View>
-                <Typography variant="h1" className="text-white text-5xl">
+                <Typography variant="h1" className="text-midnight text-5xl">
                     {data.temp}
                 </Typography>
             </View>
-            <View className="flex-row gap-4 bg-blue-600/30 p-2 rounded-lg self-start">
-                <Typography variant="caption" className="text-blue-50">
+            <View className="flex-row gap-4 bg-midnight/10 p-2 rounded-lg self-start">
+                <Typography variant="caption" className="text-midnight">
                     💧 {data.humidity}
                 </Typography>
-                <Typography variant="caption" className="text-blue-50">
+                <Typography variant="caption" className="text-midnight">
                     💨 {data.wind}
                 </Typography>
             </View>

@@ -21,10 +21,10 @@ export const NewsFeed = ({ items }: NewsFeedProps) => {
             {items.map((item) => (
                 <Card key={item.id} variant="outlined" className="bg-white dark:bg-gray-800">
                     <View className="flex-row justify-between mb-1">
-                        <Typography variant="caption" className="text-green-600 font-bold uppercase">
+                        <Typography variant="caption" className="text-midnight dark:text-glacier font-bold uppercase">
                             {item.category}
                         </Typography>
-                        <Typography variant="caption" className="text-gray-400">
+                        <Typography variant="caption" className="text-muted-text">
                             {item.date}
                         </Typography>
                     </View>

@@ -1,16 +1,16 @@
 import type { Config } from "tailwindcss";
+import sharedConfig from "@repo/ui/tailwind.config";
 
 const config: Config = {
     content: [
         "./app/**/*.{js,jsx,ts,tsx}",
         "../../packages/ui/src/**/*.{js,jsx,ts,tsx}",
     ],
+    presets: [sharedConfig as any],
     theme: {
         extend: {
-            colors: {
-                primary: "#166534",
-                secondary: "#ca8a04",
-                background: "#f0fdf4",
+            backgroundImage: {
+                "primary-gradient": "linear-gradient(135deg, #0F3D3E 0%, #4FD1C5 100%)",
             },
         },
     },

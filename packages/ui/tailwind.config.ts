@@ -9,9 +9,23 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                primary: "#166534",
-                secondary: "#ca8a04",
-                background: "#f0fdf4",
+                // Brand Colors
+                midnight: "#0F3D3E",
+                glacier: "#4FD1C5",
+                // Accents
+                solar: "#F6AD55",
+                coral: "#E53E3E",
+                // Neutrals
+                cloud: "#F9FAFB",
+                mist: "#EDF2F7",
+                // Text
+                "primary-text": "#1A202C",
+                "secondary-text": "#4A5568",
+                "muted-text": "#718096",
+                // Mapping for convenience
+                primary: "#0F3D3E", // midnight
+                secondary: "#4FD1C5", // glacier
+                background: "#F9FAFB", // cloud
             },
         },
     },

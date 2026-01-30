@@ -6,13 +6,13 @@ import { APP_NAME, TAGLINE, FEATURES } from "@repo/ui/constants";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8 bg-gray-50">
+    <main className="flex min-h-screen flex-col items-center justify-between p-8 bg-cloud">
       {/* Hero Section */}
       <section className="w-full max-w-7xl flex flex-col items-center text-center py-20">
-        <Typography variant="h1" className="text-green-800 text-6xl mb-6">
+        <Typography variant="h1" className="text-midnight text-6xl mb-6">
           {APP_NAME}
         </Typography>
-        <Typography variant="h2" className="text-gray-600 mb-8 max-w-2xl">
+        <Typography variant="h2" className="text-secondary-text mb-8 max-w-2xl">
           {TAGLINE}
         </Typography>
         <div className="flex gap-4">
@@ -24,11 +24,11 @@ export default function Home() {
       {/* Features Section */}
       <section className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-6 py-12">
         {FEATURES.map((feature, index) => (
-          <Card key={index} className="p-6">
-            <Typography variant="h3" className="text-green-700">
+          <Card key={index} variant="elevated" className="p-6">
+            <Typography variant="h3" className="text-midnight">
               {feature.title}
             </Typography>
-            <Typography variant="body" className="text-gray-600">
+            <Typography variant="body" className="text-secondary-text">
               {feature.description}
             </Typography>
           </Card>
@@ -36,8 +36,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full text-center py-8 border-t border-gray-200">
-        <Typography variant="caption">
+      <footer className="w-full text-center py-8 border-t border-mist">
+        <Typography variant="caption" className="text-muted-text">
           © 2026 CSA ONE. All rights reserved.
         </Typography>
       </footer>

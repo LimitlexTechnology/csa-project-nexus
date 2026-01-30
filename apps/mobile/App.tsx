@@ -32,25 +32,25 @@ export default function App() {
 
   if (hasOnboarded) {
     return (
-      <View className="flex-1 bg-gray-50 pt-12">
+      <View className="flex-1 bg-cloud pt-12">
         <ScrollView contentContainerStyle={{ padding: 20 }}>
           <View className="flex-row justify-between items-center mb-6">
             <View>
-              <Typography variant="h2" className="text-green-800">Hello, {role}!</Typography>
-              <Typography variant="caption">Friday, Jan 30</Typography>
+              <Typography variant="h2" className="text-midnight">Hello, {role}!</Typography>
+              <Typography variant="caption" className="text-muted-text">Friday, Jan 30</Typography>
             </View>
-            <View className="bg-green-100 p-2 rounded-full">
+            <View className="bg-glacier/20 p-2 rounded-full">
               <Typography className="text-xl">👤</Typography>
             </View>
           </View>
 
           <View className="mb-8">
-            <Typography variant="h3" className="mb-4">Weather Snapshot</Typography>
+            <Typography variant="h3" className="mb-4 text-primary-text">Weather Snapshot</Typography>
             <WeatherCard data={WEATHER_DATA} />
           </View>
 
           <View className="mb-8">
-            <Typography variant="h3" className="mb-4">Knowledge Tips</Typography>
+            <Typography variant="h3" className="mb-4 text-primary-text">Knowledge Tips</Typography>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} className="gap-4">
               {KNOWLEDGE_TIPS.map((tip) => (
                 <View key={tip.id} className="w-64 mr-4">
@@ -61,7 +61,7 @@ export default function App() {
           </View>
 
           <View className="mb-20">
-            <Typography variant="h3" className="mb-4">From the Hub</Typography>
+            <Typography variant="h3" className="mb-4 text-primary-text">From the Hub</Typography>
             <NewsFeed items={NEWS_ITEMS} />
           </View>
         </ScrollView>
@@ -73,7 +73,7 @@ export default function App() {
   if (showRoleSelector) {
     return (
       <View className="flex-1 items-center justify-center bg-white p-8">
-        <Typography variant="h1" className="text-green-800 text-center mb-8">Choose your Role</Typography>
+        <Typography variant="h1" className="text-midnight text-center mb-8">Choose your Role</Typography>
         <View className="w-full gap-4">
           {ROLES.map((r) => (
             <Button key={r} title={r} variant="secondary" onPress={() => completeOnboarding(r)} />
@@ -94,17 +94,17 @@ export default function App() {
       </View>
 
       <View className="flex-1 items-center justify-center w-full">
-        <View className="w-64 h-64 bg-green-100 rounded-full items-center justify-center mb-10">
+        <View className="w-64 h-64 bg-mist rounded-full items-center justify-center mb-10">
           <Typography variant="h1" className="text-6xl">
             {currentStep.icon === "cloud-sun" ? "🌦️" :
               currentStep.icon === "book-open" ? "📖" : "🤝"}
           </Typography>
         </View>
 
-        <Typography variant="h2" className="text-green-800 text-center mb-4">
+        <Typography variant="h2" className="text-midnight text-center mb-4">
           {currentStep.title}
         </Typography>
-        <Typography variant="body" className="text-gray-600 text-center px-4">
+        <Typography variant="body" className="text-secondary-text text-center px-4">
           {currentStep.description}
         </Typography>
       </View>
@@ -114,7 +114,7 @@ export default function App() {
           {ONBOARDING_STEPS.map((_, index) => (
             <View
               key={index}
-              className={`h-2 rounded-full ${index === step ? "w-8 bg-green-600" : "w-2 bg-gray-300"}`}
+              className={`h-2 rounded-full ${index === step ? "w-8 bg-midnight" : "w-2 bg-glacier/30"}`}
             />
           ))}
         </View>

@@ -7,15 +7,26 @@ module.exports = {
         "./src/**/*.{js,jsx,ts,tsx}",
         "../../packages/ui/src/**/*.{js,jsx,ts,tsx}",
     ],
-    // Presets can be tricky with JS/TS mix, importing directly or via require if compiled
-    // Simplest is to copy or require if allowJS
-    // For now using direct definition or simple require if module resolution works
     theme: {
         extend: {
             colors: {
-                primary: "#166534",
-                secondary: "#ca8a04",
-                background: "#f0fdf4",
+                // Brand Colors
+                midnight: "#0F3D3E",
+                glacier: "#4FD1C5",
+                // Accents
+                solar: "#F6AD55",
+                coral: "#E53E3E",
+                // Neutrals
+                cloud: "#F9FAFB",
+                mist: "#EDF2F7",
+                // Text
+                "primary-text": "#1A202C",
+                "secondary-text": "#4A5568",
+                "muted-text": "#718096",
+                // Mapping
+                primary: "#0F3D3E",
+                secondary: "#4FD1C5",
+                background: "#F9FAFB",
             },
         },
     },

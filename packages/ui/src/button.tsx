@@ -23,7 +23,7 @@ interface ButtonProps {
 export const Button = ({ children, title, onPress, variant = "primary" }: ButtonProps) => {
   return (
     <Pressable
-      className={`p-4 rounded-lg items-center justify-center ${variant === "primary" ? "bg-green-700 active:bg-green-800" : "bg-yellow-600 active:bg-yellow-700"
+      className={`p-4 rounded-lg items-center justify-center ${variant === "primary" ? "bg-midnight active:bg-opacity-90" : "bg-glacier active:bg-opacity-90"
         }`}
       onPress={onPress}
       style={({ pressed }) => [
