@@ -36,3 +36,32 @@ export const FEATURES = [
         description: "Bridge the gap between your farm and the market."
     }
 ];
+
+export const WEATHER_DATA = {
+    temp: "28°C",
+    condition: "Partly Cloudy",
+    location: "Kumasi, Ghana",
+    humidity: "65%",
+    wind: "12 km/h",
+};
+
+export const NEWS_ITEMS = [
+    {
+        id: "1",
+        title: "Government Subsidizes Fertilizer for 2026 Planting Season",
+        date: "Jan 28, 2026",
+        category: "Policy",
+    },
+    {
+        id: "2",
+        title: "New Cocoa Hybrid Resistant to swollen shoot virus launched",
+        date: "Jan 25, 2026",
+        category: "Research",
+    },
+    {
+        id: "3",
+        title: "CSA Workshop for Youth Farmers in Tamale next week",
+        date: "Jan 22, 2026",
+        category: "Events",
+    },
+];

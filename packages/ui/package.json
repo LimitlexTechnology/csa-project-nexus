@@ -6,6 +6,8 @@
     "./*": "./src/*.tsx",
     "./typography": "./src/typography.tsx",
     "./card": "./src/card.tsx",
+    "./weather-card": "./src/weather-card.tsx",
+    "./news-feed": "./src/news-feed.tsx",
     "./constants": "./src/constants.ts",
     "./tailwind.config": "./tailwind.config.ts"
   },

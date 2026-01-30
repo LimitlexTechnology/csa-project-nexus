@@ -1,28 +1,55 @@
 import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { Button } from "@repo/ui/button";
 import { Typography } from "@repo/ui/typography";
-import { ONBOARDING_STEPS } from "@repo/ui/constants";
+import { Card } from "@repo/ui/card";
+import { WeatherCard } from "@repo/ui/weather-card";
+import { NewsFeed } from "@repo/ui/news-feed";
+import { ONBOARDING_STEPS, WEATHER_DATA, NEWS_ITEMS } from "@repo/ui/constants";
 import { useState } from "react";
 
 export default function App() {
+  const [hasOnboarded, setHasOnboarded] = useState(false);
   const [step, setStep] = useState(0);
 
   const handleNext = () => {
     if (step < ONBOARDING_STEPS.length - 1) {
       setStep(step + 1);
     } else {
-      // Navigate to Home or Login
-      alert("Onboarding Completed! Navigate to Home.");
+      setHasOnboarded(true);
     }
   };
 
-  const handleSkip = () => {
-    // Navigate to Home or Login
-    alert("Skipped Onboarding. Navigate to Home.");
-  };
-
   const currentStep = ONBOARDING_STEPS[step];
+
+  if (hasOnboarded) {
+    return (
+      <View className="flex-1 bg-gray-50 pt-12">
+        <ScrollView contentContainerStyle={{ padding: 20 }}>
+          <View className="flex-row justify-between items-center mb-6">
+            <View>
+              <Typography variant="h2" className="text-green-800">Hello, Farmer!</Typography>
+              <Typography variant="caption">Friday, Jan 30</Typography>
+            </View>
+            <View className="bg-green-100 p-2 rounded-full">
+              <Typography className="text-xl">👤</Typography>
+            </View>
+          </View>
+
+          <View className="mb-8">
+            <Typography variant="h3" className="mb-4">Weather Snapshot</Typography>
+            <WeatherCard data={WEATHER_DATA} />
+          </View>
+
+          <View className="mb-20">
+            <Typography variant="h3" className="mb-4">From the Hub</Typography>
+            <NewsFeed items={NEWS_ITEMS} />
+          </View>
+        </ScrollView>
+        <StatusBar style="dark" />
+      </View>
+    );
+  }
 
   return (
     <View className="flex-1 items-center justify-between bg-white p-8 py-20">
@@ -30,16 +57,13 @@ export default function App() {
         <Button
           title="Skip"
           variant="secondary"
-          onPress={handleSkip}
-        // Custom style for skip button if needed, simpler text button might be better but reusing Button for now
+          onPress={() => setHasOnboarded(true)}
         />
       </View>
 
       <View className="flex-1 items-center justify-center w-full">
-        {/* Placeholder for Icon/Image */}
         <View className="w-64 h-64 bg-green-100 rounded-full items-center justify-center mb-10">
           <Typography variant="h1" className="text-6xl">
-            {/* Simple icon emulation with text or emoji */}
             {currentStep.icon === "cloud-sun" ? "🌦️" :
               currentStep.icon === "book-open" ? "📖" : "🤝"}
           </Typography>
@@ -54,7 +78,6 @@ export default function App() {
       </View>
 
       <View className="w-full">
-        {/* Step Indicators */}
         <View className="flex-row justify-center mb-8 gap-2">
           {ONBOARDING_STEPS.map((_, index) => (
             <View
