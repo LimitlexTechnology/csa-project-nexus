@@ -6,19 +6,24 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@repo/ui": "*",
     "expo": "~54.0.32",
     "expo-status-bar": "~3.0.9",
+    "nativewind": "^4.2.1",
     "react": "19.1.0",
     "react-native": "0.81.5",
-    "@repo/ui": "*"
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
+    "@repo/typescript-config": "*",
     "@types/react": "~19.1.0",
-    "typescript": "~5.9.2",
-    "@repo/typescript-config": "*"
+    "typescript": "~5.9.2"
   },
   "private": true
 }
