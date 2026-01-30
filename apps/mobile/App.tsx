@@ -1,24 +1,32 @@
 import { StatusBar } from "expo-status-bar";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, TouchableOpacity } from "react-native";
 import { Button } from "@repo/ui/button";
 import { Typography } from "@repo/ui/typography";
 import { Card } from "@repo/ui/card";
 import { WeatherCard } from "@repo/ui/weather-card";
 import { NewsFeed } from "@repo/ui/news-feed";
 import { KnowledgeCard } from "@repo/ui/knowledge-card";
-import { ONBOARDING_STEPS, WEATHER_DATA, NEWS_ITEMS, KNOWLEDGE_TIPS } from "@repo/ui/constants";
+import { ONBOARDING_STEPS, WEATHER_DATA, NEWS_ITEMS, KNOWLEDGE_TIPS, ROLES } from "@repo/ui/constants";
 import { useState } from "react";
 
 export default function App() {
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [step, setStep] = useState(0);
+  const [role, setRole] = useState("Farmer");
+  const [showRoleSelector, setShowRoleSelector] = useState(false);
 
   const handleNext = () => {
     if (step < ONBOARDING_STEPS.length - 1) {
       setStep(step + 1);
     } else {
-      setHasOnboarded(true);
+      setShowRoleSelector(true);
     }
+  };
+
+  const completeOnboarding = (selectedRole: string) => {
+    setRole(selectedRole);
+    setHasOnboarded(true);
+    setShowRoleSelector(false);
   };
 
   const currentStep = ONBOARDING_STEPS[step];
@@ -29,7 +37,7 @@ export default function App() {
         <ScrollView contentContainerStyle={{ padding: 20 }}>
           <View className="flex-row justify-between items-center mb-6">
             <View>
-              <Typography variant="h2" className="text-green-800">Hello, Farmer!</Typography>
+              <Typography variant="h2" className="text-green-800">Hello, {role}!</Typography>
               <Typography variant="caption">Friday, Jan 30</Typography>
             </View>
             <View className="bg-green-100 p-2 rounded-full">
@@ -63,13 +71,26 @@ export default function App() {
     );
   }
 
+  if (showRoleSelector) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white p-8">
+        <Typography variant="h1" className="text-green-800 text-center mb-8">Choose your Role</Typography>
+        <View className="w-full gap-4">
+          {ROLES.map((r) => (
+            <Button key={r} title={r} variant="secondary" onPress={() => completeOnboarding(r)} />
+          ))}
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View className="flex-1 items-center justify-between bg-white p-8 py-20">
       <View className="items-end w-full">
         <Button
           title="Skip"
           variant="secondary"
-          onPress={() => setHasOnboarded(true)}
+          onPress={() => setShowRoleSelector(true)}
         />
       </View>
 
@@ -100,7 +121,7 @@ export default function App() {
         </View>
 
         <Button
-          title={step === ONBOARDING_STEPS.length - 1 ? "Get Started" : "Next"}
+          title={step === ONBOARDING_STEPS.length - 1 ? "Next" : "Next"}
           onPress={handleNext}
         />
       </View>

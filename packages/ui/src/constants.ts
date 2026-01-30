@@ -86,3 +86,5 @@ export const KNOWLEDGE_TIPS = [
         category: "Soil Health",
     },
 ];
+
+export const ROLES = ["Farmer", "Extension Officer", "Researcher", "Buyer"];
