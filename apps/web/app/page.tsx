@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@repo/ui/button";
 import { Typography } from "@repo/ui/typography";
 import { Card } from "@repo/ui/card";
