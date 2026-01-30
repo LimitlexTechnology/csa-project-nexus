@@ -23,13 +23,13 @@ export const OnboardingCarousel: React.FC = () => {
     };
 
     return (
-        <div className="bg-white rounded-[60px] shadow-[0_30px_100px_rgba(0,0,0,0.08)] p-12 max-w-6xl w-full relative overflow-hidden border border-gray-50 flex flex-col justify-between min-h-[85vh]">
+        <div className="bg-white rounded-[60px] shadow-[0_30px_100px_rgba(0,0,0,0.08)] p-6 md:p-12 max-w-6xl w-full relative border border-gray-50 flex flex-col justify-between min-h-fit lg:min-h-[800px] my-8">
             {/* Slide Content Container */}
-            <div className="flex-1 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar animate-in fade-in slide-in-from-bottom-4 duration-700">
                 {currentSlide === 0 ? (
                     <Slide1 />
                 ) : (
-                    <div className="flex flex-col items-center justify-center h-full min-h-[500px] text-center">
+                    <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center">
                         <div className="w-32 h-32 bg-gray-100 rounded-full mb-8 flex items-center justify-center">
                             <span className="text-5xl">🚜</span>
                         </div>
@@ -40,7 +40,7 @@ export const OnboardingCarousel: React.FC = () => {
             </div>
 
             {/* Navigation Footer */}
-            <div className="mt-16 flex items-center justify-between z-10">
+            <div className="mt-8 md:mt-16 flex items-center justify-between z-10 sticky bottom-0 bg-white pt-6">
                 <button
                     onClick={skipWelcome}
                     className="text-[#333333] font-black uppercase text-sm tracking-[0.25em] hover:opacity-50 transition-opacity pl-4"
