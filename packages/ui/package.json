@@ -4,6 +4,9 @@
   "private": true,
   "exports": {
     "./*": "./src/*.tsx",
+    "./typography": "./src/typography.tsx",
+    "./card": "./src/card.tsx",
+    "./constants": "./src/constants.ts",
     "./tailwind.config": "./tailwind.config.ts"
   },
   "scripts": {

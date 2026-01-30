@@ -1,27 +1,33 @@
-import { type JSX } from "react";
+/// <reference types="nativewind/types" />
+"use client";
+import React from "react";
+import { View, type ViewProps } from "react-native";
 
-export function Card({
-  className,
-  title,
-  children,
-  href,
-}: {
+
+
+interface CardProps extends ViewProps {
   className?: string;
-  title: string;
-  children: React.ReactNode;
-  href: string;
-}): JSX.Element {
-  return (
-    <a
-      className={className}
-      href={`${href}?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"`}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <h2>
-        {title} <span>-&gt;</span>
-      </h2>
-      <p>{children}</p>
-    </a>
-  );
+  variant?: "elevated" | "outlined" | "flat";
 }
+
+export const Card = ({
+  children,
+  className = "",
+  variant = "elevated",
+  ...props
+}: CardProps) => {
+  const variants = {
+    elevated: "bg-white dark:bg-gray-800 shadow-md",
+    outlined: "bg-transparent border border-gray-200 dark:border-gray-700",
+    flat: "bg-gray-50 dark:bg-gray-900"
+  };
+
+  return (
+    <View
+      className={`p-4 rounded-xl ${variants[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </View>
+  );
+};
