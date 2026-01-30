@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "react-native-css-interop";
 import localFont from "next/font/local";
 import "./globals.css";
 

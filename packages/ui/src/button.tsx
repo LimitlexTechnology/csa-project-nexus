@@ -2,7 +2,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import { Pressable, Text, View, StyleSheet } from "react-native";
+import { Pressable, Text } from "react-native";
+import { cssInterop } from "react-native-css-interop";
+
+cssInterop(Pressable, { className: "style" });
+cssInterop(Text, { className: "style" });
 
 interface ButtonProps {
   children?: ReactNode;

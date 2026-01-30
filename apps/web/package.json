@@ -8,13 +8,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --max-warnings 0",
-    "check-types": "next typegen && tsc --noEmit"
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@repo/ui": "*",
+    "nativewind": "^4.2.1",
     "next": "15.1.4",
+    "postcss-import": "^15.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-native-css-interop": "^0.1.22",
     "react-native-web": "~0.21.2",
     "styled-jsx": "^5.1.6"
   },

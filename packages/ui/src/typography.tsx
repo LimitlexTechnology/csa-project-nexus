@@ -1,7 +1,9 @@
 /// <reference types="nativewind/types" />
 "use client";
-import React from "react";
 import { Text as RNText, type TextProps as RNTextProps } from "react-native";
+import { cssInterop } from "react-native-css-interop";
+
+cssInterop(RNText, { className: "style" });
 
 
 

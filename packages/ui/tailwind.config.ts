@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+// @ts-expect-error - NativeWind preset types are not correctly exported in v4
+import nativewind from "nativewind/preset";
 
 const config: Config = {
     content: [
@@ -7,13 +9,14 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                primary: "#166534", // Green-800 mostly
-                secondary: "#ca8a04", // Yellow-600
-                background: "#f0fdf4", // Green-50
+                primary: "#166534",
+                secondary: "#ca8a04",
+                background: "#f0fdf4",
             },
         },
     },
     plugins: [],
+    presets: [nativewind],
 };
 
 export default config;

@@ -1,7 +1,10 @@
 /// <reference types="nativewind/types" />
 "use client";
-import React from "react";
 import { View, type ViewProps } from "react-native";
+import { cssInterop } from "react-native-css-interop";
+
+cssInterop(View, { className: "style" });
+
 
 
 

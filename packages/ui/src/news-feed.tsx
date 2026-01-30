@@ -1,6 +1,5 @@
 /// <reference types="nativewind/types" />
 "use client";
-import React from "react";
 import { View } from "react-native";
 import { Card } from "./card";
 import { Typography } from "./typography";

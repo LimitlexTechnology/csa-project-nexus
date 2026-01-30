@@ -1,8 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { View, ScrollView, TouchableOpacity } from "react-native";
+import { View, ScrollView } from "react-native";
 import { Button } from "@repo/ui/button";
 import { Typography } from "@repo/ui/typography";
-import { Card } from "@repo/ui/card";
 import { WeatherCard } from "@repo/ui/weather-card";
 import { NewsFeed } from "@repo/ui/news-feed";
 import { KnowledgeCard } from "@repo/ui/knowledge-card";
