@@ -1,9 +1,0 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@layer utilities {
-    .bg-primary-gradient {
-        background: linear-gradient(135deg, #0F3D3E 0%, #4FD1C5 100%);
-    }
-}
