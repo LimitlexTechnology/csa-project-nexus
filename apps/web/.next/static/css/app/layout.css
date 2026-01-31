@@ -505,6 +505,9 @@ video {
 .pointer-events-none {
   pointer-events: none;
 }
+.visible {
+  visibility: visible;
+}
 .absolute {
   position: absolute;
 }
@@ -651,6 +654,18 @@ video {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.my-16 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -729,6 +744,9 @@ video {
 .-mt-8 {
   margin-top: -2rem;
 }
+.mb-16 {
+  margin-bottom: 4rem;
+}
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -779,6 +797,9 @@ video {
 }
 .aspect-square {
   aspect-ratio: 1 / 1;
+}
+.aspect-video {
+  aspect-ratio: 16 / 9;
 }
 .h-1 {
   height: 0.25rem;
@@ -854,6 +875,9 @@ video {
 }
 .h-px {
   height: 1px;
+}
+.h-96 {
+  height: 24rem;
 }
 .min-h-\[180px\] {
   min-height: 180px;
@@ -973,8 +997,14 @@ video {
 .max-w-xl {
   max-width: 36rem;
 }
+.max-w-none {
+  max-width: none;
+}
 .flex-1 {
   flex: 1 1 0%;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 .origin-left {
   transform-origin: left;
@@ -1683,6 +1713,11 @@ video {
   --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-\[\#2E7D32\] {
+  --tw-gradient-from: #2E7D32 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(46 125 50 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .via-\[\#E0F2F1\] {
   --tw-gradient-to: rgb(224 242 241 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #E0F2F1 var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1708,6 +1743,9 @@ video {
 }
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+.to-\[\#81C784\] {
+  --tw-gradient-to: #81C784 var(--tw-gradient-to-position);
 }
 .bg-cover {
   background-size: cover;
@@ -1851,6 +1889,10 @@ video {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1910,6 +1952,9 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pb-8 {
+  padding-bottom: 2rem;
 }
 .text-left {
   text-align: left;
@@ -2707,6 +2752,11 @@ body {
 
 .hover\:bg-white\/5:hover {
   background-color: rgb(255 255 255 / 0.05);
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-\[\#0F4C3A\]:hover {

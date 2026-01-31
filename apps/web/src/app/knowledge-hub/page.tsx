@@ -188,10 +188,10 @@ export default function KnowledgeHubPage() {
                                         {item.description}
                                     </p>
                                     <div className="flex items-center justify-between">
-                                        <button className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all">
+                                        <Link href={`/knowledge-hub/${item.id}`} className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all">
                                             Read Now
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                        </button>
+                                        </Link>
                                         <button 
                                             onClick={() => {
                                                 navigator.clipboard.writeText(`https://csahub.nexus/knowledge/${item.id}`);
