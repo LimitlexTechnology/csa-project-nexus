@@ -1,27 +1,88 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navigation from '../../components/Navigation';
 import { Logo } from '../../components/Logo';
 import { CloudSun, Newspaper, Lightbulb, ArrowRight } from 'lucide-react';
 
+const heroImages = [
+    'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1600', // Modern Agri Tech
+    'https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Lush Green Fields
+    'https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1600', // Digital Farming Monitoring
+    'https://images.pexels.com/photos/235925/pexels-photo-235925.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Sunset Harvest
+    'https://images.unsplash.com/photo-1574943320219-553eb213f725?auto=format&fit=crop&q=80&w=1600', // Agricultural Innovation
+    'https://images.pexels.com/photos/1482101/pexels-photo-1482101.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Bountiful Crops
+    'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1600', // Sustainable Farming
+    'https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Nurturing Soil
+    'https://images.unsplash.com/photo-1593114051525-30635953830a?auto=format&fit=crop&q=80&w=1600', // Farmer Consulting
+    'https://images.pexels.com/photos/60013/pexels-photo-60013.jpeg?auto=compress&cs=tinysrgb&w=1600'  // Pexels: Climate Resilience (Drought)
+];
+
 export default function LandingPage() {
+    const [currentImage, setCurrentImage] = useState(heroImages[0]);
+    const [nextImage, setNextImage] = useState(heroImages[1]);
+    const [isLayerActive, setIsLayerActive] = useState(false);
+
+    useEffect(() => {
+        // Preload all images immediately
+        heroImages.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        const interval = setInterval(() => {
+            // Pick a random next image that isn't the current one
+            let nextIdx = Math.floor(Math.random() * heroImages.length);
+            while (heroImages[nextIdx] === currentImage) {
+                nextIdx = Math.floor(Math.random() * heroImages.length);
+            }
+            
+            setNextImage(heroImages[nextIdx]);
+            setIsLayerActive(true);
+
+            // After transition finishes, swap current image and reset layer
+            setTimeout(() => {
+                setCurrentImage(heroImages[nextIdx]);
+                setIsLayerActive(false);
+            }, 1000); // Matches transition duration
+
+        }, 3000); // Slightly longer interval to allow for 1s transition
+
+        return () => clearInterval(interval);
+    }, [currentImage]);
+
     return (
         <div className="min-h-screen bg-gray-50">
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative h-[550px] rounded-b-[60px] overflow-hidden mx-4 mt-4 shadow-2xl">
+            <section className="relative h-[550px] rounded-b-[60px] overflow-hidden mx-4 mt-4 shadow-2xl bg-[#0F4C3A]">
+                {/* Background Layer 1 (Current Image) */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1600')`,
+                        backgroundImage: `url('${currentImage}')`,
+                        backgroundBlendMode: 'multiply',
+                        backgroundColor: 'rgba(15, 76, 58, 0.4)'
+                    }}
+                />
+
+                {/* Background Layer 2 (Next Image - Cross-fade) */}
+                <div
+                    className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${isLayerActive ? 'opacity-100' : 'opacity-0'}`}
+                    style={{
+                        backgroundImage: `url('${nextImage}')`,
                         backgroundBlendMode: 'multiply',
                         backgroundColor: 'rgba(15, 76, 58, 0.4)'
                     }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0F4C3A]/60 to-transparent"></div>
                 </div>
+
+                {/* Overlay Gradient for Layer 1 when Layer 2 is hidden */}
+                {!isLayerActive && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0F4C3A]/60 to-transparent"></div>
+                )}
 
                 <div className="relative h-full flex items-center px-12 md:px-24">
                     <div className="max-w-3xl">

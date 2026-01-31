@@ -20,7 +20,7 @@ const hubItems = [
         category: "guides",
         type: "Guide",
         duration: "15 min read",
-        image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&q=80&w=800",
         description: "A comprehensive guide on how to implement effective crop rotation strategies to naturally replenish soil nutrients."
     },
     {
@@ -29,7 +29,7 @@ const hubItems = [
         category: "tips",
         type: "Quick Tip",
         duration: "3 min read",
-        image: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?auto=format&fit=crop&q=80&w=800",
         description: "Reduce water waste and improve crop yield with these simple but effective irrigation techniques."
     },
     {
@@ -38,7 +38,7 @@ const hubItems = [
         category: "articles",
         type: "Article",
         duration: "10 min read",
-        image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1532983330958-4b32bc9bb07d?auto=format&fit=crop&q=80&w=800",
         description: "Expert analysis on how bio-technology is developing seeds that can thrive in extreme climate conditions."
     },
     {
@@ -47,7 +47,7 @@ const hubItems = [
         category: "guides",
         type: "Guide",
         duration: "20 min read",
-        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1495107336079-682523362b15?auto=format&fit=crop&q=80&w=800",
         description: "Learn the foundational principles of climate resilience for small-scale agricultural operations."
     },
     {

@@ -9,11 +9,11 @@ const slides = [
     {
         title: "CLIMATE & FARMING CHALLENGES",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/60013/pexels-photo-60013.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Unpredictable weather patterns, soil degradation, and resource scarcity threaten global food security.",
         overlay: 'none',
         cards: [
-            { type: 'image', content: "https://images.unsplash.com/photo-1524491989242-af57bbfe42c4?auto=format&fit=crop&q=80&w=600", overlay: 'alert' },
+            { type: 'image', content: "https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=600", overlay: 'alert' },
             { 
                 type: 'stats', 
                 uvIndex: 7, 
@@ -45,11 +45,11 @@ const slides = [
     {
         title: "SMART RESOURCE MANAGEMENT",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Optimize water usage and soil health through intelligent monitoring and automated irrigation systems.",
         overlay: 'success',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600', overlay: 'sensor' },
+            { type: 'image', content: 'https://images.pexels.com/photos/235925/pexels-photo-235925.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'sensor' },
             { 
                 type: 'stats', 
                 uvIndex: 4, 
@@ -81,11 +81,11 @@ const slides = [
     {
         title: "MARKET INTELLIGENCE",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/1482101/pexels-photo-1482101.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Access real-time market prices and demand forecasts to maximize your farm's profitability.",
         overlay: 'market',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1506484334402-40ff22e05a63?auto=format&fit=crop&q=80&w=600', overlay: 'growth' },
+            { type: 'image', content: 'https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'growth' },
             { 
                 type: 'stats', 
                 uvIndex: 2, 
@@ -117,11 +117,11 @@ const slides = [
     {
         title: "COMMUNITY & SUPPORT",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Connect with expert agronomists and fellow farmers to share knowledge and best practices.",
         overlay: 'community',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600', overlay: 'users' },
+            { type: 'image', content: 'https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'users' },
             { 
                 type: 'stats', 
                 uvIndex: 5, 
@@ -153,11 +153,11 @@ const slides = [
     {
         title: "DATA-DRIVEN DECISIONS",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1551288049-bbbda5366991?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Leverage advanced analytics and historical data to plan your seasons with precision.",
         overlay: 'data',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600', overlay: 'analytics' },
+            { type: 'image', content: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'analytics' },
             { 
                 type: 'stats', 
                 uvIndex: 8, 
@@ -189,11 +189,11 @@ const slides = [
     {
         title: "READY TO START?",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.pexels.com/photos/2255441/pexels-photo-2255441.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Join thousands of farmers already using CSA Hub to build a more resilient future.",
         overlay: 'ready',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600', overlay: 'sprouts' },
+            { type: 'image', content: 'https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'sprouts' },
             { 
                 type: 'stats', 
                 uvIndex: 3, 

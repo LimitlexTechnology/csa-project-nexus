@@ -1,5 +1,5 @@
 {
   "/landing/page": "app/landing/page.js",
-  "/page": "app/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/role-selection/page": "app/role-selection/page.js",
+  "/welcome/page": "app/welcome/page.js"
 }
