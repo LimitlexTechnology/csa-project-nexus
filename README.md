@@ -62,6 +62,22 @@ npx turbo run check-types
 - **Knowledge Hub**: Agricultural tips and guides.
 - **Personalization**: Role switching (Farmer, Extension Officer, etc.) dynamically updates the UI.
 
+## Technical Journey & Challenges
+
+### The Vision
+Project Nexus was born from a need to bridge the gap between high-level climate data and the daily reality of smallholder farmers. Our goal was to create a "Single Source of Truth" for agricultural intelligence that is as intuitive as a social media app but as robust as a scientific tool.
+
+### Key Challenges Overcome
+1.  **Monorepo Synchronization**: Implementing a shared UI package (`packages/ui`) that works seamlessly across both Next.js (Web) and React Native (Mobile) using **NativeWind**. This required careful configuration of Tailwind and PostCSS.
+2.  **State Management & Persistence**: Building a robust onboarding flow that persists user preferences (Language, Role) across sessions using local storage and optimized React hooks.
+3.  **Visual Branding & Clarity**: Iterating on the UI to move from generic placeholders to high-impact, contextual imagery that accurately depicts climate challenges and farming solutions.
+4.  **Version Control at Scale**: Managing complex merge conflicts arising from build artifacts and multiple feature branches, ultimately resulting in a cleaner, more professional Git history.
+
+### Future Roadmap
+- Integration of real-time IoT sensors for soil moisture.
+- Offline-first capabilities for the mobile application.
+- Multilingual AI voice support for non-literate farmers.
+
 ## License
 
 Private Project Nexus.

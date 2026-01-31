@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     transpilePackages: ['react-native', 'react-native-web', '@repo/ui', 'nativewind'],
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
+        ],
+    },
     webpack: (config) => {
         config.resolve.alias = {
             ...(config.resolve.alias || {}),

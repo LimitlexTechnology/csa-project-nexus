@@ -2,6 +2,7 @@
 import React from 'react';
 import Navigation from '../../components/Navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Logo } from '../../components/Logo';
 import { Target, CheckCircle2, Globe, Rocket, Users } from 'lucide-react';
 
@@ -45,7 +46,13 @@ export default function AboutPage() {
                         </ul>
                     </div>
                     <div className="aspect-square bg-gray-100 rounded-[32px] overflow-hidden relative border-4 border-white shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Mission" />
+                        <Image 
+                            src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800" 
+                            className="w-full h-full object-cover" 
+                            alt="Mission"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </div>
                 </section>
 

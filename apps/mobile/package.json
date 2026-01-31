@@ -10,12 +10,13 @@
         "web": "expo start --web"
     },
     "dependencies": {
-        "expo": "~50.0.7",
+        "@repo/ui": "*",
+        "expo": "^54.0.32",
         "expo-status-bar": "~1.11.1",
-        "react": "18.2.0",
-        "react-native": "0.73.4",
         "nativewind": "^2.0.11",
-        "@repo/ui": "*"
+        "next": "14.2.35",
+        "react": "18.2.0",
+        "react-native": "^0.73.11"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",

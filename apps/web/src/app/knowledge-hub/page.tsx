@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Share2 } from 'lucide-react';
 
 const categories = [
     { id: 'all', name: 'All Resources', icon: '📚' },
@@ -160,7 +162,13 @@ export default function KnowledgeHubPage() {
                         {filteredItems.map((item) => (
                             <div key={item.id} className="bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 group">
                                 <div className="aspect-[16/9] bg-gray-100 relative overflow-hidden">
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    <Image 
+                                        src={item.image} 
+                                        alt={item.title} 
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
                                     <div className="absolute top-4 left-4">
                                         <span className="px-4 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-black uppercase tracking-widest text-[#2E7D32] shadow-sm">
                                             {item.type}
@@ -179,10 +187,22 @@ export default function KnowledgeHubPage() {
                                     <p className="text-sm text-gray-500 font-medium leading-relaxed mb-8 line-clamp-2">
                                         {item.description}
                                     </p>
-                                    <button className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all">
-                                        Read Now
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                    </button>
+                                    <div className="flex items-center justify-between">
+                                        <button className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all">
+                                            Read Now
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                        </button>
+                                        <button 
+                                            onClick={() => {
+                                                navigator.clipboard.writeText(`https://csahub.nexus/knowledge/${item.id}`);
+                                                alert('Link copied to clipboard!');
+                                            }}
+                                            className="p-3 hover:bg-gray-50 rounded-xl text-gray-400 hover:text-[#2E7D32] transition-all"
+                                            title="Share Article"
+                                        >
+                                            <Share2 size={18} />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         ))}
