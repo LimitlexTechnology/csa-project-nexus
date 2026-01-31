@@ -45,7 +45,7 @@ export default function AboutPage() {
                         </ul>
                     </div>
                     <div className="aspect-square bg-gray-100 rounded-[32px] overflow-hidden relative border-4 border-white shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Mission" />
+                        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Mission" />
                     </div>
                 </section>
 

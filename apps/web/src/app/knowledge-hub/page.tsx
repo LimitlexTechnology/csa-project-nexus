@@ -18,7 +18,7 @@ const hubItems = [
         category: "guides",
         type: "Guide",
         duration: "15 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800",
         description: "A comprehensive guide on how to implement effective crop rotation strategies to naturally replenish soil nutrients."
     },
     {
@@ -27,7 +27,7 @@ const hubItems = [
         category: "tips",
         type: "Quick Tip",
         duration: "3 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=800",
         description: "Reduce water waste and improve crop yield with these simple but effective irrigation techniques."
     },
     {
@@ -36,7 +36,7 @@ const hubItems = [
         category: "articles",
         type: "Article",
         duration: "10 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800",
         description: "Expert analysis on how bio-technology is developing seeds that can thrive in extreme climate conditions."
     },
     {
@@ -45,7 +45,7 @@ const hubItems = [
         category: "guides",
         type: "Guide",
         duration: "20 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800",
         description: "Learn the foundational principles of climate resilience for small-scale agricultural operations."
     },
     {
@@ -54,7 +54,7 @@ const hubItems = [
         category: "tips",
         type: "Quick Tip",
         duration: "5 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&q=80&w=800",
         description: "A guide to integrated pest management using nature's own solutions instead of harsh chemicals."
     },
     {
@@ -63,7 +63,7 @@ const hubItems = [
         category: "case-studies",
         type: "Case Study",
         duration: "8 min read",
-        image: "/farm-bg.jpg",
+        image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=800",
         description: "How a community in Northern Ghana transformed their lives using CSA ONE climate intelligence tools."
     }
 ];

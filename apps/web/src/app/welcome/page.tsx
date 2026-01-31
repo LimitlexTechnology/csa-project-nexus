@@ -9,11 +9,11 @@ const slides = [
     {
         title: "CLIMATE & FARMING CHALLENGES",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1561470508-fd4df1ed90b2?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
         mainText: "Unpredictable weather patterns, soil degradation, and resource scarcity threaten global food security.",
-        overlay: 'warning',
+        overlay: 'none',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1524491989242-af57bbfe42c4?auto=format&fit=crop&q=80&w=600', overlay: 'alert' },
+            { type: 'image', content: "https://images.unsplash.com/photo-1524491989242-af57bbfe42c4?auto=format&fit=crop&q=80&w=600", overlay: 'alert' },
             { 
                 type: 'stats', 
                 uvIndex: 7, 
@@ -117,7 +117,7 @@ const slides = [
     {
         title: "COMMUNITY & SUPPORT",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=1200",
         mainText: "Connect with expert agronomists and fellow farmers to share knowledge and best practices.",
         overlay: 'community',
         cards: [
@@ -227,6 +227,7 @@ const slides = [
 export default function WelcomeCarousel() {
     const router = useRouter();
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isToggled, setIsToggled] = useState(true);
     const totalSlides = slides.length;
     const slide = slides[currentSlide];
 
@@ -355,8 +356,11 @@ export default function WelcomeCarousel() {
                     {/* Section 2: Solution Header */}
                     <div className="flex justify-between items-center mb-8">
                         <h2 className="text-sm font-bold text-[#1A1A1A] uppercase tracking-[0.15em]">{slide.subtitle}</h2>
-                        <div className="w-14 h-7 bg-[#37474F] rounded-full relative p-1.5 cursor-pointer shadow-inner">
-                            <div className="w-4 h-4 bg-white rounded-full absolute right-1.5 top-1.5 shadow-md"></div>
+                        <div 
+                            onClick={() => setIsToggled(!isToggled)}
+                            className={`w-14 h-7 rounded-full relative p-1.5 cursor-pointer shadow-inner transition-colors duration-300 ${isToggled ? 'bg-[#4CAF50]' : 'bg-[#37474F]'}`}
+                        >
+                            <div className={`w-4 h-4 bg-white rounded-full absolute top-1.5 shadow-md transition-all duration-300 ${isToggled ? 'right-1.5' : 'left-1.5'}`}></div>
                         </div>
                     </div>
 

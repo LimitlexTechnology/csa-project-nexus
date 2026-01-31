@@ -15,7 +15,7 @@ export default function LandingPage() {
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1600')`,
+                        backgroundImage: `url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1600')`,
                         backgroundBlendMode: 'multiply',
                         backgroundColor: 'rgba(15, 76, 58, 0.4)'
                     }}
@@ -126,7 +126,7 @@ export default function LandingPage() {
             {/* CTA Section */}
             <section className="max-w-7xl mx-auto px-6 mb-24">
                 <div className="bg-gradient-to-br from-[#0F4C3A] to-[#2E7D32] rounded-[60px] py-20 px-12 text-center shadow-2xl relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1600')] opacity-10 mix-blend-overlay bg-cover bg-center"></div>
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=1600')] opacity-10 mix-blend-overlay bg-cover bg-center"></div>
                     <div className="relative z-10 max-w-2xl mx-auto">
                         <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-none">Join the Future of Farming</h2>
                         <p className="text-lg text-green-50/70 font-medium mb-10 leading-relaxed">

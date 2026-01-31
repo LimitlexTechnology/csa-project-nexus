@@ -113,7 +113,7 @@ export default function DiseaseDetectionPage() {
                             <div className="p-8 md:p-12 space-y-10">
                                 <div className="flex flex-col md:flex-row gap-12">
                                     <div className="md:w-1/3 aspect-square bg-gray-100 rounded-3xl overflow-hidden relative border-4 border-white shadow-md">
-                                        <img src="/farm-bg.jpg" className="w-full h-full object-cover" alt="Scanned Sample" />
+                                        <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Scanned Sample" />
                                         <div className="absolute inset-0 border-2 border-orange-400 animate-pulse m-4 rounded-xl"></div>
                                     </div>
                                     <div className="flex-1 space-y-6">

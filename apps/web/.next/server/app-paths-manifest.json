@@ -1,6 +1,7 @@
 {
-  "/knowledge-hub/page": "app/knowledge-hub/page.js",
-  "/welcome/page": "app/welcome/page.js",
+  "/landing/page": "app/landing/page.js",
+  "/role-selection/page": "app/role-selection/page.js",
   "/about/page": "app/about/page.js",
-  "/landing/page": "app/landing/page.js"
+  "/welcome/page": "app/welcome/page.js",
+  "/login/page": "app/login/page.js"
 }
