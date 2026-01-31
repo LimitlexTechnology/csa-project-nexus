@@ -228,14 +228,12 @@ export default function WelcomeCarousel() {
         if (currentSlide < totalSlides - 1) {
             setCurrentSlide(prev => prev + 1);
         } else {
-            localStorage.setItem('onboardingDone', 'true');
-            router.push('/landing');
+            router.push('/role-selection');
         }
     };
 
     const handleSkip = () => {
-        localStorage.setItem('onboardingDone', 'true');
-        router.push('/landing');
+        router.push('/role-selection');
     };
 
     return (

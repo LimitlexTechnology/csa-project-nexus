@@ -1,4 +1,7 @@
 {
+  "/onboarding/page": "app/onboarding/page.js",
+  "/welcome/page": "app/welcome/page.js",
+  "/not-found": "app/not-found.js",
   "/landing/page": "app/landing/page.js",
-  "/welcome/page": "app/welcome/page.js"
+  "/role-selection/page": "app/role-selection/page.js"
 }
