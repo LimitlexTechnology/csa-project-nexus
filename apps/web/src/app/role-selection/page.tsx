@@ -43,7 +43,7 @@ export default function RoleSelection() {
         if (selectedRole) {
             localStorage.setItem('userRole', selectedRole);
             localStorage.setItem('onboardingDone', 'true');
-            router.push('/landing');
+            router.push('/login');
         }
     };
 

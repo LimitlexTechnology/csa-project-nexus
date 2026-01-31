@@ -240,7 +240,7 @@ export default function WelcomeCarousel() {
         <div className="min-h-screen bg-[#F3F4F6] flex flex-col font-sans p-4">
             <div className="flex-1 flex flex-col bg-white rounded-[40px] shadow-2xl overflow-hidden max-w-5xl mx-auto w-full border border-gray-100">
                 {/* Header */}
-                <header className="px-10 py-6 flex items-center justify-between">
+                <header className="px-6 md:px-10 py-6 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-[#0F4C3A] rounded-full flex items-center justify-center overflow-hidden">
                             <div className="relative w-full h-full flex items-center justify-center">
@@ -250,8 +250,8 @@ export default function WelcomeCarousel() {
                         <span className="text-2xl font-bold text-[#1A1A1A] tracking-tight">CSA ONE</span>
                     </div>
                     
-                    <nav className="flex items-center gap-10">
-                        <Link href="#" className="text-gray-900 font-semibold relative py-1">
+                    <nav className="hidden lg:flex items-center gap-10">
+                        <Link href="/about" className="text-gray-900 font-semibold relative py-1">
                             About
                             <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#2E7D32] rounded-full"></span>
                         </Link>
@@ -260,28 +260,28 @@ export default function WelcomeCarousel() {
                         <Link href="#" className="text-gray-500 font-semibold hover:text-gray-900 transition-colors">FAQ</Link>
                     </nav>
 
-                    <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+                    <div className="flex items-center gap-4 md:gap-6">
+                        <div className="hidden sm:flex items-center gap-2 text-sm text-gray-500 font-medium">
                             <span className="text-[#4DB6AC] text-xl">🌐</span>
                             <span>System Status: <span className="text-[#4DB6AC]">Online</span></span>
                         </div>
-                        <button className="px-8 py-2.5 border border-[#B0BEC5] text-[#607D8B] rounded-full font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm">
+                        <Link href="/login" className="px-6 md:px-8 py-2.5 border border-[#B0BEC5] text-[#607D8B] rounded-full font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm">
                             Login
-                        </button>
+                        </Link>
                     </div>
                 </header>
 
-                <div className="h-px bg-gray-100 mx-10"></div>
+                <div className="h-px bg-gray-100 mx-6 md:mx-10"></div>
 
                 {/* Main Content Area */}
-                <main className="flex-1 flex flex-col px-12 py-10 overflow-y-auto">
+                <main className="flex-1 flex flex-col px-6 md:px-12 py-10 overflow-y-auto">
                     
                     {/* Section 1: Challenges */}
                     <section className="mb-14">
                         <h2 className="text-2xl font-extrabold text-[#1A1A1A] mb-10 tracking-tight uppercase">{slide.title}</h2>
                         
-                        <div className="flex gap-12 items-start">
-                            <div className="w-[320px] aspect-[1.6/1] bg-[#E0D5C1] rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
+                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                            <div className="w-full lg:w-[320px] aspect-[1.6/1] bg-[#E0D5C1] rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
                                 <div className="absolute inset-0 bg-[url('/farm-bg.jpg')] bg-cover bg-center mix-blend-overlay opacity-80"></div>
                                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
                                     <div className="flex justify-between">
@@ -300,7 +300,7 @@ export default function WelcomeCarousel() {
                                 </div>
                             </div>
                             
-                            <div className="flex-1 pt-4">
+                            <div className="flex-1 pt-0 lg:pt-4">
                                 <p className="text-xl text-[#37474F] font-medium leading-[1.6] max-w-md">
                                     {slide.mainText}
                                 </p>
@@ -317,7 +317,7 @@ export default function WelcomeCarousel() {
                     </div>
 
                     {/* Section 3: Cards Grid */}
-                    <div className="grid grid-cols-4 gap-6 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                         {slide.cards.map((card, idx) => (
                             <div key={idx} className="bg-white p-4 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col min-h-[180px]">
                                 {card.type === 'image' && (

@@ -100,7 +100,7 @@ export default function WeatherDetailsPage() {
                             {[40, 60, 55, 30, 45, 70, 85].map((h, i) => (
                                 <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
                                     <div className="w-full bg-gradient-to-t from-[#2E7D32]/20 to-[#2E7D32] rounded-t-xl transition-all group-hover:opacity-80" style={{ height: `${h}%` }}></div>
-                                    <span className="text-[10px] font-bold text-gray-400 uppercase">{forecastData[i].day}</span>
+                                    <span className="text-[10px] font-bold text-gray-400 uppercase">{forecastData[i]?.day}</span>
                                 </div>
                             ))}
                         </div>

@@ -129,7 +129,7 @@ export default function GlobalSearchPage() {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {mockResults.experts.map(item => (
-                                    <div key={item.id} className="bg-white p-6 rounded-3xl border border-gray-100 hover:border-[#2E7D32]/30 hover:shadow-lg transition-all cursor-pointer group flex items-center gap-5">
+                                    <Link href="/ask-expert" key={item.id} className="bg-white p-6 rounded-3xl border border-gray-100 hover:border-[#2E7D32]/30 hover:shadow-lg transition-all cursor-pointer group flex items-center gap-5 block">
                                         <div className="relative">
                                             <div className="w-14 h-14 bg-gray-200 rounded-2xl overflow-hidden border-2 border-white shadow-sm">
                                                 <img src={`https://ui-avatars.com/api/?name=${item.name}&background=2E7D32&color=fff`} alt={item.name} />
@@ -140,8 +140,8 @@ export default function GlobalSearchPage() {
                                             <h4 className="font-bold text-gray-900 group-hover:text-[#2E7D32] transition-colors">{item.name}</h4>
                                             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{item.role}</p>
                                         </div>
-                                        <button className="text-xs font-black text-[#2E7D32] uppercase tracking-widest hover:underline">Chat</button>
-                                    </div>
+                                        <span className="text-xs font-black text-[#2E7D32] uppercase tracking-widest hover:underline">Chat</span>
+                                    </Link>
                                 ))}
                             </div>
                         </section>

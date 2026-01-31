@@ -44,7 +44,7 @@ export default function Navigation() {
                     {/* Navigation Links */}
                     <div className="flex items-center gap-8">
                         <Link
-                            href="#about"
+                            href="/about"
                             className="text-gray-900 font-bold pb-1 border-b-2 border-[#004D40] transition-all"
                         >
                             About
@@ -100,9 +100,9 @@ export default function Navigation() {
                             )}
                         </div>
 
-                        <button className="px-6 py-2 border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 font-semibold transition-all shadow-sm">
+                        <Link href="/login" className="px-6 py-2 border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 font-semibold transition-all shadow-sm">
                             Login
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

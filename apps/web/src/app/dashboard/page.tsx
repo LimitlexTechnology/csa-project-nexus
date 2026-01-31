@@ -17,18 +17,18 @@ export default function DashboardPage() {
                 </div>
 
                 <nav className="flex-1 px-4 mt-8 space-y-2">
-                    <NavItem icon="📊" label="Overview" active isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="🌦️" label="Weather" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="📰" label="News" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="💡" label="Knowledge Hub" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="🔍" label="Global Search" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="👨‍🌾" label="Ask an Expert" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="🔬" label="Disease Detection" isSidebarOpen={isSidebarOpen} />
-                    <NavItem icon="🚨" label="Report Mining" isSidebarOpen={isSidebarOpen} />
+                    <Link href="/dashboard"><NavItem icon="📊" label="Overview" active isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/weather"><NavItem icon="🌦️" label="Weather" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/news"><NavItem icon="📰" label="News" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/knowledge-hub"><NavItem icon="💡" label="Knowledge Hub" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/search"><NavItem icon="🔍" label="Global Search" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/ask-expert"><NavItem icon="👨‍🌾" label="Ask an Expert" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/disease-detection"><NavItem icon="🔬" label="Disease Detection" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/report-mining"><NavItem icon="🚨" label="Report Mining" isSidebarOpen={isSidebarOpen} /></Link>
                 </nav>
 
                 <div className="p-6 mt-auto border-t border-white/10">
-                    <NavItem icon="⚙️" label="Settings" isSidebarOpen={isSidebarOpen} />
+                    <Link href="/profile"><NavItem icon="⚙️" label="Settings" isSidebarOpen={isSidebarOpen} /></Link>
                 </div>
             </aside>
 
@@ -48,15 +48,15 @@ export default function DashboardPage() {
                         <h2 className="text-xl font-bold text-gray-900">Dashboard Overview</h2>
                     </div>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3 md:gap-6">
                         <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full text-green-700 text-sm font-bold">
                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                             System Online
                         </div>
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                        <div className="flex items-center gap-2 md:gap-3">
+                            <Link href="/profile" className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden border-2 border-white shadow-sm block">
                                 <img src="https://ui-avatars.com/api/?name=Farmer+John&background=2E7D32&color=fff" alt="Profile" />
-                            </div>
+                            </Link>
                             <div className="hidden sm:block">
                                 <p className="text-sm font-bold text-gray-900 leading-none">Farmer John</p>
                                 <p className="text-xs font-medium text-gray-500 mt-1">Accra, Ghana</p>
@@ -100,10 +100,10 @@ export default function DashboardPage() {
                             <div className="bg-[#2E7D32] rounded-[32px] p-8 text-white shadow-lg shadow-green-900/10">
                                 <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
                                 <div className="grid grid-cols-2 gap-4">
-                                    <ActionButton icon="🔬" label="Scan Crop" />
-                                    <ActionButton icon="🚨" label="Report Mining" />
-                                    <ActionButton icon="👨‍🌾" label="Ask Expert" />
-                                    <ActionButton icon="📊" label="View Reports" />
+                                    <Link href="/disease-detection"><ActionButton icon="🔬" label="Scan Crop" /></Link>
+                                    <Link href="/report-mining"><ActionButton icon="🚨" label="Report Mining" /></Link>
+                                    <Link href="/ask-expert"><ActionButton icon="👨‍🌾" label="Ask Expert" /></Link>
+                                    <Link href="/dashboard"><ActionButton icon="📊" label="View Reports" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ export default function DashboardPage() {
                             <div className="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 flex flex-col">
                                 <div className="flex justify-between items-center mb-6">
                                     <h3 className="text-xl font-bold text-gray-900">Alerts & News</h3>
-                                    <button className="text-sm font-bold text-[#2E7D32] hover:underline">View All</button>
+                                    <Link href="/news" className="text-sm font-bold text-[#2E7D32] hover:underline">View All</Link>
                                 </div>
                                 <div className="space-y-4 flex-1">
                                     <AlertItem 
@@ -167,11 +167,11 @@ export default function DashboardPage() {
 
                 {/* Mobile Navigation (Bottom) */}
                 <div className="lg:hidden h-20 bg-white border-t border-gray-100 flex items-center justify-around px-4 sticky bottom-0 z-20">
-                    <MobileNavItem icon="📊" active />
-                    <MobileNavItem icon="🌦️" />
-                    <MobileNavItem icon="🔬" />
-                    <MobileNavItem icon="💡" />
-                    <MobileNavItem icon="⚙️" />
+                    <Link href="/dashboard"><MobileNavItem icon="📊" active /></Link>
+                    <Link href="/weather"><MobileNavItem icon="🌦️" /></Link>
+                    <Link href="/disease-detection"><MobileNavItem icon="🔬" /></Link>
+                    <Link href="/knowledge-hub"><MobileNavItem icon="💡" /></Link>
+                    <Link href="/profile"><MobileNavItem icon="⚙️" /></Link>
                 </div>
             </main>
         </div>

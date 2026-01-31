@@ -132,7 +132,7 @@ export default function ProfileSettingsPage() {
                     </div>
                     <div className="flex gap-4">
                         <button className="px-8 py-3 border-2 border-gray-100 text-gray-400 font-black uppercase tracking-widest text-[10px] rounded-full hover:border-red-200 hover:text-red-500 transition-all">Delete Account</button>
-                        <button className="px-8 py-3 bg-gray-900 text-white font-black uppercase tracking-widest text-[10px] rounded-full hover:bg-black transition-all">Logout</button>
+                        <Link href="/login" className="px-8 py-3 bg-gray-900 text-white font-black uppercase tracking-widest text-[10px] rounded-full hover:bg-black transition-all">Logout</Link>
                     </div>
                 </section>
             </main>

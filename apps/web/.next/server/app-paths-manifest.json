@@ -1,8 +1,8 @@
 {
+  "/dashboard/page": "app/dashboard/page.js",
+  "/knowledge-hub/page": "app/knowledge-hub/page.js",
+  "/weather/page": "app/weather/page.js",
   "/landing/page": "app/landing/page.js",
-  "/role-selection/page": "app/role-selection/page.js",
-  "/welcome/page": "app/welcome/page.js",
-  "/not-found": "app/not-found.js",
-  "/onboarding/page": "app/onboarding/page.js",
-  "/login/page": "app/login/page.js"
+  "/news/page": "app/news/page.js",
+  "/about/page": "app/about/page.js"
 }

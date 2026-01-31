@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import Navigation from '../../components/Navigation';
 
 export default function LandingPage() {
@@ -25,8 +26,8 @@ export default function LandingPage() {
                             Future-Proof Your Farm.<br />Climate Intelligence for<br />Sustainable Agriculture
                         </h1>
                         <div className="flex gap-4">
-                            <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition-all">Get Started</button>
-                            <button className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition-all">Explore as Guest</button>
+                            <Link href="/welcome" className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition-all text-center">Get Started</Link>
+                            <Link href="/dashboard" className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition-all text-center">Explore as Guest</Link>
                         </div>
                     </div>
                 </div>
@@ -56,7 +57,9 @@ export default function LandingPage() {
                     <div className="bg-white rounded-2xl p-6 shadow-md">
                         <h3 className="text-lg font-bold text-gray-900 mb-4">Featured CSA Tip</h3>
                         <p className="text-sm text-gray-800 font-medium mb-6">Rotate Crops for Soil Health & Pest Resilience</p>
-                        <button className="w-full px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all shadow-sm">Mow!</button>
+                        <Link href="/knowledge-hub" className="w-full inline-block text-center px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all shadow-sm">
+                            Learn More
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -64,7 +67,7 @@ export default function LandingPage() {
             <section className="max-w-7xl mx-auto px-6 mb-12">
                 <div className="bg-gradient-to-r from-blue-300 via-cyan-200 to-green-300 rounded-3xl py-16 px-12 text-center shadow-lg">
                     <h2 className="text-4xl font-bold text-gray-900 mb-8">Join the Future of Farming</h2>
-                    <button className="px-12 py-3.5 bg-green-600 hover:bg-green-700 text-white text-base font-semibold rounded-lg transition-all shadow-md">Sign Up Now</button>
+                    <Link href="/login" className="px-12 py-3.5 bg-green-600 hover:bg-green-700 text-white text-base font-semibold rounded-lg transition-all shadow-md">Sign Up Now</Link>
                 </div>
             </section>
         </div>
