@@ -1,16 +1,18 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Logo } from '../../components/Logo';
+import { Lightbulb, ArrowRight, Shield, Wind, Droplets, Sun, TrendingUp, Users, Database, Globe } from 'lucide-react';
 
 const slides = [
     {
         title: "CLIMATE & FARMING CHALLENGES",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
         mainText: "Unpredictable weather patterns, soil degradation, and resource scarcity threaten global food security.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 7, 
@@ -23,7 +25,7 @@ const slides = [
                 label: 'Regional',
                 title: 'Wind Speed',
                 value: '15 km/h',
-                icon: '🌧️',
+                icon: <Wind className="w-8 h-8 text-blue-400" />,
                 description: 'New irrigation tech adapted for modern challenges.',
                 dots: [false, false, false, true, false]
             },
@@ -32,7 +34,7 @@ const slides = [
                 label: 'Regional',
                 title: 'Current Temp',
                 value: '28°C',
-                icon: '🌡️',
+                icon: <Sun className="w-8 h-8 text-orange-400" />,
                 description: 'Using data for a sustainable future of farming across nations.',
                 dots: [false, false, true, false, false]
             }
@@ -41,11 +43,11 @@ const slides = [
     },
     {
         title: "SMART RESOURCE MANAGEMENT",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1200",
         mainText: "Optimize water usage and soil health through intelligent monitoring and automated irrigation systems.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 4, 
@@ -58,7 +60,7 @@ const slides = [
                 label: 'Soil Health',
                 title: 'Moisture Level',
                 value: '65%',
-                icon: '🌱',
+                icon: <Droplets className="w-8 h-8 text-blue-500" />,
                 description: 'Optimal moisture detected for current crop cycle.',
                 dots: [false, true, false, false, false]
             },
@@ -67,7 +69,7 @@ const slides = [
                 label: 'Forecast',
                 title: 'Next 24h',
                 value: 'Clear',
-                icon: '☀️',
+                icon: <Sun className="w-8 h-8 text-yellow-500" />,
                 description: 'Ideal conditions for scheduled harvesting activities.',
                 dots: [true, false, false, false, false]
             }
@@ -76,11 +78,11 @@ const slides = [
     },
     {
         title: "MARKET INTELLIGENCE",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200",
         mainText: "Access real-time market prices and demand forecasts to maximize your farm's profitability.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 2, 
@@ -93,7 +95,7 @@ const slides = [
                 label: 'Market',
                 title: 'Maize Price',
                 value: '+5.2%',
-                icon: '📈',
+                icon: <TrendingUp className="w-8 h-8 text-green-500" />,
                 description: 'Regional demand is increasing for sustainable produce.',
                 dots: [false, false, true, false, false]
             },
@@ -102,7 +104,7 @@ const slides = [
                 label: 'Trends',
                 title: 'Global Export',
                 value: 'Rising',
-                icon: '🌍',
+                icon: <Globe className="w-8 h-8 text-blue-600" />,
                 description: 'New opportunities in international organic markets.',
                 dots: [false, true, false, false, false]
             }
@@ -111,11 +113,11 @@ const slides = [
     },
     {
         title: "COMMUNITY & SUPPORT",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1200",
         mainText: "Connect with expert agronomists and fellow farmers to share knowledge and best practices.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 5, 
@@ -128,7 +130,7 @@ const slides = [
                 label: 'Experts',
                 title: 'Online Now',
                 value: '12',
-                icon: '👨‍🌾',
+                icon: <Users className="w-8 h-8 text-[#2E7D32]" />,
                 description: 'Get instant advice on pest management and crop health.',
                 dots: [true, false, false, false, false]
             },
@@ -137,7 +139,7 @@ const slides = [
                 label: 'Support',
                 title: 'Response Time',
                 value: '< 15m',
-                icon: '💬',
+                icon: <Shield className="w-8 h-8 text-blue-500" />,
                 description: 'Our team is dedicated to your farming success.',
                 dots: [false, false, false, true, false]
             }
@@ -146,11 +148,11 @@ const slides = [
     },
     {
         title: "DATA-DRIVEN DECISIONS",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1551288049-bbbda5366991?auto=format&fit=crop&q=80&w=1200",
         mainText: "Leverage advanced analytics and historical data to plan your seasons with precision.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 8, 
@@ -163,7 +165,7 @@ const slides = [
                 label: 'Analytics',
                 title: 'Yield Prediction',
                 value: '+15%',
-                icon: '📊',
+                icon: <TrendingUp className="w-8 h-8 text-[#2E7D32]" />,
                 description: 'Based on current climate data and soil trends.',
                 dots: [false, true, false, false, false]
             },
@@ -172,7 +174,7 @@ const slides = [
                 label: 'History',
                 title: 'Last Season',
                 value: 'Success',
-                icon: '✅',
+                icon: <Database className="w-8 h-8 text-blue-500" />,
                 description: 'Data indicates consistent growth across all metrics.',
                 dots: [false, false, true, false, false]
             }
@@ -181,11 +183,11 @@ const slides = [
     },
     {
         title: "READY TO START?",
-        subtitle: "YOUR CSA FARMING ONE SOLUTION",
-        mainImage: "/farm-bg.jpg",
-        mainText: "Join thousands of farmers already using CSA ONE to build a more resilient future.",
+        subtitle: "YOUR CSA FARMING HUB SOLUTION",
+        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
+        mainText: "Join thousands of farmers already using CSA Hub to build a more resilient future.",
         cards: [
-            { type: 'image', content: '/farm-bg.jpg' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600' },
             { 
                 type: 'stats', 
                 uvIndex: 3, 
@@ -198,7 +200,7 @@ const slides = [
                 label: 'Join',
                 title: 'New Users',
                 value: '500+',
-                icon: '✨',
+                icon: <Users className="text-teal-500 w-8 h-8" />,
                 description: 'This week alone, 500+ farmers joined the nexus.',
                 dots: [true, false, false, false, false]
             },
@@ -207,7 +209,7 @@ const slides = [
                 label: 'Future',
                 title: 'Resilience',
                 value: '100%',
-                icon: '🌟',
+                icon: <Shield className="text-[#2E7D32] w-8 h-8" />,
                 description: 'Built for the challenges of tomorrow, available today.',
                 dots: [false, false, false, false, true]
             }
@@ -241,14 +243,7 @@ export default function WelcomeCarousel() {
             <div className="flex-1 flex flex-col bg-white rounded-[40px] shadow-2xl overflow-hidden max-w-5xl mx-auto w-full border border-gray-100">
                 {/* Header */}
                 <header className="px-6 md:px-10 py-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-[#0F4C3A] rounded-full flex items-center justify-center overflow-hidden">
-                            <div className="relative w-full h-full flex items-center justify-center">
-                                <span className="text-white text-xl">🌱</span>
-                            </div>
-                        </div>
-                        <span className="text-2xl font-bold text-[#1A1A1A] tracking-tight">CSA ONE</span>
-                    </div>
+                    <Logo />
                     
                     <nav className="hidden lg:flex items-center gap-10">
                         <Link href="/about" className="text-gray-900 font-semibold relative py-1">
@@ -262,7 +257,7 @@ export default function WelcomeCarousel() {
 
                     <div className="flex items-center gap-4 md:gap-6">
                         <div className="hidden sm:flex items-center gap-2 text-sm text-gray-500 font-medium">
-                            <span className="text-[#4DB6AC] text-xl">🌐</span>
+                            <Globe className="text-[#4DB6AC] w-5 h-5" />
                             <span>System Status: <span className="text-[#4DB6AC]">Online</span></span>
                         </div>
                         <Link href="/login" className="px-6 md:px-8 py-2.5 border border-[#B0BEC5] text-[#607D8B] rounded-full font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm">
@@ -282,7 +277,7 @@ export default function WelcomeCarousel() {
                         
                         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
                             <div className="w-full lg:w-[320px] aspect-[1.6/1] bg-[#E0D5C1] rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
-                                <div className="absolute inset-0 bg-[url('/farm-bg.jpg')] bg-cover bg-center mix-blend-overlay opacity-80"></div>
+                                <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-80" style={{ backgroundImage: `url(${slide.mainImage})` }}></div>
                                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
                                     <div className="flex justify-between">
                                         <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
@@ -322,7 +317,7 @@ export default function WelcomeCarousel() {
                             <div key={idx} className="bg-white p-4 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col min-h-[180px]">
                                 {card.type === 'image' && (
                                     <div className="flex-1 bg-gradient-to-b from-[#90CAF9] to-[#81C784] rounded-2xl overflow-hidden relative border-4 border-white shadow-sm">
-                                        <div className="absolute inset-0 bg-[url('/farm-bg.jpg')] bg-cover bg-center mix-blend-soft-light opacity-60"></div>
+                                        <div className="absolute inset-0 bg-cover bg-center mix-blend-soft-light opacity-60" style={{ backgroundImage: `url(${card.content})` }}></div>
                                         <div className="absolute top-2 left-4 text-3xl">☁️</div>
                                         <div className="absolute bottom-2 w-full flex items-end justify-center gap-2">
                                             <span className="text-lg">🌱</span>
@@ -366,7 +361,7 @@ export default function WelcomeCarousel() {
                                                 <h4 className="text-xs font-extrabold text-black mb-1">{card.title}</h4>
                                                 <p className="text-sm font-bold text-gray-700">{card.value}</p>
                                             </div>
-                                            <span className="text-4xl filter drop-shadow-sm">{card.icon}</span>
+                                            <div className="filter drop-shadow-sm">{card.icon}</div>
                                         </div>
                                         <p className="text-[10px] text-gray-500 font-semibold leading-relaxed mb-4">
                                             {card.description}
@@ -391,8 +386,8 @@ export default function WelcomeCarousel() {
                                 {slide.tip}
                             </p>
                         </div>
-                        <div className="w-12 h-12 flex items-center justify-center text-[#009688] text-3xl relative z-10 bg-white/40 rounded-full shadow-inner">
-                            💡
+                        <div className="w-12 h-12 flex items-center justify-center text-[#009688] relative z-10 bg-white/40 rounded-full shadow-inner">
+                            <Lightbulb className="w-6 h-6" />
                         </div>
                     </div>
                 </main>
@@ -406,20 +401,21 @@ export default function WelcomeCarousel() {
                         Skip
                     </button>
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 md:gap-3">
                         {[0, 1, 2, 3, 4, 5].map(i => (
                             <div 
                                 key={i} 
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-[#1B5E20] scale-125' : 'bg-[#CFD8DC]'}`}
+                                className={`w-2 md:w-2.5 h-2 md:h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-[#1B5E20] scale-125 shadow-md' : 'bg-[#CFD8DC]'}`}
                             ></div>
                         ))}
                     </div>
 
                     <button 
                         onClick={handleNext}
-                        className="px-14 py-4 bg-[#4CAF50] hover:bg-[#388E3C] text-white font-black rounded-2xl uppercase tracking-[0.15em] shadow-[0_10px_20px_rgba(76,175,80,0.3)] transition-all active:scale-95 active:shadow-none"
+                        className="px-8 md:px-14 py-3 md:py-4 bg-[#4CAF50] hover:bg-[#388E3C] text-white font-black rounded-2xl uppercase tracking-[0.15em] shadow-[0_10px_20px_rgba(76,175,80,0.3)] transition-all active:scale-95 active:shadow-none text-xs md:text-base flex items-center gap-2"
                     >
-                        Next
+                        {currentSlide === totalSlides - 1 ? 'Get Started' : 'Next'}
+                        <ArrowRight className="w-5 h-5" />
                     </button>
                 </footer>
             </div>

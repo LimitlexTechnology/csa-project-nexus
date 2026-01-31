@@ -1,37 +1,39 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Logo } from '../../components/Logo';
+import { Tractor, ClipboardList, ShoppingCart, Landmark, Compass, CheckCircle2 } from 'lucide-react';
 
 const roles = [
     {
         id: 'farmer',
         title: 'Farmer',
-        icon: '👨‍🌾',
+        icon: <Tractor size={40} />,
         description: 'Manage your farm with climate intelligence'
     },
     {
         id: 'expert',
         title: 'Extension Officer / Expert',
-        icon: '📋',
+        icon: <ClipboardList size={40} />,
         description: 'Provide expert advice to farmers'
     },
     {
         id: 'buyer',
         title: 'Buyer / Agribusiness',
-        icon: '🛒',
+        icon: <ShoppingCart size={40} />,
         description: 'Connect with sustainable producers'
     },
     {
         id: 'ngo',
         title: 'NGO / Government',
-        icon: '🏛️',
+        icon: <Landmark size={40} />,
         description: 'Policy and support for climate agriculture'
     },
     {
         id: 'explorer',
         title: 'Explorer',
-        icon: '🧭',
-        description: 'Explore the CSA ONE ecosystem'
+        icon: <Compass size={40} />,
+        description: 'Explore the CSA Hub ecosystem'
     }
 ];
 
@@ -55,6 +57,9 @@ export default function RoleSelection() {
 
             <div className="bg-white/80 backdrop-blur-xl rounded-[40px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] w-full max-w-4xl overflow-hidden animate-in fade-in zoom-in duration-700 border border-white/20">
                 <div className="p-8 md:p-12 flex flex-col items-center">
+                    <div className="mb-10">
+                        <Logo />
+                    </div>
                     <div className="mb-10 text-center">
                         <h1 className="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tighter mb-3">Select Your Role</h1>
                         <p className="text-gray-500 font-medium text-lg italic">“You can change this later”</p>
@@ -72,8 +77,8 @@ export default function RoleSelection() {
                                     : 'border-gray-100 bg-white/50 hover:border-green-200 hover:bg-white'
                                 }`}
                             >
-                                <div className={`text-5xl mb-6 transition-all duration-500 ${
-                                    selectedRole === role.id ? 'scale-110' : 'grayscale group-hover:grayscale-0'
+                                <div className={`mb-6 transition-all duration-500 text-[#2E7D32] ${
+                                    selectedRole === role.id ? 'scale-110' : 'grayscale group-hover:grayscale-0 opacity-40'
                                 }`}>
                                     {role.icon}
                                 </div>
@@ -86,9 +91,7 @@ export default function RoleSelection() {
 
                                 {selectedRole === role.id && (
                                     <div className="absolute top-4 right-4 w-8 h-8 bg-[#2E7D32] rounded-full flex items-center justify-center border-4 border-white shadow-lg animate-in zoom-in duration-300">
-                                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                        </svg>
+                                        <CheckCircle2 className="w-4 h-4 text-white" strokeWidth={3} />
                                     </div>
                                 )}
                             </button>

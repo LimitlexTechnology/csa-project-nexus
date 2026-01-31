@@ -1,6 +1,27 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { Logo } from '../../components/Logo';
+import { 
+    LayoutDashboard, 
+    CloudSun, 
+    Newspaper, 
+    Lightbulb, 
+    Search, 
+    UserCircle, 
+    Microscope, 
+    AlertTriangle, 
+    Settings,
+    Droplets,
+    Wind,
+    Sun,
+    TrendingUp,
+    Info,
+    CheckCircle2,
+    Sprout,
+    Menu,
+    LogOut
+} from 'lucide-react';
 
 export default function DashboardPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -9,26 +30,23 @@ export default function DashboardPage() {
         <div className="min-h-screen bg-[#F8F9FA] flex font-sans">
             {/* Desktop Sidebar */}
             <aside className={`hidden lg:flex flex-col bg-[#0F4C3A] text-white transition-all duration-300 ${isSidebarOpen ? 'w-72' : 'w-24'}`}>
-                <div className="p-8 flex items-center gap-3">
-                    <div className="min-w-[40px] h-10 bg-white rounded-xl flex items-center justify-center">
-                        <span className="text-xl">🌱</span>
-                    </div>
-                    {isSidebarOpen && <span className="text-2xl font-black tracking-tighter">CSA ONE</span>}
+                <div className="p-8">
+                    <Logo iconOnly={!isSidebarOpen} className={isSidebarOpen ? "" : "justify-center"} />
                 </div>
 
                 <nav className="flex-1 px-4 mt-8 space-y-2">
-                    <Link href="/dashboard"><NavItem icon="📊" label="Overview" active isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/weather"><NavItem icon="🌦️" label="Weather" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/news"><NavItem icon="📰" label="News" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/knowledge-hub"><NavItem icon="💡" label="Knowledge Hub" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/search"><NavItem icon="🔍" label="Global Search" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/ask-expert"><NavItem icon="👨‍🌾" label="Ask an Expert" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/disease-detection"><NavItem icon="🔬" label="Disease Detection" isSidebarOpen={isSidebarOpen} /></Link>
-                    <Link href="/report-mining"><NavItem icon="🚨" label="Report Mining" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/dashboard"><NavItem icon={<LayoutDashboard size={22} />} label="Overview" active isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/weather"><NavItem icon={<CloudSun size={22} />} label="Weather" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/news"><NavItem icon={<Newspaper size={22} />} label="News" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/knowledge-hub"><NavItem icon={<Lightbulb size={22} />} label="Knowledge Hub" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/search"><NavItem icon={<Search size={22} />} label="Global Search" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/ask-expert"><NavItem icon={<UserCircle size={22} />} label="Ask an Expert" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/disease-detection"><NavItem icon={<Microscope size={22} />} label="Disease Detection" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/report-mining"><NavItem icon={<AlertTriangle size={22} />} label="Report Mining" isSidebarOpen={isSidebarOpen} /></Link>
                 </nav>
 
                 <div className="p-6 mt-auto border-t border-white/10">
-                    <Link href="/profile"><NavItem icon="⚙️" label="Settings" isSidebarOpen={isSidebarOpen} /></Link>
+                    <Link href="/profile"><NavItem icon={<Settings size={22} />} label="Settings" isSidebarOpen={isSidebarOpen} /></Link>
                 </div>
             </aside>
 
@@ -41,9 +59,7 @@ export default function DashboardPage() {
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                             className="hidden lg:flex p-2 hover:bg-gray-50 rounded-lg text-gray-400 transition-colors"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+                            <Menu size={24} />
                         </button>
                         <h2 className="text-xl font-bold text-gray-900">Dashboard Overview</h2>
                     </div>
@@ -73,8 +89,8 @@ export default function DashboardPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {/* Weather Overview */}
                             <div className="lg:col-span-2 bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
-                                    <span className="text-9xl">☀️</span>
+                                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                                    <CloudSun size={160} className="text-[#2E7D32]" />
                                 </div>
                                 <div className="relative z-10">
                                     <div className="flex justify-between items-start mb-8">
@@ -88,10 +104,10 @@ export default function DashboardPage() {
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-gray-50">
-                                        <WeatherStat icon="💧" label="Humidity" value="64%" />
-                                        <WeatherStat icon="💨" label="Wind" value="12km/h" />
-                                        <WeatherStat icon="☀️" label="UV Index" value="High (7)" />
-                                        <WeatherStat icon="🌧️" label="Precip" value="10%" />
+                                        <WeatherStat icon={<Droplets size={20} className="text-blue-400" />} label="Humidity" value="64%" />
+                                        <WeatherStat icon={<Wind size={20} className="text-gray-400" />} label="Wind" value="12km/h" />
+                                        <WeatherStat icon={<Sun size={20} className="text-orange-400" />} label="UV Index" value="High (7)" />
+                                        <WeatherStat icon={<CloudSun size={20} className="text-blue-300" />} label="Precip" value="10%" />
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +116,10 @@ export default function DashboardPage() {
                             <div className="bg-[#2E7D32] rounded-[32px] p-8 text-white shadow-lg shadow-green-900/10">
                                 <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Link href="/disease-detection"><ActionButton icon="🔬" label="Scan Crop" /></Link>
-                                    <Link href="/report-mining"><ActionButton icon="🚨" label="Report Mining" /></Link>
-                                    <Link href="/ask-expert"><ActionButton icon="👨‍🌾" label="Ask Expert" /></Link>
-                                    <Link href="/dashboard"><ActionButton icon="📊" label="View Reports" /></Link>
+                                    <Link href="/disease-detection"><ActionButton icon={<Microscope size={24} />} label="Scan Crop" /></Link>
+                                    <Link href="/report-mining"><ActionButton icon={<AlertTriangle size={24} />} label="Report Mining" /></Link>
+                                    <Link href="/ask-expert"><ActionButton icon={<UserCircle size={24} />} label="Ask Expert" /></Link>
+                                    <Link href="/dashboard"><ActionButton icon={<TrendingUp size={24} />} label="View Reports" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -122,18 +138,21 @@ export default function DashboardPage() {
                                         title="Drought Warning" 
                                         desc="Moderate drought risk predicted for next week."
                                         time="2h ago"
+                                        icon={<AlertTriangle size={18} />}
                                     />
                                     <AlertItem 
                                         type="info" 
                                         title="Market Price Update" 
                                         desc="Maize prices up by 5% in regional markets."
                                         time="5h ago"
+                                        icon={<Info size={18} />}
                                     />
                                     <AlertItem 
                                         type="success" 
                                         title="New CSA Tip" 
                                         desc="Learn about multi-cropping for better soil health."
                                         time="1d ago"
+                                        icon={<CheckCircle2 size={18} />}
                                     />
                                 </div>
                             </div>
@@ -146,14 +165,18 @@ export default function DashboardPage() {
                                 </div>
                                 <div className="space-y-4">
                                     <div className="p-5 bg-green-50 rounded-2xl border border-green-100 flex items-start gap-4 group cursor-pointer hover:bg-green-100/50 transition-colors">
-                                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">🌿</div>
+                                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#2E7D32] shadow-sm">
+                                            <Sprout size={24} />
+                                        </div>
                                         <div>
                                             <h4 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-tight">Optimal Planting Time</h4>
                                             <p className="text-sm text-gray-600 leading-relaxed">Based on current soil moisture, next Tuesday is ideal for legume planting.</p>
                                         </div>
                                     </div>
                                     <div className="p-5 bg-blue-50 rounded-2xl border border-blue-100 flex items-start gap-4 group cursor-pointer hover:bg-blue-100/50 transition-colors">
-                                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">💧</div>
+                                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-500 shadow-sm">
+                                            <Droplets size={24} />
+                                        </div>
                                         <div>
                                             <h4 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-tight">Irrigation Strategy</h4>
                                             <p className="text-sm text-gray-600 leading-relaxed">Reduce water output by 15% due to predicted light showers tomorrow evening.</p>
@@ -167,70 +190,65 @@ export default function DashboardPage() {
 
                 {/* Mobile Navigation (Bottom) */}
                 <div className="lg:hidden h-20 bg-white border-t border-gray-100 flex items-center justify-around px-4 sticky bottom-0 z-20">
-                    <Link href="/dashboard"><MobileNavItem icon="📊" active /></Link>
-                    <Link href="/weather"><MobileNavItem icon="🌦️" /></Link>
-                    <Link href="/disease-detection"><MobileNavItem icon="🔬" /></Link>
-                    <Link href="/knowledge-hub"><MobileNavItem icon="💡" /></Link>
-                    <Link href="/profile"><MobileNavItem icon="⚙️" /></Link>
+                    <Link href="/dashboard"><MobileNavItem icon={<LayoutDashboard size={24} />} active /></Link>
+                    <Link href="/weather"><MobileNavItem icon={<CloudSun size={24} />} /></Link>
+                    <Link href="/disease-detection"><MobileNavItem icon={<Microscope size={24} />} /></Link>
+                    <Link href="/knowledge-hub"><MobileNavItem icon={<Lightbulb size={24} />} /></Link>
+                    <Link href="/profile"><MobileNavItem icon={<Settings size={24} />} /></Link>
                 </div>
             </main>
         </div>
     );
 }
 
-function NavItem({ icon, label, active = false, isSidebarOpen }: { icon: string, label: string, active?: boolean, isSidebarOpen: boolean }) {
+function NavItem({ icon, label, active = false, isSidebarOpen }: { icon: React.ReactNode, label: string, active?: boolean, isSidebarOpen: boolean }) {
     return (
         <div className={`flex items-center gap-4 px-4 py-3.5 rounded-2xl cursor-pointer transition-all ${active ? 'bg-white/10 text-white font-bold' : 'text-white/60 hover:bg-white/5 hover:text-white'}`}>
-            <span className="text-xl min-w-[24px] flex justify-center">{icon}</span>
+            <div className="min-w-[24px] flex justify-center">{icon}</div>
             {isSidebarOpen && <span className="text-sm tracking-wide">{label}</span>}
         </div>
     );
 }
 
-function MobileNavItem({ icon, active = false }: { icon: string, active?: boolean }) {
+function MobileNavItem({ icon, active = false }: { icon: React.ReactNode, active?: boolean }) {
     return (
         <div className={`p-3 rounded-2xl transition-all ${active ? 'bg-green-50 text-[#2E7D32]' : 'text-gray-400 hover:bg-gray-50'}`}>
-            <span className="text-2xl">{icon}</span>
+            {icon}
         </div>
     );
 }
 
-function WeatherStat({ icon, label, value }: { icon: string, label: string, value: string }) {
+function WeatherStat({ icon, label, value }: { icon: React.ReactNode, label: string, value: string }) {
     return (
         <div className="flex flex-col gap-1">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{label}</span>
             <div className="flex items-center gap-2">
-                <span className="text-lg">{icon}</span>
+                {icon}
                 <span className="text-lg font-black text-gray-900">{value}</span>
             </div>
         </div>
     );
 }
 
-function ActionButton({ icon, label }: { icon: string, label: string }) {
+function ActionButton({ icon, label }: { icon: React.ReactNode, label: string }) {
     return (
-        <button className="flex flex-col items-center justify-center gap-3 p-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all aspect-square">
-            <span className="text-2xl">{icon}</span>
+        <div className="flex flex-col items-center justify-center gap-3 p-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all aspect-square w-full cursor-pointer">
+            {icon}
             <span className="text-[10px] font-bold uppercase tracking-widest text-center">{label}</span>
-        </button>
+        </div>
     );
 }
 
-function AlertItem({ type, title, desc, time }: { type: 'warning' | 'info' | 'success', title: string, desc: string, time: string }) {
+function AlertItem({ type, title, desc, time, icon }: { type: 'warning' | 'info' | 'success', title: string, desc: string, time: string, icon: React.ReactNode }) {
     const colors = {
         warning: 'bg-orange-50 text-orange-700 border-orange-100',
         info: 'bg-blue-50 text-blue-700 border-blue-100',
         success: 'bg-green-50 text-green-700 border-green-100'
     };
-    const icon = {
-        warning: '⚠️',
-        info: 'ℹ️',
-        success: '✅'
-    };
 
     return (
         <div className={`p-4 rounded-2xl border ${colors[type]} flex items-start gap-4`}>
-            <span className="text-xl">{icon[type]}</span>
+            <div className="mt-1">{icon}</div>
             <div className="flex-1">
                 <div className="flex justify-between items-start mb-1">
                     <h4 className="text-sm font-bold uppercase tracking-tight">{title}</h4>

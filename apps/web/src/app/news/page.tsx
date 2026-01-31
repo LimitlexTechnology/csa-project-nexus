@@ -1,17 +1,19 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { Logo } from '../../components/Logo';
+import { Search, Bell, Mail, ArrowRight, Clock, Tag } from 'lucide-react';
 
 const categories = ['All', 'Agriculture', 'Climate', 'Market', 'Technology', 'Community'];
 
 const newsItems = [
     {
         id: 1,
-        title: "CSA ONE Partners with Global Fund for Sustainable Farming",
+        title: "CSA Hub Partners with Global Fund for Sustainable Farming",
         summary: "A new initiative aims to provide financial support and technical expertise to smallholder farmers adopting climate-smart practices across West Africa.",
         date: "Oct 28, 2025",
         category: "Agriculture",
-        image: "/farm-bg.jpg"
+        image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800"
     },
     {
         id: 2,
@@ -19,7 +21,7 @@ const newsItems = [
         summary: "Scientists have developed a high-resolution soil moisture mapping tool that helps farmers optimize irrigation and fertilizer application with 95% precision.",
         date: "Oct 25, 2025",
         category: "Technology",
-        image: "/farm-bg.jpg"
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
     },
     {
         id: 3,
@@ -27,7 +29,7 @@ const newsItems = [
         summary: "Market analysis shows a significant increase in demand for sustainably grown maize, with prices reaching a 3-year high in regional trading hubs.",
         date: "Oct 22, 2025",
         category: "Market",
-        image: "/farm-bg.jpg"
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
     },
     {
         id: 4,
@@ -35,7 +37,7 @@ const newsItems = [
         summary: "Join experts for a 3-day virtual workshop on building climate-resilient farming systems using traditional knowledge and modern technology.",
         date: "Oct 20, 2025",
         category: "Community",
-        image: "/farm-bg.jpg"
+        image: "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=800"
     },
     {
         id: 5,
@@ -43,7 +45,7 @@ const newsItems = [
         summary: "Recent field trials of new drought-resistant legume varieties have shown a 20% increase in yield compared to traditional seeds in arid regions.",
         date: "Oct 18, 2025",
         category: "Climate",
-        image: "/farm-bg.jpg"
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800"
     }
 ];
 
@@ -64,20 +66,15 @@ export default function NewsPage() {
             <header className="bg-white border-b border-gray-100 sticky top-0 z-20">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-8">
-                        <Link href="/dashboard" className="flex items-center gap-2">
-                            <div className="w-10 h-10 bg-[#0F4C3A] rounded-xl flex items-center justify-center">
-                                <span className="text-xl">🌱</span>
-                            </div>
-                            <span className="hidden sm:block text-2xl font-black tracking-tighter text-[#0F4C3A]">CSA ONE</span>
+                        <Link href="/dashboard">
+                            <Logo />
                         </Link>
                         <h1 className="text-xl font-bold text-gray-900 border-l border-gray-100 pl-8">News & Announcements</h1>
                     </div>
                     
                     <div className="hidden md:flex items-center gap-4">
                         <button className="p-2 hover:bg-gray-50 rounded-lg text-gray-400">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                            </svg>
+                            <Bell size={24} />
                         </button>
                         <div className="w-10 h-10 bg-gray-200 rounded-full border-2 border-white shadow-sm overflow-hidden">
                             <img src="https://ui-avatars.com/api/?name=Farmer+John&background=2E7D32&color=fff" alt="User" />
@@ -92,9 +89,7 @@ export default function NewsPage() {
                     {/* Search Bar */}
                     <div className="relative max-w-2xl mx-auto">
                         <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                            <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                            <Search className="h-5 w-5 text-gray-400" />
                         </div>
                         <input
                             type="text"
@@ -142,6 +137,7 @@ export default function NewsPage() {
                                 </div>
                                 <div className="p-8">
                                     <div className="flex items-center gap-2 mb-4">
+                                        <Clock size={14} className="text-gray-400" />
                                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{item.date}</span>
                                         <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
                                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">5 min read</span>
@@ -157,9 +153,7 @@ export default function NewsPage() {
                                         className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all"
                                     >
                                         Read More
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
+                                        <ArrowRight size={16} />
                                     </Link>
                                 </div>
                             </article>
@@ -167,7 +161,9 @@ export default function NewsPage() {
                     </div>
                 ) : (
                     <div className="text-center py-20">
-                        <div className="text-6xl mb-6">🔍</div>
+                        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-300">
+                            <Search size={40} />
+                        </div>
                         <h3 className="text-xl font-bold text-gray-900 mb-2">No articles found</h3>
                         <p className="text-gray-500 font-medium">Try adjusting your search or category filters.</p>
                         <button 
@@ -182,7 +178,7 @@ export default function NewsPage() {
                 {/* Newsletter CTA */}
                 <div className="mt-20 bg-[#0F4C3A] rounded-[40px] p-12 text-center relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
-                        <span className="text-9xl">📬</span>
+                        <Mail size={160} className="text-white" />
                     </div>
                     <div className="relative z-10 max-w-2xl mx-auto">
                         <h2 className="text-3xl font-black text-white mb-4">Stay Informed</h2>
@@ -206,16 +202,16 @@ export default function NewsPage() {
             {/* Simple Footer */}
             <footer className="bg-white border-t border-gray-100 py-10 mt-10">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="flex items-center gap-2">
-                        <span className="text-xl">🌱</span>
-                        <span className="text-lg font-black tracking-tighter text-[#0F4C3A]">CSA ONE</span>
+                    <div className="flex items-center justify-center gap-2">
+                        <Logo iconOnly className="w-8 h-8" />
+                        <span className="text-lg font-black tracking-tighter text-[#0F4C3A]">CSA Hub</span>
                     </div>
                     <div className="flex gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
                         <Link href="#" className="hover:text-gray-600">Privacy</Link>
                         <Link href="#" className="hover:text-gray-600">Terms</Link>
                         <Link href="#" className="hover:text-gray-600">Support</Link>
                     </div>
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">© 2025 CSA ONE Nexus</p>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">© 2026 CSA Hub Nexus</p>
                 </div>
             </footer>
         </div>

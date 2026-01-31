@@ -1,6 +1,8 @@
 'use client';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { Logo } from './Logo';
+import { Globe, ShieldCheck } from 'lucide-react';
 
 const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -34,12 +36,9 @@ export default function Navigation() {
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-[#004D40] rounded-full flex items-center justify-center shadow-sm">
-                            <span className="text-white text-xl">🍃</span>
-                        </div>
-                        <span className="text-2xl font-bold text-gray-900 tracking-tight font-sans">CSA ONE</span>
-                    </div>
+                    <Link href="/">
+                        <Logo />
+                    </Link>
 
                     {/* Navigation Links */}
                     <div className="flex items-center gap-8">
@@ -64,7 +63,7 @@ export default function Navigation() {
 
                         <div className="flex items-center gap-3 text-gray-400 text-sm font-medium">
                             <div className="flex items-center gap-1.5">
-                                <span className="text-blue-400 text-lg">🌐</span>
+                                <Globe className="text-blue-400 w-5 h-5" />
                                 <div className="flex items-center gap-2">
                                     <span>System Status: <span className="text-blue-500 font-semibold">Online</span></span>
                                     <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>

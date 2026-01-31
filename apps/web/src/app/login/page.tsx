@@ -1,7 +1,9 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Logo } from '../../components/Logo';
+import { UserCheck, Zap, ArrowRight, Mail, Lock } from 'lucide-react';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -11,7 +13,6 @@ export default function LoginPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle auth logic here
         router.push('/dashboard');
     };
 
@@ -23,15 +24,15 @@ export default function LoginPage() {
         <div className="min-h-screen flex flex-col md:flex-row bg-white font-sans">
             {/* Left Side: Visual Content (Hidden on mobile) */}
             <div className="hidden md:flex md:w-1/2 bg-[#0F4C3A] relative overflow-hidden items-center justify-center p-12">
-                <div className="absolute inset-0 bg-[url('/farm-bg.jpg')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
+                <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
+                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1600')` }}
+                ></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0F4C3A]/80 to-transparent"></div>
                 
                 <div className="relative z-10 max-w-lg">
-                    <div className="flex items-center gap-3 mb-12">
-                        <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-                            <span className="text-3xl">🌱</span>
-                        </div>
-                        <span className="text-3xl font-black text-white tracking-tighter">CSA ONE</span>
+                    <div className="mb-12">
+                        <Logo className="scale-125 origin-left" />
                     </div>
                     
                     <h1 className="text-5xl font-black text-white leading-tight mb-6">
@@ -43,11 +44,17 @@ export default function LoginPage() {
                     
                     <div className="mt-16 flex gap-8">
                         <div className="flex flex-col">
-                            <span className="text-3xl font-bold text-white">50k+</span>
+                            <div className="flex items-center gap-2 mb-1">
+                                <UserCheck className="text-[#81C784] w-6 h-6" />
+                                <span className="text-3xl font-bold text-white">50k+</span>
+                            </div>
                             <span className="text-sm text-green-100/60 font-bold uppercase tracking-wider">Active Farmers</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-3xl font-bold text-white">98%</span>
+                            <div className="flex items-center gap-2 mb-1">
+                                <Zap className="text-[#81C784] w-6 h-6" />
+                                <span className="text-3xl font-bold text-white">98%</span>
+                            </div>
                             <span className="text-sm text-green-100/60 font-bold uppercase tracking-wider">Accuracy Rate</span>
                         </div>
                     </div>
@@ -58,15 +65,12 @@ export default function LoginPage() {
                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
             </div>
 
-            {/* Right Side: Auth Form */}
+            {/* Right Side: Form Content */}
             <div className="flex-1 flex flex-col justify-center p-8 md:p-16 lg:p-24 bg-gray-50/30">
                 <div className="max-w-md w-full mx-auto">
                     {/* Mobile Logo (Visible only on mobile) */}
-                    <div className="flex items-center gap-2 mb-12 md:hidden">
-                        <div className="w-10 h-10 bg-[#0F4C3A] rounded-xl flex items-center justify-center">
-                            <span className="text-xl">🌱</span>
-                        </div>
-                        <span className="text-2xl font-black text-gray-900 tracking-tighter">CSA ONE</span>
+                    <div className="mb-12 md:hidden">
+                        <Logo />
                     </div>
 
                     <div className="mb-10">
@@ -82,7 +86,8 @@ export default function LoginPage() {
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">
+                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1 flex items-center gap-2">
+                                <Mail size={14} className="text-[#2E7D32]" />
                                 Email Address
                             </label>
                             <input 
@@ -97,7 +102,8 @@ export default function LoginPage() {
 
                         <div>
                             <div className="flex justify-between mb-2 px-1">
-                                <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest">
+                                <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest flex items-center gap-2">
+                                    <Lock size={14} className="text-[#2E7D32]" />
                                     Password
                                 </label>
                                 {isLogin && (
@@ -118,9 +124,10 @@ export default function LoginPage() {
 
                         <button 
                             type="submit"
-                            className="w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98]"
+                            className="w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
                         >
                             {isLogin ? 'Login' : 'Create Account'}
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </form>
 
