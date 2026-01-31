@@ -52,12 +52,12 @@ const hubItems = [
     },
     {
         id: 5,
-        title: "Managing Pests with Natural Predators",
-        category: "tips",
-        type: "Quick Tip",
-        duration: "5 min read",
-        image: "https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&q=80&w=800",
-        description: "A guide to integrated pest management using nature's own solutions instead of harsh chemicals."
+        title: "Video: Climate-Smart Farming Basics",
+        category: "videos",
+        type: "Video Tutorial",
+        duration: "12 min video",
+        image: "https://images.unsplash.com/photo-1495641637046-e2d16bada1e2?auto=format&fit=crop&q=80&w=800",
+        description: "A comprehensive video introduction to climate-smart agriculture practices that any farmer can implement."
     },
     {
         id: 6,
@@ -66,7 +66,7 @@ const hubItems = [
         type: "Case Study",
         duration: "8 min read",
         image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=800",
-        description: "How a community in Northern Ghana transformed their lives using CSA ONE climate intelligence tools."
+        description: "How a community in Northern Ghana transformed their lives using CSA climate intelligence tools."
     }
 ];
 

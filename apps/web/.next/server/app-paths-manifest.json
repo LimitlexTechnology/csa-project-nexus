@@ -1,6 +1,8 @@
 {
-  "/landing/page": "app/landing/page.js",
-  "/knowledge-hub/[id]/page": "app/knowledge-hub/[id]/page.js",
+  "/weather/page": "app/weather/page.js",
+  "/knowledge-hub/page": "app/knowledge-hub/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/knowledge-hub/page": "app/knowledge-hub/page.js"
+  "/knowledge-hub/[id]/page": "app/knowledge-hub/[id]/page.js",
+  "/news/[id]/page": "app/news/[id]/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

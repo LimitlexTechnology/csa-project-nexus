@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Logo } from '../../../components/Logo';
-import { ArrowLeft, Share2, Heart, MessageCircle, Calendar, Tag, User, Clock } from 'lucide-react';
+import { ArrowLeft, Share2, Heart, MessageCircle, X, Mail, Copy, Facebook, Linkedin, Twitter, Calendar, Clock } from 'lucide-react';
 
 const newsArticles = {
     1: {
@@ -198,6 +198,15 @@ export default function NewsDetailPage() {
     const articleId = parseInt(params.id as string);
     const article = newsArticles[articleId as keyof typeof newsArticles];
 
+    const [likes, setLikes] = useState(2400);
+    const [isLiked, setIsLiked] = useState(false);
+    const [showCommentModal, setShowCommentModal] = useState(false);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const [comments, setComments] = useState(284);
+    const [commentText, setCommentText] = useState('');
+    const [commentName, setCommentName] = useState('');
+    const [commentEmail, setCommentEmail] = useState('');
+
     if (!article) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -307,15 +316,27 @@ export default function NewsDetailPage() {
 
                 {/* Share and Interaction */}
                 <div className="flex items-center gap-8 my-12 py-8 border-b border-gray-200">
-                    <button className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold">
-                        <Heart size={20} />
-                        <span>2.4K</span>
+                    <button 
+                        onClick={() => {
+                            setIsLiked(!isLiked);
+                            setLikes(isLiked ? likes - 1 : likes + 1);
+                        }}
+                        className={`flex items-center gap-2 font-bold transition-colors ${isLiked ? 'text-red-500' : 'text-gray-600 hover:text-red-500'}`}
+                    >
+                        <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
+                        <span>{likes}</span>
                     </button>
-                    <button className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold">
+                    <button 
+                        onClick={() => setShowCommentModal(true)}
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold"
+                    >
                         <MessageCircle size={20} />
-                        <span>284</span>
+                        <span>{comments}</span>
                     </button>
-                    <button className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold">
+                    <button 
+                        onClick={() => setShowShareModal(true)}
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold"
+                    >
                         <Share2 size={20} />
                         <span>Share</span>
                     </button>
@@ -327,10 +348,10 @@ export default function NewsDetailPage() {
                         <h3 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {relatedArticles.map((related) => (
-                                <Link
+                                <div
                                     key={related.id}
-                                    href={`/news/${related.id}`}
-                                    className="group bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
+                                    className="group bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 cursor-pointer"
+                                    onClick={() => window.location.href = `/news/${related.id}`}
                                 >
                                     <div className="aspect-[16/10] bg-gray-200 overflow-hidden">
                                         <img
@@ -348,12 +369,184 @@ export default function NewsDetailPage() {
                                         </h4>
                                         <p className="text-sm text-gray-500 font-medium">{related.readTime}</p>
                                     </div>
-                                </Link>
+                                </div>
                             ))}
                         </div>
                     </div>
                 )}
             </main>
+
+            {/* Comment Modal */}
+            {showCommentModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-[40px] max-w-2xl w-full max-h-96 overflow-y-auto shadow-2xl">
+                        <div className="sticky top-0 bg-white flex items-center justify-between p-8 border-b border-gray-100">
+                            <h3 className="text-2xl font-bold text-gray-900">Comments ({comments})</h3>
+                            <button 
+                                onClick={() => setShowCommentModal(false)}
+                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+                        
+                        <div className="p-8 space-y-8">
+                            {/* Comment Form */}
+                            <div className="bg-gray-50 rounded-[32px] p-8">
+                                <h4 className="text-lg font-bold text-gray-900 mb-6">Share Your Thoughts</h4>
+                                <div className="space-y-4">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Your name" 
+                                        value={commentName}
+                                        onChange={(e) => setCommentName(e.target.value)}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all"
+                                    />
+                                    <input 
+                                        type="email" 
+                                        placeholder="Your email" 
+                                        value={commentEmail}
+                                        onChange={(e) => setCommentEmail(e.target.value)}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all"
+                                    />
+                                    <textarea 
+                                        placeholder="Your comment..." 
+                                        value={commentText}
+                                        onChange={(e) => setCommentText(e.target.value)}
+                                        rows={4}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all resize-none"
+                                    />
+                                    <button 
+                                        onClick={() => {
+                                            if (commentText && commentName) {
+                                                setComments(comments + 1);
+                                                setCommentText('');
+                                                setCommentName('');
+                                                setCommentEmail('');
+                                                alert('Thank you! Your comment has been posted.');
+                                            }
+                                        }}
+                                        className="w-full py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-bold rounded-2xl transition-all"
+                                    >
+                                        Post Comment
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Sample Comments */}
+                            <div className="space-y-6">
+                                <div className="border-b border-gray-100 pb-6">
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">JK</div>
+                                        <div className="flex-1">
+                                            <p className="font-bold text-gray-900">James Kofi</p>
+                                            <p className="text-sm text-gray-500">2 hours ago</p>
+                                            <p className="mt-2 text-gray-700">This partnership is a game-changer for us. The support has been incredible so far!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="border-b border-gray-100 pb-6">
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold">AM</div>
+                                        <div className="flex-1">
+                                            <p className="font-bold text-gray-900">Ama Mensah</p>
+                                            <p className="text-sm text-gray-500">5 hours ago</p>
+                                            <p className="mt-2 text-gray-700">Excited to see CSA Hub making such a real impact on smallholder farms. Can't wait to join the program!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Share Modal */}
+            {showShareModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-[40px] max-w-md w-full shadow-2xl p-8">
+                        <div className="flex items-center justify-between mb-8">
+                            <h3 className="text-2xl font-bold text-gray-900">Share Article</h3>
+                            <button 
+                                onClick={() => setShowShareModal(false)}
+                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            {/* Share Links */}
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/news/${articleId}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-2xl transition-all"
+                            >
+                                <Facebook className="text-blue-600" size={24} />
+                                <span className="font-bold text-gray-900">Share on Facebook</span>
+                            </button>
+
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://twitter.com/intent/tweet?url=http://localhost:3000/news/${articleId}&text=${article.title}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-sky-50 hover:bg-sky-100 rounded-2xl transition-all"
+                            >
+                                <Twitter className="text-sky-500" size={24} />
+                                <span className="font-bold text-gray-900">Share on Twitter</span>
+                            </button>
+
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:3000/news/${articleId}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-2xl transition-all"
+                            >
+                                <Linkedin className="text-blue-700" size={24} />
+                                <span className="font-bold text-gray-900">Share on LinkedIn</span>
+                            </button>
+
+                            {/* Copy Link */}
+                            <div className="pt-4 border-t border-gray-100">
+                                <p className="text-sm font-bold text-gray-500 mb-3">Or copy the link:</p>
+                                <div className="flex gap-2">
+                                    <input 
+                                        type="text" 
+                                        value={`http://localhost:3000/news/${articleId}`}
+                                        readOnly
+                                        className="flex-1 px-4 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm text-gray-600 font-mono"
+                                    />
+                                    <button 
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(`http://localhost:3000/news/${articleId}`);
+                                            alert('Link copied to clipboard!');
+                                        }}
+                                        className="px-4 py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white rounded-2xl transition-all"
+                                    >
+                                        <Copy size={20} />
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Email Share */}
+                            <div className="pt-4">
+                                <button 
+                                    onClick={() => {
+                                        const subject = encodeURIComponent(`Check this out: ${article.title}`);
+                                        const body = encodeURIComponent(`I found this interesting article:\n\n${article.title}\n\nhttp://localhost:3000/news/${articleId}`);
+                                        window.open(`mailto:?subject=${subject}&body=${body}`);
+                                    }}
+                                    className="w-full flex items-center gap-4 p-4 bg-orange-50 hover:bg-orange-100 rounded-2xl transition-all"
+                                >
+                                    <Mail className="text-orange-600" size={24} />
+                                    <span className="font-bold text-gray-900">Share via Email</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

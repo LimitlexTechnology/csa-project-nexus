@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Logo } from '../../../components/Logo';
-import { ArrowLeft, Download, Share2, BookOpen, Clock, Zap, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Download, Share2, BookOpen, Clock, Zap, CheckCircle, Heart, MessageCircle, X, Mail, Copy, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 const hubDetails = {
     1: {
@@ -318,6 +318,15 @@ export default function KnowledgeHubDetailPage() {
     const resourceId = parseInt(params.id as string);
     const resource = hubDetails[resourceId as keyof typeof hubDetails];
 
+    const [likes, setLikes] = useState(1200);
+    const [isLiked, setIsLiked] = useState(false);
+    const [showCommentModal, setShowCommentModal] = useState(false);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const [comments, setComments] = useState(156);
+    const [commentText, setCommentText] = useState('');
+    const [commentName, setCommentName] = useState('');
+    const [commentEmail, setCommentEmail] = useState('');
+
     if (!resource) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -382,11 +391,35 @@ export default function KnowledgeHubDetailPage() {
                                 Download Guide
                             </a>
                         )}
-                        <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-2xl transition-all">
+                        <button 
+                            onClick={() => setShowShareModal(true)}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-2xl transition-all"
+                        >
                             <Share2 size={20} />
                             Share
                         </button>
                     </div>
+                </div>
+
+                {/* Engagement Stats */}
+                <div className="flex items-center gap-8 my-12 py-8 border-b border-gray-100">
+                    <button 
+                        onClick={() => {
+                            setIsLiked(!isLiked);
+                            setLikes(isLiked ? likes - 1 : likes + 1);
+                        }}
+                        className={`flex items-center gap-2 font-bold transition-colors ${isLiked ? 'text-red-500' : 'text-gray-600 hover:text-red-500'}`}
+                    >
+                        <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
+                        <span>{likes}</span>
+                    </button>
+                    <button 
+                        onClick={() => setShowCommentModal(true)}
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#2E7D32] transition-colors font-bold"
+                    >
+                        <MessageCircle size={20} />
+                        <span>{comments}</span>
+                    </button>
                 </div>
 
                 {/* Learning Points */}
@@ -436,10 +469,8 @@ export default function KnowledgeHubDetailPage() {
                         <h3 className="text-2xl font-bold text-gray-900 mb-8">Related Resources</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {relatedResources.map((related) => (
-                                <Link
-                                    key={related.id}
-                                    href={`/knowledge-hub/${related.id}`}
-                                    className="group bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
+                                <div key={related.id} className="group bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 cursor-pointer"
+                                    onClick={() => window.location.href = `/knowledge-hub/${related.id}`}
                                 >
                                     <div className="aspect-[16/10] bg-gray-200 overflow-hidden">
                                         <img
@@ -460,7 +491,7 @@ export default function KnowledgeHubDetailPage() {
                                             {related.duration}
                                         </p>
                                     </div>
-                                </Link>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -480,6 +511,178 @@ export default function KnowledgeHubDetailPage() {
                     </Link>
                 </div>
             </main>
+
+            {/* Comment Modal */}
+            {showCommentModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-[40px] max-w-2xl w-full max-h-96 overflow-y-auto shadow-2xl">
+                        <div className="sticky top-0 bg-white flex items-center justify-between p-8 border-b border-gray-100">
+                            <h3 className="text-2xl font-bold text-gray-900">Comments ({comments})</h3>
+                            <button 
+                                onClick={() => setShowCommentModal(false)}
+                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+                        
+                        <div className="p-8 space-y-8">
+                            {/* Comment Form */}
+                            <div className="bg-gray-50 rounded-[32px] p-8">
+                                <h4 className="text-lg font-bold text-gray-900 mb-6">Share Your Feedback</h4>
+                                <div className="space-y-4">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Your name" 
+                                        value={commentName}
+                                        onChange={(e) => setCommentName(e.target.value)}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all"
+                                    />
+                                    <input 
+                                        type="email" 
+                                        placeholder="Your email" 
+                                        value={commentEmail}
+                                        onChange={(e) => setCommentEmail(e.target.value)}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all"
+                                    />
+                                    <textarea 
+                                        placeholder="Your comment..." 
+                                        value={commentText}
+                                        onChange={(e) => setCommentText(e.target.value)}
+                                        rows={4}
+                                        className="w-full px-6 py-4 bg-white border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all resize-none"
+                                    />
+                                    <button 
+                                        onClick={() => {
+                                            if (commentText && commentName) {
+                                                setComments(comments + 1);
+                                                setCommentText('');
+                                                setCommentName('');
+                                                setCommentEmail('');
+                                                alert('Thank you! Your comment has been posted.');
+                                            }
+                                        }}
+                                        className="w-full py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-bold rounded-2xl transition-all"
+                                    >
+                                        Post Comment
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Sample Comments */}
+                            <div className="space-y-6">
+                                <div className="border-b border-gray-100 pb-6">
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold">FM</div>
+                                        <div className="flex-1">
+                                            <p className="font-bold text-gray-900">Farmer Mary</p>
+                                            <p className="text-sm text-gray-500">1 day ago</p>
+                                            <p className="mt-2 text-gray-700">This guide completely changed how I manage my farm. My yields are already 25% better!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="border-b border-gray-100 pb-6">
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">PJ</div>
+                                        <div className="flex-1">
+                                            <p className="font-bold text-gray-900">Peter Johnson</p>
+                                            <p className="text-sm text-gray-500">2 days ago</p>
+                                            <p className="mt-2 text-gray-700">Excellent practical advice. Can't wait to apply these techniques to my farm this season!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Share Modal */}
+            {showShareModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-[40px] max-w-md w-full shadow-2xl p-8">
+                        <div className="flex items-center justify-between mb-8">
+                            <h3 className="text-2xl font-bold text-gray-900">Share Resource</h3>
+                            <button 
+                                onClick={() => setShowShareModal(false)}
+                                className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            {/* Share Links */}
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/knowledge-hub/${resourceId}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-2xl transition-all"
+                            >
+                                <Facebook className="text-blue-600" size={24} />
+                                <span className="font-bold text-gray-900">Share on Facebook</span>
+                            </button>
+
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://twitter.com/intent/tweet?url=http://localhost:3000/knowledge-hub/${resourceId}&text=${resource.title}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-sky-50 hover:bg-sky-100 rounded-2xl transition-all"
+                            >
+                                <Twitter className="text-sky-500" size={24} />
+                                <span className="font-bold text-gray-900">Share on Twitter</span>
+                            </button>
+
+                            <button 
+                                onClick={() => {
+                                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:3000/knowledge-hub/${resourceId}`, '_blank');
+                                }}
+                                className="w-full flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-2xl transition-all"
+                            >
+                                <Linkedin className="text-blue-700" size={24} />
+                                <span className="font-bold text-gray-900">Share on LinkedIn</span>
+                            </button>
+
+                            {/* Copy Link */}
+                            <div className="pt-4 border-t border-gray-100">
+                                <p className="text-sm font-bold text-gray-500 mb-3">Or copy the link:</p>
+                                <div className="flex gap-2">
+                                    <input 
+                                        type="text" 
+                                        value={`http://localhost:3000/knowledge-hub/${resourceId}`}
+                                        readOnly
+                                        className="flex-1 px-4 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm text-gray-600 font-mono"
+                                    />
+                                    <button 
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(`http://localhost:3000/knowledge-hub/${resourceId}`);
+                                            alert('Link copied to clipboard!');
+                                        }}
+                                        className="px-4 py-3 bg-[#2E7D32] hover:bg-[#1B5E20] text-white rounded-2xl transition-all"
+                                    >
+                                        <Copy size={20} />
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Email Share */}
+                            <div className="pt-4">
+                                <button 
+                                    onClick={() => {
+                                        const subject = encodeURIComponent(`Check this resource: ${resource.title}`);
+                                        const body = encodeURIComponent(`I found this helpful resource:\n\n${resource.title}\n\nhttp://localhost:3000/knowledge-hub/${resourceId}`);
+                                        window.open(`mailto:?subject=${subject}&body=${body}`);
+                                    }}
+                                    className="w-full flex items-center gap-4 p-4 bg-orange-50 hover:bg-orange-100 rounded-2xl transition-all"
+                                >
+                                    <Mail className="text-orange-600" size={24} />
+                                    <span className="font-bold text-gray-900">Share via Email</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
