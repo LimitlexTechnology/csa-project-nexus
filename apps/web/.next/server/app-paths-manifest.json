@@ -1,9 +1,0 @@
-{
-  "/landing/page": "app/landing/page.js",
-  "/knowledge-hub/page": "app/knowledge-hub/page.js",
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/ask-expert/page": "app/ask-expert/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js"
-}
