@@ -9,10 +9,11 @@ const slides = [
     {
         title: "CLIMATE & FARMING CHALLENGES",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1561470508-fd4df1ed90b2?auto=format&fit=crop&q=80&w=1200",
         mainText: "Unpredictable weather patterns, soil degradation, and resource scarcity threaten global food security.",
+        overlay: 'warning',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1524491989242-af57bbfe42c4?auto=format&fit=crop&q=80&w=600', overlay: 'alert' },
             { 
                 type: 'stats', 
                 uvIndex: 7, 
@@ -44,10 +45,11 @@ const slides = [
     {
         title: "SMART RESOURCE MANAGEMENT",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=1200",
         mainText: "Optimize water usage and soil health through intelligent monitoring and automated irrigation systems.",
+        overlay: 'success',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600', overlay: 'sensor' },
             { 
                 type: 'stats', 
                 uvIndex: 4, 
@@ -79,10 +81,11 @@ const slides = [
     {
         title: "MARKET INTELLIGENCE",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=1200",
         mainText: "Access real-time market prices and demand forecasts to maximize your farm's profitability.",
+        overlay: 'market',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1506484334402-40ff22e05a63?auto=format&fit=crop&q=80&w=600', overlay: 'growth' },
             { 
                 type: 'stats', 
                 uvIndex: 2, 
@@ -116,8 +119,9 @@ const slides = [
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
         mainImage: "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&q=80&w=1200",
         mainText: "Connect with expert agronomists and fellow farmers to share knowledge and best practices.",
+        overlay: 'community',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600', overlay: 'users' },
             { 
                 type: 'stats', 
                 uvIndex: 5, 
@@ -151,8 +155,9 @@ const slides = [
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
         mainImage: "https://images.unsplash.com/photo-1551288049-bbbda5366991?auto=format&fit=crop&q=80&w=1200",
         mainText: "Leverage advanced analytics and historical data to plan your seasons with precision.",
+        overlay: 'data',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600', overlay: 'analytics' },
             { 
                 type: 'stats', 
                 uvIndex: 8, 
@@ -184,10 +189,11 @@ const slides = [
     {
         title: "READY TO START?",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
+        mainImage: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1200",
         mainText: "Join thousands of farmers already using CSA Hub to build a more resilient future.",
+        overlay: 'ready',
         cards: [
-            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600' },
+            { type: 'image', content: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=600', overlay: 'sprouts' },
             { 
                 type: 'stats', 
                 uvIndex: 3, 
@@ -276,24 +282,67 @@ export default function WelcomeCarousel() {
                         <h2 className="text-2xl font-extrabold text-[#1A1A1A] mb-10 tracking-tight uppercase">{slide.title}</h2>
                         
                         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-                            <div className="w-full lg:w-[320px] aspect-[1.6/1] bg-[#E0D5C1] rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
-                                <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-80" style={{ backgroundImage: `url(${slide.mainImage})` }}></div>
-                                <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                                    <div className="flex justify-between">
-                                        <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
-                                        <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
+                            <div className="w-full lg:w-[320px] aspect-[1.6/1] bg-gray-100 rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
+                                <div className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${slide.overlay === 'warning' ? 'mix-blend-multiply opacity-70' : 'mix-blend-normal opacity-100'}`} style={{ backgroundImage: `url(${slide.mainImage})` }}></div>
+                                
+                                {slide.overlay === 'warning' && (
+                                    <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                                        <div className="flex justify-between">
+                                            <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">!</div>
+                                            <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">!</div>
+                                        </div>
+                                        <div className="flex justify-center gap-8 translate-y-2">
+                                            <span className="text-3xl drop-shadow-md">⚠️</span>
+                                            <span className="text-3xl drop-shadow-md">🔥</span>
+                                            <span className="text-3xl drop-shadow-md">⚠️</span>
+                                        </div>
+                                        <div className="flex justify-between items-end">
+                                            <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">!</div>
+                                            <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">!</div>
+                                        </div>
                                     </div>
-                                    <div className="flex justify-center gap-8 translate-y-2">
-                                        <span className="text-3xl drop-shadow-md">🌱</span>
-                                        <span className="text-3xl drop-shadow-md">🌱</span>
-                                        <span className="text-3xl drop-shadow-md">🌱</span>
+                                )}
+
+                                {slide.overlay === 'success' && (
+                                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                                        <div className="bg-white/20 backdrop-blur-md rounded-2xl p-3 border border-white/30">
+                                            <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest">
+                                                <Shield className="w-3 h-3 text-green-400" />
+                                                Resource Optimization Active
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="flex justify-between items-end">
-                                        <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
-                                        <div className="w-8 h-8 bg-[#FF5252]/90 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
-                                    </div>
-                                </div>
-                            </div>
+                                )}
+
+                                {slide.overlay === 'data' && (
+                                     <div className="absolute inset-0 p-6 flex items-center justify-center">
+                                         <div className="w-16 h-16 bg-[#2E7D32]/80 backdrop-blur-xl rounded-full flex items-center justify-center text-white shadow-2xl border border-white/20 animate-bounce">
+                                             <Database className="w-8 h-8" />
+                                         </div>
+                                     </div>
+                                 )}
+
+                                 {slide.overlay === 'market' && (
+                                     <div className="absolute top-4 left-4">
+                                         <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm border border-gray-100">
+                                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></div>
+                                             <span className="text-[8px] font-black text-gray-900 tracking-tighter uppercase">Live Market Data</span>
+                                         </div>
+                                     </div>
+                                 )}
+
+                                 {slide.overlay === 'community' && (
+                                     <div className="absolute inset-0 flex items-center justify-center p-8">
+                                         <div className="w-full h-full border-2 border-dashed border-white/40 rounded-2xl flex items-center justify-center">
+                                             <Users className="w-12 h-12 text-white/50" />
+                                         </div>
+                                     </div>
+                                 )}
+
+                                 {slide.overlay === 'ready' && (
+                                     <div className="absolute inset-0 bg-gradient-to-t from-[#2E7D32]/40 to-transparent"></div>
+                                 )}
+                             </div>
                             
                             <div className="flex-1 pt-0 lg:pt-4">
                                 <p className="text-xl text-[#37474F] font-medium leading-[1.6] max-w-md">
@@ -316,16 +365,29 @@ export default function WelcomeCarousel() {
                         {slide.cards.map((card, idx) => (
                             <div key={idx} className="bg-white p-4 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col min-h-[180px]">
                                 {card.type === 'image' && (
-                                    <div className="flex-1 bg-gradient-to-b from-[#90CAF9] to-[#81C784] rounded-2xl overflow-hidden relative border-4 border-white shadow-sm">
-                                        <div className="absolute inset-0 bg-cover bg-center mix-blend-soft-light opacity-60" style={{ backgroundImage: `url(${card.content})` }}></div>
-                                        <div className="absolute top-2 left-4 text-3xl">☁️</div>
-                                        <div className="absolute bottom-2 w-full flex items-end justify-center gap-2">
-                                            <span className="text-lg">🌱</span>
-                                            <span className="text-lg">🌱</span>
-                                            <span className="text-lg">🌱</span>
-                                        </div>
-                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl opacity-80">📡</div>
-                                        <div className="absolute right-3 top-3 text-2xl">☀️</div>
+                                    <div className="w-full aspect-square bg-gray-100 rounded-3xl overflow-hidden relative shadow-md group">
+                                        <div className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700" style={{ backgroundImage: `url(${card.content})` }}></div>
+                                        
+                                        {card.overlay === 'alert' && (
+                                            <div className="absolute inset-0 bg-red-500/10 backdrop-none flex items-center justify-center">
+                                                <div className="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 animate-ping">
+                                                    <Shield className="w-6 h-6 text-red-500" />
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {card.overlay === 'sensor' && (
+                                            <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
+                                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.8)]"></div>
+                                            </div>
+                                        )}
+
+                                        {card.overlay === 'growth' && (
+                                            <div className="absolute bottom-4 left-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-xl border border-white/50 flex items-center gap-2">
+                                                <TrendingUp className="w-3 h-3 text-green-600" />
+                                                <span className="text-[8px] font-bold text-gray-800 uppercase tracking-tighter">Market Demand Rising</span>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                                 {card.type === 'stats' && (
