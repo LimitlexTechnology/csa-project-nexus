@@ -1,6 +1,8 @@
 {
-  "/welcome/page": "app/welcome/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
   "/landing/page": "app/landing/page.js",
-  "/role-selection/page": "app/role-selection/page.js"
+  "/role-selection/page": "app/role-selection/page.js",
+  "/welcome/page": "app/welcome/page.js",
+  "/not-found": "app/not-found.js",
+  "/onboarding/page": "app/onboarding/page.js",
+  "/login/page": "app/login/page.js"
 }
