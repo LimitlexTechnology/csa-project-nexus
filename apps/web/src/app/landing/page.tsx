@@ -99,10 +99,10 @@ export default function LandingPage() {
                             Empowering the next generation of farmers with real-time climate intelligence and sustainable practices.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6">
-                            <Link href="/welcome" className="relative z-40 px-12 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
+                            <Link href="/role-selection" className="relative z-40 px-12 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
                                 Get Started <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <Link href="/dashboard" className="relative z-40 px-12 py-5 bg-white/10 hover:bg-white/20 text-white font-black uppercase tracking-widest rounded-2xl border border-white/20 backdrop-blur-md transition-all text-center">
+                            <Link href="/explorer-dashboard" className="relative z-40 px-12 py-5 bg-white/10 hover:bg-white/20 text-white font-black uppercase tracking-widest rounded-2xl border border-white/20 backdrop-blur-md transition-all text-center">
                                 Explore As Guest
                             </Link>
                         </div>
@@ -232,29 +232,86 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
                         <h2 className="text-sm font-black text-[#2E7D32] uppercase tracking-[0.2em] mb-4">Pricing Plans</h2>
-                        <h3 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">Investment in Your Future.</h3>
+                        <h3 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">Plans for Every Role.</h3>
+                        <p className="text-gray-600 font-medium mt-6 text-lg">Whether you're a farmer, expert, buyer, or organization—find the right plan for your needs.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <PricingCard 
                             title="Seedling"
                             price="Free"
-                            desc="Perfect for smallholder farmers getting started with climate data."
-                            features={["Local Weather Forecasts", "Basic Knowledge Hub", "Community Access"]}
+                            desc="Perfect for explorers and individuals getting started with the platform."
+                            features={["Access to Knowledge Hub", "Real-time Weather Data", "Community Forums", "Basic Search & Discovery", "Role Selection & Profile"]}
                         />
                         <PricingCard 
                             title="Harvester"
                             price="$12"
-                            desc="Advanced tools for growing farms looking to optimize yield."
-                            features={["Everything in Seedling", "AI Disease Detection (50/mo)", "Market Price Alerts", "Soil Health Monitoring"]}
+                            desc="For active farmers, experts, and small-scale buyers looking to optimize."
+                            features={["Everything in Seedling", "AI Disease Detection", "Market Price Analytics", "Expert Q&A Access", "Personalized Recommendations", "Monthly Reports"]}
                             highlighted
                         />
                         <PricingCard 
                             title="Nexus Pro"
                             price="$45"
-                            desc="Full-scale solution for commercial operations and cooperatives."
-                            features={["Unlimited AI Diagnostics", "Direct Expert Support", "Satellite Yield Prediction", "Bulk Buyer Marketplace"]}
+                            desc="Enterprise solution for agribusinesses, NGOs, and large operations."
+                            features={["Unlimited AI Diagnostics", "Priority Expert Support", "Advanced Analytics & Reporting", "Bulk User Management", "API Access", "Custom Integrations"]}
                         />
+                    </div>
+
+                    {/* Role Benefits Matrix */}
+                    <div className="mt-24 pt-24 border-t border-gray-100">
+                        <h3 className="text-3xl font-black text-gray-900 mb-12 text-center">What's Included by Role</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                            <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-[24px] border border-green-200">
+                                <p className="text-sm font-black text-[#2E7D32] uppercase mb-4 tracking-widest">Farmers</p>
+                                <ul className="space-y-2 text-sm font-medium text-gray-700">
+                                    <li>✓ Weather Alerts</li>
+                                    <li>✓ Crop Health Tools</li>
+                                    <li>✓ Yield Tracking</li>
+                                    <li>✓ Expert Advice</li>
+                                </ul>
+                            </div>
+
+                            <div className="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-[24px] border border-blue-200">
+                                <p className="text-sm font-black text-blue-700 uppercase mb-4 tracking-widest">Experts</p>
+                                <ul className="space-y-2 text-sm font-medium text-gray-700">
+                                    <li>✓ Publish Articles</li>
+                                    <li>✓ Farmer Network</li>
+                                    <li>✓ Q&A Dashboard</li>
+                                    <li>✓ Impact Tracking</li>
+                                </ul>
+                            </div>
+
+                            <div className="p-6 bg-gradient-to-br from-orange-50 to-amber-50 rounded-[24px] border border-orange-200">
+                                <p className="text-sm font-black text-orange-700 uppercase mb-4 tracking-widest">Buyers</p>
+                                <ul className="space-y-2 text-sm font-medium text-gray-700">
+                                    <li>✓ Supplier Directory</li>
+                                    <li>✓ Price Analytics</li>
+                                    <li>✓ Verification Tools</li>
+                                    <li>✓ Marketplace</li>
+                                </ul>
+                            </div>
+
+                            <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-[24px] border border-indigo-200">
+                                <p className="text-sm font-black text-indigo-700 uppercase mb-4 tracking-widest">NGOs</p>
+                                <ul className="space-y-2 text-sm font-medium text-gray-700">
+                                    <li>✓ Program Management</li>
+                                    <li>✓ Beneficiary Tracking</li>
+                                    <li>✓ Impact Reports</li>
+                                    <li>✓ Bulk Operations</li>
+                                </ul>
+                            </div>
+
+                            <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-[24px] border border-purple-200">
+                                <p className="text-sm font-black text-purple-700 uppercase mb-4 tracking-widest">Explorers</p>
+                                <ul className="space-y-2 text-sm font-medium text-gray-700">
+                                    <li>✓ Full Platform Tour</li>
+                                    <li>✓ Sample Data</li>
+                                    <li>✓ Role Discovery</li>
+                                    <li>✓ No Commitment</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -268,7 +325,7 @@ export default function LandingPage() {
                         <p className="text-lg text-green-50/70 font-medium mb-10 leading-relaxed">
                             Create your account today and start your journey towards a more resilient and profitable farm.
                         </p>
-                        <Link href="/login" className="px-16 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl transition-all shadow-2xl inline-block hover:scale-105">
+                        <Link href="/role-selection" className="px-16 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl transition-all shadow-2xl inline-block hover:scale-105">
                             Sign Up Now
                         </Link>
                     </div>

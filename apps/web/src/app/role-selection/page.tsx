@@ -45,7 +45,17 @@ export default function RoleSelection() {
         if (selectedRole) {
             localStorage.setItem('userRole', selectedRole);
             localStorage.setItem('onboardingDone', 'true');
-            router.push('/login');
+            
+            // Route to role-specific dashboard
+            const dashboardMap: { [key: string]: string } = {
+                'farmer': '/farmer-dashboard',
+                'expert': '/expert-dashboard',
+                'buyer': '/buyer-dashboard',
+                'ngo': '/ngo-dashboard',
+                'explorer': '/explorer-dashboard'
+            };
+            
+            router.push(dashboardMap[selectedRole] || '/dashboard');
         }
     };
 
