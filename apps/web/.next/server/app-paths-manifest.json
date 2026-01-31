@@ -1,11 +1,9 @@
 {
-  "/login/page": "app/login/page.js",
-  "/welcome/page": "app/welcome/page.js",
-  "/news/page": "app/news/page.js",
   "/weather/page": "app/weather/page.js",
+  "/knowledge-hub/page": "app/knowledge-hub/page.js",
+  "/ask-expert/page": "app/ask-expert/page.js",
   "/landing/page": "app/landing/page.js",
   "/page": "app/page.js",
-  "/ask-expert/page": "app/ask-expert/page.js",
-  "/not-found": "app/not-found.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/dashboard/page": "app/dashboard/page.js",
+  "/not-found": "app/not-found.js"
 }

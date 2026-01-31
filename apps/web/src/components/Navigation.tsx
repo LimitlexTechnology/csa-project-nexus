@@ -41,32 +41,32 @@ export default function Navigation() {
                     </Link>
 
                     {/* Navigation Links */}
-                    <div className="flex items-center gap-8">
+                    <div className="flex items-center gap-10">
                         <Link
                             href="/about"
-                            className="text-gray-900 font-bold pb-1 border-b-2 border-[#004D40] transition-all"
+                            className="text-gray-900 font-bold hover:text-[#2E7D32] transition-all"
                         >
                             About
                         </Link>
                         <Link
                             href="#features"
-                            className="text-gray-500 font-medium hover:text-gray-900 transition-colors"
+                            className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
                         >
                             Features
                         </Link>
                         <Link
                             href="#pricing"
-                            className="text-gray-500 font-medium hover:text-gray-900 transition-colors"
+                            className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
                         >
                             Pricing
                         </Link>
 
-                        <div className="flex items-center gap-3 text-gray-400 text-sm font-medium">
+                        <div className="hidden lg:flex items-center gap-3 text-gray-400 text-[10px] font-black uppercase tracking-widest">
                             <div className="flex items-center gap-1.5">
-                                <Globe className="text-blue-400 w-5 h-5" />
+                                <Globe className="text-[#81C784] w-4 h-4" />
                                 <div className="flex items-center gap-2">
-                                    <span>System Status: <span className="text-blue-500 font-semibold">Online</span></span>
-                                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                                    <span>System Status: <span className="text-[#81C784]">Online</span></span>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#81C784] animate-pulse"></div>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +75,12 @@ export default function Navigation() {
                         <div className="relative">
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200"
+                                className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-50 transition-all border border-gray-100 shadow-sm"
                             >
-                                <span className="text-xl">{currentLang.flag}</span>
-                                <svg className={`w-4 h-4 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                <span className="text-lg">{currentLang.flag}</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{currentLang.code}</span>
+                                <svg className={`w-3 h-3 text-gray-400 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
 
@@ -99,7 +100,7 @@ export default function Navigation() {
                             )}
                         </div>
 
-                        <Link href="/login" className="px-6 py-2 border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 font-semibold transition-all shadow-sm">
+                        <Link href="/login" className="px-8 py-2.5 bg-[#0F4C3A] text-white rounded-full hover:bg-[#1B5E20] font-bold transition-all shadow-lg shadow-green-900/10">
                             Login
                         </Link>
                     </div>
