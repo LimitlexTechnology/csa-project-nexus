@@ -1,4 +1,5 @@
 'use client';
+// Refreshing PR state
 import React from 'react';
 import Link from 'next/link';
 import Navigation from '../../components/Navigation';
