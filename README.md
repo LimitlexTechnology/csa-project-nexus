@@ -1,6 +1,6 @@
-# CSA ONE — Climate-Smart Agriculture Unified Platform
+# CSA Hub - Climate Smart Agriculture Nexus
 
-CSA ONE is a single codebase digital platform (Web & Mobile) designed to empower farmers in Ghana through Climate-Smart Agriculture solutions.
+CSA Hub is a modern, data-driven platform designed to empower farmers with climate intelligence.
 
 ## Architecture
 

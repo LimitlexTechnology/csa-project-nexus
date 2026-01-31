@@ -1,6 +1,8 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Logo } from '../../components/Logo';
+import { Languages, CheckCircle2 } from 'lucide-react';
 
 interface Language {
     code: string;
@@ -23,76 +25,44 @@ export default function LanguageSelection() {
 
     const handleLanguageSelect = (code: string) => {
         setSelectedLanguage(code);
-        // Store language preference
         localStorage.setItem('preferredLanguage', code);
-        // Navigate to landing page after short delay
         setTimeout(() => {
-            router.push('/landing');
+            router.push('/welcome');
         }, 300);
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-cyan-50 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-cyan-50 flex items-center justify-center p-6 font-sans">
             <div className="max-w-2xl w-full">
-                {/* Header */}
                 <div className="text-center mb-12">
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                        <div className="flex items-center gap-1">
-                            <span className="text-4xl">☁️</span>
-                            <span className="text-5xl">🌱</span>
-                        </div>
+                    <div className="flex items-center justify-center mb-8">
+                        <Logo />
                     </div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-3">CSA ONE</h1>
-                    <p className="text-lg text-gray-600">Choose Your Language</p>
-                    <p className="text-sm text-gray-500 mt-2">Choisissez votre langue • Paw wo kasa</p>
+                    <h1 className="text-xl font-black text-gray-900 uppercase tracking-[0.2em] mb-4">Choose Your Language</h1>
+                    <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Choisissez votre langue • Paw wo kasa</p>
                 </div>
 
-                {/* Language Options */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {languages.map((lang) => (
                         <button
                             key={lang.code}
                             onClick={() => handleLanguageSelect(lang.code)}
-                            className={`
-                group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl 
-                transition-all duration-300 border-2 
-                ${selectedLanguage === lang.code
-                                    ? 'border-green-500 bg-green-50'
-                                    : 'border-transparent hover:border-green-300'
-                                }
-              `}
+                            className={`group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border-2 ${selectedLanguage === lang.code ? 'border-[#2E7D32] bg-green-50/30' : 'border-transparent hover:border-green-200'}`}
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="text-5xl">{lang.flag}</div>
+                            <div className="flex items-center gap-6">
+                                <div className="text-5xl group-hover:scale-110 transition-transform duration-500">{lang.flag}</div>
                                 <div className="flex-1 text-left">
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors">
-                                        {lang.name}
-                                    </h3>
-                                    <p className="text-sm text-gray-600">{lang.nativeName}</p>
+                                    <h3 className="text-xl font-black text-gray-900 group-hover:text-[#2E7D32] transition-colors">{lang.name}</h3>
+                                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-1">{lang.nativeName}</p>
                                 </div>
-                                <div className={`
-                  w-6 h-6 rounded-full border-2 flex items-center justify-center
-                  ${selectedLanguage === lang.code
-                                        ? 'border-green-500 bg-green-500'
-                                        : 'border-gray-300'
-                                    }
-                `}>
+                                <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${selectedLanguage === lang.code ? 'border-[#2E7D32] bg-[#2E7D32] scale-110' : 'border-gray-200 group-hover:border-green-300'}`}>
                                     {selectedLanguage === lang.code && (
-                                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                        </svg>
+                                        <CheckCircle2 className="w-5 h-5 text-white" strokeWidth={3} />
                                     )}
                                 </div>
                             </div>
                         </button>
                     ))}
-                </div>
-
-                {/* Footer */}
-                <div className="mt-12 text-center">
-                    <p className="text-sm text-gray-500">
-                        Climate-Smart Agriculture • Agriculture Intelligente Climatique
-                    </p>
                 </div>
             </div>
         </div>

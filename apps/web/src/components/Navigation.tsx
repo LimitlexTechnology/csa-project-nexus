@@ -1,6 +1,8 @@
 'use client';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { Logo } from './Logo';
+import { Globe, ShieldCheck } from 'lucide-react';
 
 const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -15,7 +17,6 @@ export default function Navigation() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
-        // Get saved language preference
         const saved = localStorage.getItem('preferredLanguage');
         if (saved) {
             setCurrentLanguage(saved);
@@ -26,89 +27,82 @@ export default function Navigation() {
         setCurrentLanguage(code);
         localStorage.setItem('preferredLanguage', code);
         setIsDropdownOpen(false);
-        // Optionally reload the page to apply translations
-        // window.location.reload();
     };
 
-    const currentLang = languages.find(l => l.code === currentLanguage) ?? languages[0];
+    const currentLang = languages.find(l => l.code === currentLanguage)!;
 
     return (
-        <nav className="bg-white shadow-sm border-b border-gray-100">
-            <div className="max-w-7xl mx-auto px-6 py-3">
+        <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <div className="flex items-center gap-3">
-                        {/* Logo Icon - Cloud, Leaf, Water */}
-                        <div className="relative w-12 h-12">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="flex items-center gap-0.5">
-                                    <span className="text-blue-400 text-lg" style={{ marginTop: '-4px' }}>☁️</span>
-                                    <span className="text-green-500 text-xl">🌱</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span className="text-2xl font-bold text-gray-900 tracking-tight">CSA ONE</span>
-                    </div>
+                    <Link href="/">
+                        <Logo />
+                    </Link>
 
                     {/* Navigation Links */}
-                    <div className="flex items-center gap-8">
+                    <div className="flex items-center gap-10">
                         <Link
-                            href="#about"
-                            className="text-gray-900 font-medium pb-0.5 border-b-2 border-gray-900 hover:text-gray-700 transition-colors"
+                            href="/about"
+                            className="text-gray-900 font-bold hover:text-[#2E7D32] transition-all"
                         >
                             About
                         </Link>
                         <Link
                             href="#features"
-                            className="text-gray-700 font-medium hover:text-gray-900 transition-colors"
+                            className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
                         >
                             Features
                         </Link>
+                        <Link
+                            href="#pricing"
+                            className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
+                        >
+                            Pricing
+                        </Link>
 
-                        {/* Language Switcher Dropdown */}
+                        <div className="hidden lg:flex items-center gap-3 text-gray-400 text-[10px] font-black uppercase tracking-widest">
+                            <div className="flex items-center gap-1.5">
+                                <Globe className="text-[#81C784] w-4 h-4" />
+                                <div className="flex items-center gap-2">
+                                    <span>System Status: <span className="text-[#81C784]">Online</span></span>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#81C784] animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Language Switcher */}
                         <div className="relative">
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors"
+                                className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-50 transition-all border border-gray-100 shadow-sm"
                             >
-                                <span className="text-xl">{currentLang.flag}</span>
-                                <span className="font-medium text-gray-700">{currentLang.name}</span>
-                                <svg
-                                    className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                <span className="text-lg">{currentLang.flag}</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{currentLang.code}</span>
+                                <svg className={`w-3 h-3 text-gray-400 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
 
-                            {/* Dropdown Menu */}
                             {isDropdownOpen && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 overflow-hidden">
                                     {languages.map((lang) => (
                                         <button
                                             key={lang.code}
                                             onClick={() => handleLanguageChange(lang.code)}
-                                            className={`w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors ${currentLanguage === lang.code ? 'bg-green-50' : ''
-                                                }`}
+                                            className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors ${currentLanguage === lang.code ? 'bg-green-50 text-green-700' : 'text-gray-700'}`}
                                         >
                                             <span className="text-xl">{lang.flag}</span>
-                                            <span className="font-medium text-gray-700">{lang.name}</span>
-                                            {currentLanguage === lang.code && (
-                                                <svg className="w-4 h-4 text-green-600 ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            )}
+                                            <span className="font-medium">{lang.name}</span>
                                         </button>
                                     ))}
                                 </div>
                             )}
                         </div>
 
-                        <button className="px-6 py-2 border-2 border-blue-500 text-blue-500 rounded-md hover:bg-blue-50 font-medium transition-colors">
+                        <Link href="/login" className="px-8 py-2.5 bg-[#0F4C3A] text-white rounded-full hover:bg-[#1B5E20] font-bold transition-all shadow-lg shadow-green-900/10">
                             Login
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
