@@ -111,7 +111,7 @@ export default function LandingPage() {
             </section>
 
             {/* Info Cards Section */}
-            <section className="max-w-7xl mx-auto px-4 md:px-12 -mt-16 relative z-20 mb-24">
+            <section className="max-w-7xl mx-auto px-4 md:px-12 -mt-8 relative z-20 mb-24">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
                     {/* Weather Snapshot Card */}
                     <div className="bg-white rounded-[40px] p-8 shadow-2xl border border-gray-100 hover:shadow-green-900/10 hover:-translate-y-2 transition-all duration-500 group">
