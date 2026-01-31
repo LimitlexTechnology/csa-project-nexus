@@ -85,7 +85,7 @@ export const Logo = ({ className = "", iconOnly = false }: { className?: string,
     }
 
     return (
-        <Link href="/landing" className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${className}`}>
+        <Link href="/landing" prefetch={false} className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${className}`}>
             {content}
         </Link>
     );

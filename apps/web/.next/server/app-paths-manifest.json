@@ -1,6 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/knowledge-hub/page": "app/knowledge-hub/page.js",
   "/landing/page": "app/landing/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/knowledge-hub/page": "app/knowledge-hub/page.js"
 }

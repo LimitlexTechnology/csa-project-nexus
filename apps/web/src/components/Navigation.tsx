@@ -42,18 +42,21 @@ export default function Navigation() {
                     <div className="flex items-center gap-10">
                         <Link
                             href="/about"
+                            prefetch={false}
                             className="text-gray-900 font-bold hover:text-[#2E7D32] transition-all"
                         >
                             About
                         </Link>
                         <Link
                             href="#features"
+                            prefetch={false}
                             className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
                         >
                             Features
                         </Link>
                         <Link
                             href="#pricing"
+                            prefetch={false}
                             className="text-gray-500 font-bold hover:text-[#2E7D32] transition-colors"
                         >
                             Pricing
@@ -98,7 +101,7 @@ export default function Navigation() {
                             )}
                         </div>
 
-                        <Link href="/login" className="px-8 py-2.5 bg-[#0F4C3A] text-white rounded-full hover:bg-[#1B5E20] font-bold transition-all shadow-lg shadow-green-900/10">
+                        <Link href="/login" prefetch={false} className="px-8 py-2.5 bg-[#0F4C3A] text-white rounded-full hover:bg-[#1B5E20] font-bold transition-all shadow-lg shadow-green-900/10">
                             Login
                         </Link>
                     </div>

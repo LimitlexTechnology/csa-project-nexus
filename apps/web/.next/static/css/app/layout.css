@@ -626,6 +626,9 @@ video {
 .z-30 {
   z-index: 30;
 }
+.z-40 {
+  z-index: 40;
+}
 .z-50 {
   z-index: 50;
 }
@@ -720,8 +723,8 @@ video {
 .mt-auto {
   margin-top: auto;
 }
-.-mt-24 {
-  margin-top: -6rem;
+.-mt-16 {
+  margin-top: -4rem;
 }
 .line-clamp-1 {
   overflow: hidden;
@@ -848,9 +851,6 @@ video {
 }
 .h-px {
   height: 1px;
-}
-.h-\[600px\] {
-  height: 600px;
 }
 .min-h-\[180px\] {
   min-height: 180px;
@@ -1907,9 +1907,6 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pb-24 {
-  padding-bottom: 6rem;
 }
 .text-left {
   text-align: left;

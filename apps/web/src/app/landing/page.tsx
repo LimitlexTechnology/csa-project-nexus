@@ -6,14 +6,14 @@ import { Logo } from '../../components/Logo';
 import { CloudSun, Newspaper, Lightbulb, ArrowRight, ShieldCheck, Zap, BarChart3, Check } from 'lucide-react';
 
 const heroImages = [
-    'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1600', // IoT & Smart Monitoring
-    'https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=1600', // Resilient Seedlings
-    'https://images.pexels.com/photos/259280/pexels-photo-259280.jpeg?auto=compress&cs=tinysrgb&w=1600',  // Precision Tech
-    'https://images.pexels.com/photos/1444416/pexels-photo-1444416.jpeg?auto=compress&cs=tinysrgb&w=1600', // Climate Intelligence
-    'https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=1600', // Community Education
-    'https://images.pexels.com/photos/1482101/pexels-photo-1482101.jpeg?auto=compress&cs=tinysrgb&w=1600', // Diversified Harvest
-    'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1600',   // Agricultural Research
-    'https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1600'  // Sustainable Landscape
+    'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1600', // Modern Agri Tech
+    'https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Lush Green Fields
+    'https://images.pexels.com/photos/1001324/pexels-photo-1001324.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Climate Impact (Drought)
+    'https://images.pexels.com/photos/1482101/pexels-photo-1482101.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Bountiful Crops
+    'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1600', // Sustainable Farming
+    'https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Nurturing Soil
+    'https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&w=1600', // Pexels: Sunset Harvest Field
+    'https://images.pexels.com/photos/2255441/pexels-photo-2255441.jpeg?auto=compress&cs=tinysrgb&w=1600'  // Pexels: Climate Resilience
 ];
 
 export default function LandingPage() {
@@ -58,7 +58,7 @@ export default function LandingPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="relative h-[600px] rounded-b-[60px] overflow-hidden mx-4 mt-4 shadow-2xl bg-[#0F4C3A]">
+            <section className="relative h-[550px] rounded-b-[60px] overflow-hidden mx-4 mt-4 shadow-2xl bg-[#0F4C3A]">
                 {/* Background Layer 1 (Current Image) */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
@@ -86,7 +86,7 @@ export default function LandingPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0F4C3A]/60 to-transparent"></div>
                 )}
 
-                <div className="relative h-full flex items-center px-12 md:px-24 pb-24">
+                <div className="relative h-full flex items-center px-12 md:px-24">
                     <div className="max-w-3xl">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-8 border border-white/20">
                             <span className="w-2 h-2 bg-[#81C784] rounded-full animate-pulse"></span>
@@ -99,10 +99,10 @@ export default function LandingPage() {
                             Empowering the next generation of farmers with real-time climate intelligence and sustainable practices.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6">
-                            <Link href="/welcome" className="px-12 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
+                            <Link href="/welcome" className="relative z-40 px-12 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
                                 Get Started <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <Link href="/dashboard" className="px-12 py-5 bg-white/10 hover:bg-white/20 text-white font-black uppercase tracking-widest rounded-2xl border border-white/20 backdrop-blur-md transition-all text-center">
+                            <Link href="/dashboard" className="relative z-40 px-12 py-5 bg-white/10 hover:bg-white/20 text-white font-black uppercase tracking-widest rounded-2xl border border-white/20 backdrop-blur-md transition-all text-center">
                                 Explore As Guest
                             </Link>
                         </div>
@@ -111,7 +111,7 @@ export default function LandingPage() {
             </section>
 
             {/* Info Cards Section */}
-            <section className="max-w-7xl mx-auto px-4 md:px-12 -mt-24 relative z-20 mb-24">
+            <section className="max-w-7xl mx-auto px-4 md:px-12 -mt-16 relative z-20 mb-24">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
                     {/* Weather Snapshot Card */}
                     <div className="bg-white rounded-[40px] p-8 shadow-2xl border border-gray-100 hover:shadow-green-900/10 hover:-translate-y-2 transition-all duration-500 group">
