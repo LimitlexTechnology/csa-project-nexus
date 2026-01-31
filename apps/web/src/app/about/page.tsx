@@ -47,7 +47,7 @@ export default function AboutPage() {
                     </div>
                     <div className="aspect-square bg-gray-100 rounded-[32px] overflow-hidden relative border-4 border-white shadow-xl">
                         <Image 
-                            src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800" 
+                            src="https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=800" 
                             className="w-full h-full object-cover" 
                             alt="Mission"
                             fill

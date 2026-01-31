@@ -10,9 +10,19 @@ export default function LoginPage() {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true);
+        
+        // Backend integration placeholder:
+        // const response = await fetch('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+        
+        // Simulating network delay for professional feel
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        setIsLoading(false);
         router.push('/dashboard');
     };
 
@@ -26,7 +36,7 @@ export default function LoginPage() {
             <div className="hidden md:flex md:w-1/2 bg-[#0F4C3A] relative overflow-hidden items-center justify-center p-12">
                 <div 
                     className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
-                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=1600')` }}
+                    style={{ backgroundImage: `url('https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1600')` }}
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0F4C3A]/80 to-transparent"></div>
                 
@@ -124,10 +134,17 @@ export default function LoginPage() {
 
                         <button 
                             type="submit"
-                            className="w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
+                            disabled={isLoading}
+                            className={`w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
-                            {isLogin ? 'Login' : 'Create Account'}
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            {isLoading ? (
+                                <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            ) : (
+                                <>
+                                    {isLogin ? 'Login' : 'Create Account'}
+                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
                     </form>
 

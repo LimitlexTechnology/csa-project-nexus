@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/welcome/page": [
+    "/landing/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/welcome/page.js"
+      "static/chunks/app/landing/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,20 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/_not-found/page.js"
     ],
-    "/landing/page": [
+    "/knowledge-hub/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/landing/page.js"
+      "static/chunks/app/knowledge-hub/page.js"
     ],
-    "/role-selection/page": [
+    "/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/role-selection/page.js"
+      "static/chunks/app/dashboard/page.js"
     ]
   }
 }

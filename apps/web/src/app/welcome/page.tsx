@@ -9,7 +9,7 @@ const slides = [
     {
         title: "CLIMATE & FARMING CHALLENGES",
         subtitle: "YOUR CSA FARMING HUB SOLUTION",
-        mainImage: "https://images.pexels.com/photos/60013/pexels-photo-60013.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        mainImage: "https://images.pexels.com/photos/2255441/pexels-photo-2255441.jpeg?auto=compress&cs=tinysrgb&w=1200",
         mainText: "Unpredictable weather patterns, soil degradation, and resource scarcity threaten global food security.",
         overlay: 'none',
         cards: [

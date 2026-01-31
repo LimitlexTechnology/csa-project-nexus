@@ -1,10 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const Logo = ({ className = "", iconOnly = false }: { className?: string, iconOnly?: boolean }) => {
-    return (
-        <div className={`flex items-center gap-2 ${className}`}>
+    const content = (
+        <>
             <div className="relative flex items-center justify-center -mt-1">
-                <svg viewBox="0 0 110 110" className="w-12 h-12 md:w-16 md:h-16 overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 110 110" className={`${iconOnly ? 'w-8 h-8' : 'w-12 h-12 md:w-16 md:h-16'} overflow-visible`} fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="emblem-grad" x1="0%" y1="50%" x2="100%" y2="50%">
                             <stop offset="0%" stopColor="#2E4095" />
@@ -76,6 +77,16 @@ export const Logo = ({ className = "", iconOnly = false }: { className?: string,
                     </span>
                 </div>
             )}
-        </div>
+        </>
+    );
+
+    if (iconOnly) {
+        return <div className={`flex items-center gap-2 ${className}`}>{content}</div>;
+    }
+
+    return (
+        <Link href="/landing" className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${className}`}>
+            {content}
+        </Link>
     );
 };

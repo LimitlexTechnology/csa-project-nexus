@@ -36,9 +36,7 @@ export default function Navigation() {
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/">
-                        <Logo />
-                    </Link>
+                    <Logo />
 
                     {/* Navigation Links */}
                     <div className="flex items-center gap-10">
