@@ -15,7 +15,7 @@ export default function RootPage() {
         if (!preferredLanguage) {
             setShowLanguageSelection(true);
         } else if (!onboardingDone) {
-            router.push('/onboarding');
+            router.push('/welcome');
         } else {
             router.push('/landing');
         }

@@ -25,7 +25,7 @@ export default function LanguageSelection() {
         setSelectedLanguage(code);
         localStorage.setItem('preferredLanguage', code);
         setTimeout(() => {
-            router.push('/onboarding');
+            router.push('/welcome');
         }, 300);
     };
 
