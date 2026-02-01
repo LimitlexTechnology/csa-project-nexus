@@ -44,13 +44,13 @@ export default function BuyerDashboard() {
                                 <p className="text-green-100 text-sm">Verified suppliers</p>
                             </div>
                         </Link>
-                        <button className="flex items-center gap-4 p-6 bg-white/10 hover:bg-white/20 rounded-2xl transition-all backdrop-blur-sm border border-white/20 w-full">
+                        <Link href="/marketplace" className="flex items-center gap-4 p-6 bg-white/10 hover:bg-white/20 rounded-2xl transition-all backdrop-blur-sm border border-white/20">
                             <ShoppingCart size={32} className="text-amber-300" />
-                            <div className="text-left">
+                            <div>
                                 <p className="font-bold text-white">Supplier Network</p>
                                 <p className="text-green-100 text-sm">Browse & connect</p>
                             </div>
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

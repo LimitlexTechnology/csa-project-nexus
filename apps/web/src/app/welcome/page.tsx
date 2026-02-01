@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
@@ -230,6 +230,15 @@ export default function WelcomeCarousel() {
     const [isToggled, setIsToggled] = useState(true);
     const totalSlides = slides.length;
     const slide = slides[currentSlide];
+
+    useEffect(() => {
+        // Check if user has selected a role
+        const userRole = localStorage.getItem('userRole');
+        if (!userRole) {
+            // Redirect to role selection if no role is selected
+            router.push('/role-selection');
+        }
+    }, [router]);
 
     if (!slide) return null;
 

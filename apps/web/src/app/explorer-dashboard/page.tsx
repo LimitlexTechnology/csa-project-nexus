@@ -218,7 +218,12 @@ export default function ExplorerDashboard() {
                 {/* Platform Features */}
                 <div className="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 mb-12">
                     <h3 className="text-2xl font-black text-gray-900 mb-8">Available On All Platforms</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <Link href="/marketplace" className="p-6 border-2 border-gray-200 hover:border-orange-500 rounded-2xl transition-all group">
+                            <h4 className="font-bold text-gray-900 mb-2 group-hover:text-orange-600">🏪 Marketplace</h4>
+                            <p className="text-sm text-gray-600 mb-4">Buy & sell climate-smart produce</p>
+                            <span className="text-xs font-bold text-orange-600">Explore →</span>
+                        </Link>
                         <Link href="/knowledge-hub" className="p-6 border-2 border-gray-200 hover:border-green-500 rounded-2xl transition-all group">
                             <h4 className="font-bold text-gray-900 mb-2 group-hover:text-green-600">📚 Knowledge Hub</h4>
                             <p className="text-sm text-gray-600 mb-4">500+ resources: guides, videos, case studies</p>

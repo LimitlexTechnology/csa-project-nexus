@@ -1,8 +1,8 @@
 {
-  "/expert-dashboard/page": "app/expert-dashboard/page.js",
-  "/landing/page": "app/landing/page.js",
-  "/role-selection/page": "app/role-selection/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/farmer-dashboard/page": "app/farmer-dashboard/page.js"
+  "/role-selection/page": "app/role-selection/page.js",
+  "/page": "app/page.js",
+  "/landing/page": "app/landing/page.js",
+  "/news/page": "app/news/page.js",
+  "/explorer-dashboard/page": "app/explorer-dashboard/page.js"
 }

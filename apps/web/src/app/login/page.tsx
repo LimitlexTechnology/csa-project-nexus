@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
@@ -12,6 +12,15 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        // Check if user has selected a role
+        const userRole = localStorage.getItem('userRole');
+        if (!userRole) {
+            // Redirect to role selection if no role is selected
+            router.push('/role-selection');
+        }
+    }, [router]);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
@@ -23,7 +32,18 @@ export default function LoginPage() {
         await new Promise(resolve => setTimeout(resolve, 1500));
         
         setIsLoading(false);
-        router.push('/dashboard');
+        
+        // Get user role and redirect to appropriate dashboard
+        const userRole = localStorage.getItem('userRole');
+        const dashboardMap: { [key: string]: string } = {
+            'farmer': '/farmer-dashboard',
+            'expert': '/expert-dashboard',
+            'buyer': '/buyer-dashboard',
+            'ngo': '/ngo-dashboard',
+            'explorer': '/explorer-dashboard'
+        };
+        
+        router.push(dashboardMap[userRole || 'farmer'] || '/dashboard');
     };
 
     const handleGuestContinue = () => {
