@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
+import AuthGuard from '../../components/AuthGuard';
 import { 
     LayoutDashboard, 
     CloudSun, 
@@ -27,6 +28,7 @@ export default function DashboardPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     return (
+        <AuthGuard>
         <div className="min-h-screen bg-[#F8F9FA] flex font-sans">
             {/* Desktop Sidebar */}
             <aside className={`hidden lg:flex flex-col bg-[#0F4C3A] text-white transition-all duration-300 ${isSidebarOpen ? 'w-72' : 'w-24'}`}>
@@ -198,6 +200,7 @@ export default function DashboardPage() {
                 </div>
             </main>
         </div>
+        </AuthGuard>
     );
 }
 

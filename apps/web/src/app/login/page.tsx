@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
 import { UserCheck, Zap, ArrowRight, Mail, Lock } from 'lucide-react';
+import { auth } from '../../lib/firebase';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -11,6 +13,7 @@ export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         // Check if user has selected a role
@@ -24,13 +27,25 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        
-        // Backend integration placeholder:
-        // const response = await fetch('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
-        
-        // Simulating network delay for professional feel
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
+        setError(null);
+        try {
+            if (isLogin) {
+                await signInWithEmailAndPassword(auth, email, password);
+            } else {
+                await createUserWithEmailAndPassword(auth, email, password);
+            }
+        } catch (err: any) {
+            const code = err?.code || 'auth/error';
+            const message =
+                code === 'auth/invalid-email' ? 'Invalid email address' :
+                code === 'auth/user-not-found' ? 'No account found for this email' :
+                code === 'auth/wrong-password' ? 'Incorrect password' :
+                code === 'auth/email-already-in-use' ? 'Email already in use' :
+                'Something went wrong. Please try again.';
+            setError(message);
+            setIsLoading(false);
+            return;
+        }
         setIsLoading(false);
         
         // Get user role and redirect to appropriate dashboard
@@ -115,6 +130,11 @@ export default function LoginPage() {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
+                        {error && (
+                            <div className="px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium">
+                                {error}
+                            </div>
+                        )}
                         <div>
                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1 flex items-center gap-2">
                                 <Mail size={14} className="text-[#2E7D32]" />

@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
+import AuthGuard from '../../components/AuthGuard';
 import { CloudSun, AlertCircle, TrendingUp, Leaf, MapPin, BarChart3, ArrowRight, Menu, X, ShoppingCart } from 'lucide-react';
 
 export default function FarmerDashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
+        <AuthGuard>
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
             {/* Header */}
             <header className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
@@ -165,5 +167,6 @@ export default function FarmerDashboard() {
                 </div>
             </div>
         </div>
+        </AuthGuard>
     );
 }

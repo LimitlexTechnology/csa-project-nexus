@@ -2,13 +2,15 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
+import AuthGuard from '../../components/AuthGuard';
 import { BarChart3, Users, FileText, Target, TrendingUp, Landmark, ArrowRight, Menu, X } from 'lucide-react';
 
 export default function NgoDashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <AuthGuard>
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
             {/* Header */}
             <header className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -170,5 +172,6 @@ export default function NgoDashboard() {
                 </div>
             </div>
         </div>
+        </AuthGuard>
     );
 }
