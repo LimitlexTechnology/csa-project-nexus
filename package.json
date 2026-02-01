@@ -7,7 +7,9 @@
         "dev": "turbo dev",
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-        "check-types": "turbo check-types"
+        "check-types": "turbo check-types",
+        "deploy:web": "firebase deploy --only hosting",
+        "deploy:web:preview": "firebase hosting:channel:deploy preview --only hosting"
     },
     "devDependencies": {
         "prettier": "^3.1.0",
