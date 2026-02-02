@@ -193,6 +193,8 @@ const newsArticles = {
     }
 };
 
+export const dynamic = 'force-static';
+
 export default function NewsDetailPage() {
     const params = useParams();
     const articleId = parseInt(params.id as string);

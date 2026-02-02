@@ -313,6 +313,8 @@ const hubDetails = {
     }
 };
 
+export const dynamic = 'force-static';
+
 export default function KnowledgeHubDetailPage() {
     const params = useParams();
     const resourceId = parseInt(params.id as string);

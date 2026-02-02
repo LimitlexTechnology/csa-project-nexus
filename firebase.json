@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "csa-app-4c6c6",
+    "site": "csa-app-4c6c6-web",
     "source": "apps/web"
   }
 }

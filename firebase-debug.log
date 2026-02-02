@@ -1,39 +1,541 @@
-[debug] [2026-02-01T20:53:05.447Z] ----------------------------------------------------------------------
-[debug] [2026-02-01T20:53:05.450Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
-[debug] [2026-02-01T20:53:05.451Z] CLI Version:   15.5.1
-[debug] [2026-02-01T20:53:05.451Z] Platform:      win32
-[debug] [2026-02-01T20:53:05.452Z] Node Version:  v22.18.0
-[debug] [2026-02-01T20:53:05.452Z] Time:          Sun Feb 01 2026 20:53:05 GMT+0000 (Greenwich Mean Time)
-[debug] [2026-02-01T20:53:05.452Z] ----------------------------------------------------------------------
+[debug] [2026-02-01T21:21:05.347Z] ----------------------------------------------------------------------
+[debug] [2026-02-01T21:21:05.352Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting:csa-app-4c6c6-web
+[debug] [2026-02-01T21:21:05.352Z] CLI Version:   15.5.1
+[debug] [2026-02-01T21:21:05.352Z] Platform:      win32
+[debug] [2026-02-01T21:21:05.353Z] Node Version:  v22.18.0
+[debug] [2026-02-01T21:21:05.353Z] Time:          Sun Feb 01 2026 21:21:05 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-02-01T21:21:05.353Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2026-02-01T20:53:05.455Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2026-02-01T20:53:07.781Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-01T20:53:07.782Z] > authorizing via signed-in user (kwartengblanksonfobi@gmail.com)
-[debug] [2026-02-01T20:53:07.782Z] [iam] checking project csa-app-4c6c6 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2026-02-01T20:53:07.783Z] Checked if tokens are valid: false, expires at: 1769513395891
-[debug] [2026-02-01T20:53:07.783Z] Checked if tokens are valid: false, expires at: 1769513395891
-[debug] [2026-02-01T20:53:07.783Z] > refreshing access token with scopes: []
-[debug] [2026-02-01T20:53:07.784Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-02-01T20:53:07.784Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-02-01T20:53:09.021Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2026-02-01T20:53:09.021Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2026-02-01T20:53:12.690Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-02-01T20:53:12.690Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-02-01T20:53:12.733Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions [none]
-[debug] [2026-02-01T20:53:12.733Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions  x-goog-user-project=csa-app-4c6c6
-[debug] [2026-02-01T20:53:12.733Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2026-02-01T20:53:17.396Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions 403
-[debug] [2026-02-01T20:53:17.396Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions {"error":{"code":403,"message":"Caller does not have required permission to use project csa-app-4c6c6. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=csa-app-4c6c6 and then retry. Propagation of the new permission may take a few minutes.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"USER_PROJECT_DENIED","domain":"googleapis.com","metadata":{"containerInfo":"csa-app-4c6c6","service":"cloudresourcemanager.googleapis.com","consoleUrl":"https://console.developers.google.com/iam-admin/iam/project?project=csa-app-4c6c6","consumer":"projects/csa-app-4c6c6"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Caller does not have required permission to use project csa-app-4c6c6. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=csa-app-4c6c6 and then retry. Propagation of the new permission may take a few minutes."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developer console IAM admin","url":"https://console.developers.google.com/iam-admin/iam/project?project=csa-app-4c6c6"}]}]}}
-[debug] [2026-02-01T20:53:17.398Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/csa-app-4c6c6:testIamPermissions had HTTP Error: 403, Caller does not have required permission to use project csa-app-4c6c6. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=csa-app-4c6c6 and then retry. Propagation of the new permission may take a few minutes.
-[debug] [2026-02-01T20:53:17.399Z] Checked if tokens are valid: true, expires at: 1769982791691
-[debug] [2026-02-01T20:53:17.400Z] Checked if tokens are valid: true, expires at: 1769982791691
-[debug] [2026-02-01T20:53:17.400Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/csa-app-4c6c6 [none]
-[debug] [2026-02-01T20:53:20.980Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/csa-app-4c6c6 403
-[debug] [2026-02-01T20:53:20.981Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/csa-app-4c6c6 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2026-02-01T20:53:20.982Z] Request to https://firebase.googleapis.com/v1beta1/projects/csa-app-4c6c6 had HTTP Error: 403, The caller does not have permission
-[debug] [2026-02-01T20:53:21.286Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/csa-app-4c6c6 had HTTP Error: 403, The caller does not have permission
-    at responseToError (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
-    at RetryOperation._fn (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:330:77)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[debug] [2026-02-01T21:21:07.293Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-01T21:21:07.294Z] > authorizing via signed-in user (kwartengblanksonfobi@gmail.com)
+[debug] [2026-02-01T21:21:07.294Z] [iam] checking project vast-gh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-02-01T21:21:07.295Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:07.295Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:07.296Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions [none]
+[debug] [2026-02-01T21:21:07.296Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions  x-goog-user-project=vast-gh
+[debug] [2026-02-01T21:21:07.296Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-01T21:21:11.116Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions 200
+[debug] [2026-02-01T21:21:11.116Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-01T21:21:11.117Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:11.117Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:11.118Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh [none]
+[debug] [2026-02-01T21:21:16.427Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh 200
+[debug] [2026-02-01T21:21:16.428Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh {"projectId":"vast-gh","projectNumber":"755722253885","displayName":"Vast-gh","name":"projects/vast-gh","resources":{"hostingSite":"vast-gh"},"state":"ACTIVE","etag":"1_a7c1fa1a-44ed-4fdd-b9ff-f37646600eb4"}
+[debug] [2026-02-01T21:21:21.568Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:21.568Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:21.568Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites pageToken=&pageSize=10
+[debug] [2026-02-01T21:21:25.645Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-01T21:21:25.646Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-01T21:21:25.647Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:25.647Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:25.647Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 
+[debug] [2026-02-01T21:21:26.359Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-01T21:21:26.359Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-01T21:21:26.360Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:26.360Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:26.360Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config [none]
+[debug] [2026-02-01T21:21:30.355Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config 200
+[debug] [2026-02-01T21:21:30.355Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config {"projectId":"vast-gh","storageBucket":"vast-gh.firebasestorage.app","apiKey":"AIzaSyAETyWTkduzCwPazc2lfHp_r-RMFMu9kuE","authDomain":"vast-gh.firebaseapp.com","messagingSenderId":"755722253885","projectNumber":"755722253885","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-02-01T21:21:40.746Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:40.746Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:21:40.747Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-01T21:21:44.790Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-01T21:21:44.790Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.35
+
+[info]   - Environments: .env.local
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/27) ...
+
+[info]    Generating static pages (6/27) 
+
+[info]    Generating static pages (13/27) 
+
+[info]    Generating static pages (20/27) 
+
+[info]  ✓ Generating static pages (27/27)
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (app)                              Size     First Load JS
+┌ ○ /                                    2.78 kB        98.8 kB
+├ ○ /_not-found                          138 B          87.4 kB
+├ ○ /about                               4.11 kB         106 kB
+├ ○ /ask-expert                          2.22 kB        98.3 kB
+├ ○ /buyer-dashboard                     3.69 kB         136 kB
+├ ○ /dashboard                           5.6 kB          138 kB
+├ ○ /disease-detection                   2.58 kB        98.6 kB
+├ ○ /expert-dashboard                    3.92 kB         136 kB
+├ ○ /explorer-dashboard                  4.54 kB         137 kB
+├ ○ /farmer-dashboard                    4.08 kB         137 kB
+├ ○ /home                                914 B           172 kB
+├ ○ /knowledge-hub                       3.3 kB          105 kB
+├ ƒ /knowledge-hub/[id]                  11 kB           107 kB
+├ ○ /landing                             7.72 kB         104 kB
+├ ○ /language                            2.65 kB        98.7 kB
+├ ○ /login                               3.91 kB         136 kB
+├ ○ /marketplace                         5.15 kB         101 kB
+├ ○ /news                                4.84 kB         101 kB
+├ ƒ /news/[id]                           9.3 kB          105 kB
+├ ○ /ngo-dashboard                       3.88 kB         136 kB
+├ ○ /onboarding                          5.07 kB         101 kB
+├ ○ /profile                             2.4 kB         98.4 kB
+├ ○ /report-mining                       2.11 kB        98.1 kB
+├ ○ /role-selection                      3.82 kB        99.9 kB
+├ ○ /search                              2.13 kB        98.2 kB
+├ ○ /weather                             2.55 kB        98.6 kB
+└ ○ /welcome                             7.59 kB         104 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/1dd3208c-04e8cf77e6e35016.js  53.6 kB
+  ├ chunks/914-b94e1473bd9092df.js       31.7 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+
+[info] ○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • non-static component /knowledge-hub/[id]/page
+[info]  • non-static component /news/[id]/page
+[info] 
+[debug] [2026-02-01T21:22:36.819Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:22:36.819Z] Checked if tokens are valid: true, expires at: 1769982791691
+[debug] [2026-02-01T21:22:36.819Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-01T21:22:41.009Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-01T21:22:41.010Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-02-02T05:35:33.604Z] ----------------------------------------------------------------------
+[debug] [2026-02-02T05:35:33.609Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-02-02T05:35:33.609Z] CLI Version:   15.5.1
+[debug] [2026-02-02T05:35:33.610Z] Platform:      win32
+[debug] [2026-02-02T05:35:33.610Z] Node Version:  v22.18.0
+[debug] [2026-02-02T05:35:33.610Z] Time:          Mon Feb 02 2026 05:35:33 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-02-02T05:35:33.611Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-02T05:35:37.953Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-02T05:35:37.954Z] > authorizing via signed-in user (kwartengblanksonfobi@gmail.com)
+[debug] [2026-02-02T05:35:37.954Z] [iam] checking project vast-gh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-02-02T05:35:37.955Z] Checked if tokens are valid: false, expires at: 1769982791691
+[debug] [2026-02-02T05:35:37.955Z] Checked if tokens are valid: false, expires at: 1769982791691
+[debug] [2026-02-02T05:35:37.956Z] > refreshing access token with scopes: []
+[debug] [2026-02-02T05:35:37.958Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-02-02T05:35:37.959Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-02-02T05:35:38.999Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-02-02T05:35:38.999Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-02-02T05:35:39.039Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions [none]
+[debug] [2026-02-02T05:35:39.039Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions  x-goog-user-project=vast-gh
+[debug] [2026-02-02T05:35:39.039Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:35:42.880Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions 200
+[debug] [2026-02-02T05:35:42.880Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:35:42.882Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:42.882Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:42.883Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh [none]
+[debug] [2026-02-02T05:35:47.076Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh 200
+[debug] [2026-02-02T05:35:47.076Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh {"projectId":"vast-gh","projectNumber":"755722253885","displayName":"Vast-gh","name":"projects/vast-gh","resources":{"hostingSite":"vast-gh"},"state":"ACTIVE","etag":"1_a7c1fa1a-44ed-4fdd-b9ff-f37646600eb4"}
+[debug] [2026-02-02T05:35:52.269Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:52.270Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:52.270Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites pageToken=&pageSize=10
+[debug] [2026-02-02T05:35:56.397Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:35:56.398Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:35:56.400Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:56.401Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:56.402Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 
+[debug] [2026-02-02T05:35:56.875Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:35:56.876Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:35:56.876Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:56.876Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:35:56.877Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config [none]
+[debug] [2026-02-02T05:36:00.815Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config 200
+[debug] [2026-02-02T05:36:00.815Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config {"projectId":"vast-gh","storageBucket":"vast-gh.firebasestorage.app","apiKey":"AIzaSyAETyWTkduzCwPazc2lfHp_r-RMFMu9kuE","authDomain":"vast-gh.firebaseapp.com","messagingSenderId":"755722253885","projectNumber":"755722253885","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-02-02T05:36:10.472Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:36:10.473Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:36:10.473Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:36:14.007Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:36:14.007Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.35
+
+[info]   - Environments: .env.local
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/27) ...
+
+[info]    Generating static pages (6/27) 
+
+[info]    Generating static pages (13/27) 
+
+[info]    Generating static pages (20/27) 
+
+[info]  ✓ Generating static pages (27/27)
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (app)                              Size     First Load JS
+┌ ○ /                                    2.78 kB        98.8 kB
+├ ○ /_not-found                          138 B          87.4 kB
+├ ○ /about                               4.11 kB         106 kB
+├ ○ /ask-expert                          2.22 kB        98.3 kB
+├ ○ /buyer-dashboard                     3.69 kB         136 kB
+├ ○ /dashboard                           5.6 kB          138 kB
+├ ○ /disease-detection                   2.58 kB        98.6 kB
+├ ○ /expert-dashboard                    3.92 kB         136 kB
+├ ○ /explorer-dashboard                  4.54 kB         137 kB
+├ ○ /farmer-dashboard                    4.08 kB         137 kB
+├ ○ /home                                914 B           172 kB
+├ ○ /knowledge-hub                       3.3 kB          105 kB
+├ ƒ /knowledge-hub/[id]                  11 kB           107 kB
+├ ○ /landing                             7.72 kB         104 kB
+├ ○ /language                            2.65 kB        98.7 kB
+├ ○ /login                               3.91 kB         136 kB
+├ ○ /marketplace                         5.15 kB         101 kB
+├ ○ /news                                4.84 kB         101 kB
+├ ƒ /news/[id]                           9.3 kB          105 kB
+├ ○ /ngo-dashboard                       3.88 kB         136 kB
+├ ○ /onboarding                          5.07 kB         101 kB
+├ ○ /profile                             2.4 kB         98.4 kB
+├ ○ /report-mining                       2.11 kB        98.1 kB
+├ ○ /role-selection                      3.82 kB        99.9 kB
+├ ○ /search                              2.13 kB        98.2 kB
+├ ○ /weather                             2.55 kB        98.6 kB
+└ ○ /welcome                             7.59 kB         104 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/1dd3208c-04e8cf77e6e35016.js  53.6 kB
+  ├ chunks/914-b94e1473bd9092df.js       31.7 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+
+[info] ○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • non-static component /news/[id]/page
+[info]  • non-static component /knowledge-hub/[id]/page
+[info] 
+[debug] [2026-02-02T05:36:50.708Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:36:50.708Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:36:50.709Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:36:54.659Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:36:54.659Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-02-02T05:38:02.174Z] Error: Command failed: npm i --omit dev --no-audit
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:915:11)
+    at execSync (node:child_process:987:15)
+    at prepareFrameworks (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:373:42)
+    at async deploy (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:78:9)
 [error] 
-[error] Error: Failed to get Firebase project csa-app-4c6c6. Please make sure the project exists and your account has permission to access it.
+[error] Error: An unexpected error has occurred.
+[debug] [2026-02-02T05:43:29.365Z] ----------------------------------------------------------------------
+[debug] [2026-02-02T05:43:29.370Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-02-02T05:43:29.371Z] CLI Version:   15.5.1
+[debug] [2026-02-02T05:43:29.371Z] Platform:      win32
+[debug] [2026-02-02T05:43:29.371Z] Node Version:  v22.18.0
+[debug] [2026-02-02T05:43:29.371Z] Time:          Mon Feb 02 2026 05:43:29 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-02-02T05:43:29.372Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-02T05:43:32.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-02T05:43:32.715Z] > authorizing via signed-in user (kwartengblanksonfobi@gmail.com)
+[debug] [2026-02-02T05:43:32.715Z] [iam] checking project vast-gh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-02-02T05:43:32.717Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:32.718Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:32.719Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions [none]
+[debug] [2026-02-02T05:43:32.719Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions  x-goog-user-project=vast-gh
+[debug] [2026-02-02T05:43:32.719Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:43:36.577Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions 200
+[debug] [2026-02-02T05:43:36.577Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:43:36.578Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:36.578Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:36.578Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh [none]
+[debug] [2026-02-02T05:43:37.614Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh 200
+[debug] [2026-02-02T05:43:37.614Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh {"projectId":"vast-gh","projectNumber":"755722253885","displayName":"Vast-gh","name":"projects/vast-gh","resources":{"hostingSite":"vast-gh"},"state":"ACTIVE","etag":"1_a7c1fa1a-44ed-4fdd-b9ff-f37646600eb4"}
+[debug] [2026-02-02T05:43:41.867Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:41.867Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:41.867Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites pageToken=&pageSize=10
+[debug] [2026-02-02T05:43:46.406Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:43:46.406Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:43:46.408Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:46.408Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:46.408Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 
+[debug] [2026-02-02T05:43:47.325Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:43:47.325Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:43:47.326Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:47.326Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:47.326Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config [none]
+[debug] [2026-02-02T05:43:49.193Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config 200
+[debug] [2026-02-02T05:43:49.193Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config {"projectId":"vast-gh","storageBucket":"vast-gh.firebasestorage.app","apiKey":"AIzaSyAETyWTkduzCwPazc2lfHp_r-RMFMu9kuE","authDomain":"vast-gh.firebaseapp.com","messagingSenderId":"755722253885","projectNumber":"755722253885","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-02-02T05:43:57.579Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:57.579Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:43:57.580Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:44:01.441Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:44:01.442Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.35
+
+[info]   - Environments: .env.local
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/27) ...
+
+[info]    Generating static pages (6/27) 
+
+[info]    Generating static pages (13/27) 
+
+[info]    Generating static pages (20/27) 
+
+[info]  ✓ Generating static pages (27/27)
+
+[info]    Finalizing page optimization ...
+   Collecting build traces ...
+
+[info] 
+
+[info] Route (app)                              Size     First Load JS
+┌ ○ /                                    2.78 kB        98.8 kB
+├ ○ /_not-found                          138 B          87.4 kB
+├ ○ /about                               4.11 kB         106 kB
+├ ○ /ask-expert                          2.22 kB        98.3 kB
+├ ○ /buyer-dashboard                     3.69 kB         136 kB
+├ ○ /dashboard                           5.6 kB          138 kB
+├ ○ /disease-detection                   2.58 kB        98.6 kB
+├ ○ /expert-dashboard                    3.92 kB         136 kB
+├ ○ /explorer-dashboard                  4.54 kB         137 kB
+├ ○ /farmer-dashboard                    4.08 kB         137 kB
+├ ○ /home                                914 B           172 kB
+├ ○ /knowledge-hub                       3.3 kB          105 kB
+├ ƒ /knowledge-hub/[id]                  11 kB           107 kB
+├ ○ /landing                             7.72 kB         104 kB
+├ ○ /language                            2.65 kB        98.7 kB
+├ ○ /login                               3.91 kB         136 kB
+├ ○ /marketplace                         5.15 kB         101 kB
+├ ○ /news                                4.84 kB         101 kB
+├ ƒ /news/[id]                           9.32 kB         105 kB
+├ ○ /ngo-dashboard                       3.88 kB         136 kB
+├ ○ /onboarding                          5.07 kB         101 kB
+├ ○ /profile                             2.4 kB         98.4 kB
+├ ○ /report-mining                       2.11 kB        98.1 kB
+├ ○ /role-selection                      3.82 kB        99.9 kB
+├ ○ /search                              2.13 kB        98.2 kB
+├ ○ /weather                             2.55 kB        98.6 kB
+└ ○ /welcome                             7.59 kB         104 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/1dd3208c-04e8cf77e6e35016.js  53.6 kB
+  ├ chunks/914-b94e1473bd9092df.js       31.7 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+
+[info] ○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • non-static component /knowledge-hub/[id]/page
+[info]  • non-static component /news/[id]/page
+[info] 
+[debug] [2026-02-02T05:44:49.287Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:44:49.287Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:44:49.287Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:44:53.476Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:44:53.477Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-02-02T05:46:16.142Z] Error: Command failed: npm i --omit dev --no-audit
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:915:11)
+    at execSync (node:child_process:987:15)
+    at prepareFrameworks (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:373:42)
+    at async deploy (C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:78:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-02-02T05:47:12.619Z] ----------------------------------------------------------------------
+[debug] [2026-02-02T05:47:12.625Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\micsa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-02-02T05:47:12.625Z] CLI Version:   15.5.1
+[debug] [2026-02-02T05:47:12.626Z] Platform:      win32
+[debug] [2026-02-02T05:47:12.626Z] Node Version:  v22.18.0
+[debug] [2026-02-02T05:47:12.626Z] Time:          Mon Feb 02 2026 05:47:12 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-02-02T05:47:12.626Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-02T05:47:14.990Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-02T05:47:14.991Z] > authorizing via signed-in user (kwartengblanksonfobi@gmail.com)
+[debug] [2026-02-02T05:47:14.991Z] [iam] checking project vast-gh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-02-02T05:47:14.992Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:14.992Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:14.993Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions [none]
+[debug] [2026-02-02T05:47:14.993Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions  x-goog-user-project=vast-gh
+[debug] [2026-02-02T05:47:14.994Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:47:18.693Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions 200
+[debug] [2026-02-02T05:47:18.694Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vast-gh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-02T05:47:18.695Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:18.695Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:18.696Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh [none]
+[debug] [2026-02-02T05:47:19.910Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh 200
+[debug] [2026-02-02T05:47:19.911Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh {"projectId":"vast-gh","projectNumber":"755722253885","displayName":"Vast-gh","name":"projects/vast-gh","resources":{"hostingSite":"vast-gh"},"state":"ACTIVE","etag":"1_a7c1fa1a-44ed-4fdd-b9ff-f37646600eb4"}
+[debug] [2026-02-02T05:47:24.349Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:24.349Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:24.349Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites pageToken=&pageSize=10
+[debug] [2026-02-02T05:47:28.712Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:47:28.712Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:47:28.714Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:28.714Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:28.715Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 
+[debug] [2026-02-02T05:47:29.328Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites 200
+[debug] [2026-02-02T05:47:29.329Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites {"sites":[{"name":"projects/vast-gh/sites/csa-app-4c6c6-web","defaultUrl":"https://csa-app-4c6c6-web.web.app","type":"USER_SITE"},{"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-02-02T05:47:29.330Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:29.330Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:29.330Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config [none]
+[debug] [2026-02-02T05:47:30.865Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config 200
+[debug] [2026-02-02T05:47:30.865Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vast-gh/webApps/-/config {"projectId":"vast-gh","storageBucket":"vast-gh.firebasestorage.app","apiKey":"AIzaSyAETyWTkduzCwPazc2lfHp_r-RMFMu9kuE","authDomain":"vast-gh.firebaseapp.com","messagingSenderId":"755722253885","projectNumber":"755722253885","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-02-02T05:47:39.981Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:39.982Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:47:39.983Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:47:44.078Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:47:44.079Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.35
+
+[info]   - Environments: .env.local
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/27) ...
+
+[info]    Generating static pages (6/27) 
+
+[info]    Generating static pages (13/27) 
+
+[info]    Generating static pages (20/27) 
+
+[info]  ✓ Generating static pages (27/27)
+
+[info]    Finalizing page optimization ...
+   Collecting build traces ...
+
+[info] 
+
+[info] Route (app)                              Size     First Load JS
+┌ ○ /                                    2.78 kB        98.8 kB
+├ ○ /_not-found                          138 B          87.4 kB
+├ ○ /about                               4.11 kB         106 kB
+├ ○ /ask-expert                          2.22 kB        98.3 kB
+├ ○ /buyer-dashboard                     3.69 kB         136 kB
+├ ○ /dashboard                           5.6 kB          138 kB
+├ ○ /disease-detection                   2.58 kB        98.6 kB
+├ ○ /expert-dashboard                    3.92 kB         136 kB
+├ ○ /explorer-dashboard                  4.54 kB         137 kB
+├ ○ /farmer-dashboard                    4.08 kB         137 kB
+├ ○ /home                                914 B           172 kB
+├ ○ /knowledge-hub                       3.3 kB          105 kB
+├ ƒ /knowledge-hub/[id]                  11 kB           107 kB
+├ ○ /landing                             7.72 kB         104 kB
+├ ○ /language                            2.65 kB        98.7 kB
+├ ○ /login                               3.91 kB         136 kB
+├ ○ /marketplace                         5.15 kB         101 kB
+├ ○ /news                                4.84 kB         101 kB
+├ ƒ /news/[id]                           9.32 kB         105 kB
+├ ○ /ngo-dashboard                       3.88 kB         136 kB
+├ ○ /onboarding                          5.07 kB         101 kB
+├ ○ /profile                             2.4 kB         98.4 kB
+├ ○ /report-mining                       2.11 kB        98.1 kB
+├ ○ /role-selection                      3.82 kB        99.9 kB
+├ ○ /search                              2.13 kB        98.2 kB
+├ ○ /weather                             2.55 kB        98.6 kB
+└ ○ /welcome                             7.59 kB         104 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/1dd3208c-04e8cf77e6e35016.js  53.6 kB
+  ├ chunks/914-b94e1473bd9092df.js       31.7 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+
+[info] ○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • non-static component /knowledge-hub/[id]/page
+[info]  • non-static component /news/[id]/page
+[info] 
+[debug] [2026-02-02T05:49:06.224Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:49:06.224Z] Checked if tokens are valid: true, expires at: 1770014137999
+[debug] [2026-02-02T05:49:06.225Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh [none]
+[debug] [2026-02-02T05:49:10.297Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh 200
+[debug] [2026-02-02T05:49:10.297Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/vast-gh/sites/vast-gh {"name":"projects/vast-gh/sites/vast-gh","defaultUrl":"https://vast-gh.web.app","type":"DEFAULT_SITE"}

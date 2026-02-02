@@ -1,3 +1,4 @@
+import path from 'path';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     transpilePackages: ['react-native', 'react-native-web', '@repo/ui', 'nativewind'],
@@ -14,10 +15,11 @@ const nextConfig = {
         ],
     },
     webpack: (config) => {
+        const uiSrc = path.resolve(process.cwd(), '../../packages/ui/src');
         config.resolve.alias = {
             ...(config.resolve.alias || {}),
-            // Transform all direct references to 'react-native' to 'react-native-web'
             'react-native$': 'react-native-web',
+            '@repo/ui': uiSrc,
         };
         config.resolve.extensions = [
             '.web.js',
