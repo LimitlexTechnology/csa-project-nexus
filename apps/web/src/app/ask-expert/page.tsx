@@ -126,7 +126,7 @@ export default function AskExpertPage() {
                         <div className="space-y-4">
                             <h2 className="text-4xl font-black text-gray-900 tracking-tight">Question Submitted!</h2>
                             <p className="text-xl text-gray-500 font-medium leading-relaxed px-12">
-                                We've sent your question to our experts. You'll receive a notification as soon as someone responds.
+                                We&apos;ve sent your question to our experts. You&apos;ll receive a notification as soon as someone responds.
                             </p>
                         </div>
                         <div className="pt-12 flex flex-col gap-4">

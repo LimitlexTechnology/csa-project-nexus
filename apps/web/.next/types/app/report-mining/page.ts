@@ -1,4 +1,4 @@
-// File: C:\Users\micsa\Documents\GitHub\csa-project-nexus\apps\web\src\app\report-mining\page.tsx
+// File: C:\Users\kobby\OneDrive\Documentos\GitHub\csa-project-nexus\apps\web\src\app\report-mining\page.tsx
 import * as entry from '../../../../src/app/report-mining/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

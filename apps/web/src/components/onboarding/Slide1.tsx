@@ -114,7 +114,7 @@ export const Slide1: React.FC = () => {
                             </div>
                         </div>
                         <p className="text-[10px] text-[#AFAFAF] leading-relaxed font-bold">
-                            Usi t 2i s yled'., suriable future of farming cuired Gnt matiens.
+                            Use timely insights to build a sustainable future of farming across Ghanaian communities.
                         </p>
                         <div className="flex gap-1.5 justify-center mt-6">
                             {[0, 1, 2, 3, 4].map(i => (

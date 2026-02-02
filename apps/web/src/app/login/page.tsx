@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
 import { UserCheck, Zap, ArrowRight, Mail, Lock } from 'lucide-react';
-import { auth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default function LoginPage() {
@@ -29,6 +29,13 @@ export default function LoginPage() {
         setIsLoading(true);
         setError(null);
         try {
+            const auth = getFirebaseAuth();
+            if (!auth) {
+                setError('Authentication is not configured.');
+                setIsLoading(false);
+                return;
+            }
+
             if (isLogin) {
                 await signInWithEmailAndPassword(auth, email, password);
             } else {

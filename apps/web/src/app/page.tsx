@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LanguageSelection from './language/page';
 
@@ -7,17 +7,21 @@ export default function RootPage() {
     const router = useRouter();
     const [showLanguageSelection, setShowLanguageSelection] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const hasInitialized = useRef(false);
 
     useEffect(() => {
+        if (hasInitialized.current) return;
+        hasInitialized.current = true;
+
         const preferredLanguage = localStorage.getItem('preferredLanguage');
         const onboardingDone = localStorage.getItem('onboardingDone');
 
         if (!preferredLanguage) {
             setShowLanguageSelection(true);
         } else if (!onboardingDone) {
-            router.push('/welcome');
+            router.replace('/welcome');
         } else {
-            router.push('/landing');
+            router.replace('/landing');
         }
         setIsLoaded(true);
     }, [router]);

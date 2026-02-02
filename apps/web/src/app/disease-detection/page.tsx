@@ -37,7 +37,7 @@ export default function DiseaseDetectionPage() {
                         <div className="text-center space-y-4">
                             <h2 className="text-4xl font-black text-gray-900 tracking-tight">Protect Your Harvest</h2>
                             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed">
-                                Upload a clear photo of your plant's leaves or affected areas. Our AI will analyze it for common diseases and provide treatment advice.
+                                Upload a clear photo of your plant&apos;s leaves or affected areas. Our AI will analyze it for common diseases and provide treatment advice.
                             </p>
                         </div>
 

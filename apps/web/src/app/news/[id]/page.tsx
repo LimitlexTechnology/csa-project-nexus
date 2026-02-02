@@ -451,7 +451,7 @@ export default function NewsDetailPage() {
                                         <div className="flex-1">
                                             <p className="font-bold text-gray-900">Ama Mensah</p>
                                             <p className="text-sm text-gray-500">5 hours ago</p>
-                                            <p className="mt-2 text-gray-700">Excited to see CSA Hub making such a real impact on smallholder farms. Can't wait to join the program!</p>
+                                            <p className="mt-2 text-gray-700">Excited to see CSA Hub making such a real impact on smallholder farms. Can&apos;t wait to join the program!</p>
                                         </div>
                                     </div>
                                 </div>

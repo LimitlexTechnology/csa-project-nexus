@@ -426,7 +426,7 @@ export default function KnowledgeHubDetailPage() {
                 <div className="bg-blue-50 rounded-[40px] p-10 mb-12">
                     <div className="flex items-center gap-3 mb-6">
                         <BookOpen className="text-blue-600" size={28} />
-                        <h3 className="text-2xl font-bold text-gray-900">What You'll Learn</h3>
+                        <h3 className="text-2xl font-bold text-gray-900">What You&apos;ll Learn</h3>
                     </div>
                     <ul className="space-y-3">
                         {resource.learningPoints.map((point, idx) => (
@@ -587,7 +587,7 @@ export default function KnowledgeHubDetailPage() {
                                         <div className="flex-1">
                                             <p className="font-bold text-gray-900">Peter Johnson</p>
                                             <p className="text-sm text-gray-500">2 days ago</p>
-                                            <p className="mt-2 text-gray-700">Excellent practical advice. Can't wait to apply these techniques to my farm this season!</p>
+                                            <p className="mt-2 text-gray-700">Excellent practical advice. Can&apos;t wait to apply these techniques to my farm this season!</p>
                                         </div>
                                     </div>
                                 </div>
