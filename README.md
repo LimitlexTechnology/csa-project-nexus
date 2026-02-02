@@ -45,6 +45,10 @@ npm run dev
   ```
   Press `w` for Web preview, `a` for Android Emulator, or `i` for iOS Simulator.
 
+### Live Demo
+
+Visit the deployed web app at [https://csa-project-nexus-web.vercel.app/](https://csa-project-nexus-web.vercel.app/)
+
 ## Verification
 
 To run TypeScript type checking across the entire monorepo:
