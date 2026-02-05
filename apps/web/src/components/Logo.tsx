@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const Logo = ({ className = "", iconOnly = false }: { className?: string, iconOnly?: boolean }) => {
+export const Logo = ({ className = "", iconOnly = false, size = 48 }: { className?: string, iconOnly?: boolean, size?: number }) => {
     const content = (
         <>
-            <div className="relative flex items-center justify-center -mt-1">
-                <svg viewBox="0 0 110 110" className={`${iconOnly ? 'w-8 h-8' : 'w-12 h-12 md:w-16 md:h-16'} overflow-visible`} fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="relative flex items-center justify-center">
+                <svg viewBox="0 0 110 110" preserveAspectRatio="xMidYMid meet" className={`overflow-visible shrink-0 aspect-square`} style={{ width: iconOnly ? 32 : size, height: iconOnly ? 32 : size }} fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="emblem-grad" x1="0%" y1="50%" x2="100%" y2="50%">
                             <stop offset="0%" stopColor="#2E4095" />
@@ -81,11 +81,11 @@ export const Logo = ({ className = "", iconOnly = false }: { className?: string,
     );
 
     if (iconOnly) {
-        return <div className={`flex items-center gap-2 ${className}`}>{content}</div>;
+        return <div className={`inline-flex items-center gap-2 ${className}`}>{content}</div>;
     }
 
     return (
-        <Link href="/landing" prefetch={false} className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${className}`}>
+        <Link href="/landing" prefetch={false} className={`inline-flex items-center gap-2 hover:opacity-80 transition-opacity ${className}`}>
             {content}
         </Link>
     );
