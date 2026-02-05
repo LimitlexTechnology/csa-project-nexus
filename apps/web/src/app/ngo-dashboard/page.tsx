@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
 import AuthGuard from '../../components/AuthGuard';
+import { useI18n } from '../../lib/i18n';
 import { BarChart3, Users, FileText, Target, TrendingUp, Landmark, ArrowRight, Menu, X } from 'lucide-react';
 
 export default function NgoDashboard() {
+    const { t } = useI18n();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
@@ -18,7 +20,7 @@ export default function NgoDashboard() {
                         <Logo />
                     </Link>
                     <div className="flex items-center gap-6">
-                        <h1 className="text-xl font-bold text-gray-900">NGO/Government Dashboard</h1>
+                        <h1 className="text-xl font-bold text-gray-900">{t('ngo.title')}</h1>
                         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="md:hidden">
                             {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>

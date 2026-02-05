@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
 import AuthGuard from '../../components/AuthGuard';
+import { useI18n } from '../../lib/i18n';
 import { 
     LayoutDashboard, 
     CloudSun, 
@@ -25,6 +26,7 @@ import {
 } from 'lucide-react';
 
 export default function DashboardPage() {
+    const { t } = useI18n();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     return (
@@ -63,7 +65,7 @@ export default function DashboardPage() {
                         >
                             <Menu size={24} />
                         </button>
-                        <h2 className="text-xl font-bold text-gray-900">Dashboard Overview</h2>
+                        <h2 className="text-xl font-bold text-gray-900">{t('dashboard.title')}</h2>
                     </div>
 
                     <div className="flex items-center gap-3 md:gap-6">

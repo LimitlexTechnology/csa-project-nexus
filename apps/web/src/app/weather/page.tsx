@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useI18n } from '../../lib/i18n';
 
 const forecastData = [
     { day: 'Mon', temp: 28, condition: 'Sunny', icon: '☀️', precip: '5%' },
@@ -13,6 +14,7 @@ const forecastData = [
 ];
 
 export default function WeatherDetailsPage() {
+    const { t } = useI18n();
     return (
         <div className="min-h-screen bg-[#F8F9FA] flex flex-col font-sans">
             {/* Navigation Header */}
@@ -24,7 +26,7 @@ export default function WeatherDetailsPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
                         </Link>
-                        <h1 className="text-xl font-bold text-gray-900">Weather Intelligence</h1>
+                        <h1 className="text-xl font-bold text-gray-900">{t('weather.title')}</h1>
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="text-right hidden sm:block">
@@ -46,24 +48,24 @@ export default function WeatherDetailsPage() {
                     
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                            <span className="px-6 py-2 bg-green-50 rounded-full text-xs font-black uppercase tracking-[0.2em] text-[#2E7D32] mb-8 shadow-sm">Current Conditions</span>
+                            <span className="px-6 py-2 bg-green-50 rounded-full text-xs font-black uppercase tracking-[0.2em] text-[#2E7D32] mb-8 shadow-sm">{t('weather.current')}</span>
                             <div className="flex items-center gap-8 mb-4">
                                 <span className="text-8xl md:text-9xl font-black text-gray-900 tracking-tighter">28°</span>
                                 <span className="text-7xl md:text-8xl">☀️</span>
                             </div>
-                            <h2 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">Mostly Sunny & Clear</h2>
+                            <h2 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">{t('weather.hero')}</h2>
                             <p className="text-lg text-gray-500 font-medium max-w-md leading-relaxed">
-                                Ideal conditions for crop maintenance and outdoor farming activities today.
+                                {t('weather.hero.desc')}
                             </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-8">
-                            <DetailStat label="Humidity" value="64%" icon="💧" />
-                            <DetailStat label="Wind Speed" value="12 km/h" icon="💨" />
-                            <DetailStat label="UV Index" value="High (7)" icon="☀️" />
-                            <DetailStat label="Visibility" value="10 km" icon="👁️" />
-                            <DetailStat label="Pressure" value="1012 hPa" icon="📉" />
-                            <DetailStat label="Dew Point" value="21°C" icon="🌡️" />
+                            <DetailStat label={t('weather.humidity')} value="64%" icon="💧" />
+                            <DetailStat label={t('weather.wind')} value="12 km/h" icon="💨" />
+                            <DetailStat label={t('weather.uv')} value="High (7)" icon="☀️" />
+                            <DetailStat label={t('weather.visibility')} value="10 km" icon="👁️" />
+                            <DetailStat label={t('weather.pressure')} value="1012 hPa" icon="📉" />
+                            <DetailStat label={t('weather.dew')} value="21°C" icon="🌡️" />
                         </div>
                     </div>
                 </section>
@@ -72,7 +74,7 @@ export default function WeatherDetailsPage() {
                     {/* 7-Day Forecast */}
                     <section className="lg:col-span-2 bg-white rounded-[40px] p-8 md:p-10 shadow-sm border border-gray-100">
                         <div className="flex justify-between items-center mb-10">
-                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">7-Day Forecast</h3>
+                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">{t('weather.forecast')}</h3>
                             <div className="flex gap-2">
                                 <button className="p-2 bg-gray-50 rounded-lg text-gray-400">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -96,7 +98,7 @@ export default function WeatherDetailsPage() {
 
                         {/* Temperature Chart Placeholder */}
                         <div className="mt-12 pt-12 border-t border-gray-50 relative h-48 flex items-end justify-between px-4">
-                            <div className="absolute top-0 left-0 text-[10px] font-bold text-gray-300 uppercase tracking-widest">Temperature Trend</div>
+                            <div className="absolute top-0 left-0 text-[10px] font-bold text-gray-300 uppercase tracking-widest">{t('weather.tempTrend')}</div>
                             {[40, 60, 55, 30, 45, 70, 85].map((h, i) => (
                                 <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
                                     <div className="w-full bg-gradient-to-t from-[#2E7D32]/20 to-[#2E7D32] rounded-t-xl transition-all group-hover:opacity-80" style={{ height: `${h}%` }}></div>
@@ -110,29 +112,29 @@ export default function WeatherDetailsPage() {
                     <section className="bg-[#0F4C3A] rounded-[40px] p-8 md:p-10 text-white shadow-xl shadow-green-900/20 flex flex-col">
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-2xl">💡</div>
-                            <h3 className="text-xl font-bold">Climate Advice</h3>
+                            <h3 className="text-xl font-bold">{t('weather.advice')}</h3>
                         </div>
 
                         <div className="space-y-8 flex-1">
                             <AdviceCard 
-                                title="Irrigation" 
-                                desc="Maintain regular watering today. High evaporation expected between 1 PM and 4 PM."
-                                level="Action Required"
+                                title={t('weather.irrigation')} 
+                                desc={t('weather.irrigation.desc')}
+                                level={t('weather.irrigation.level')}
                             />
                             <AdviceCard 
-                                title="Pest Management" 
-                                desc="Current humidity levels increase risk of fungal growth. Monitor legume crops closely."
-                                level="High Alert"
+                                title={t('weather.pest')} 
+                                desc={t('weather.pest.desc')}
+                                level={t('weather.pest.level')}
                             />
                             <AdviceCard 
-                                title="Harvesting" 
-                                desc="Dry conditions are perfect for maize harvesting scheduled for late this week."
-                                level="Ideal"
+                                title={t('weather.harvest')} 
+                                desc={t('weather.harvest.desc')}
+                                level={t('weather.harvest.level')}
                             />
                         </div>
 
                         <button className="w-full py-4 mt-12 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl transition-all shadow-lg shadow-black/20">
-                            Detailed Report
+                            {t('weather.report')}
                         </button>
                     </section>
                 </div>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '../../components/Logo';
 import { Search, Bell, Mail, ArrowRight, Clock, Tag } from 'lucide-react';
+import { useI18n } from '../../lib/i18n';
 
 const categories = ['All', 'Agriculture', 'Climate', 'Market', 'Technology', 'Community'];
 
@@ -50,6 +51,7 @@ const newsItems = [
 ];
 
 export default function NewsPage() {
+    const { t } = useI18n();
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -69,7 +71,7 @@ export default function NewsPage() {
                         <Link href="/dashboard">
                             <Logo />
                         </Link>
-                        <h1 className="text-xl font-bold text-gray-900 border-l border-gray-100 pl-8">News & Announcements</h1>
+                        <h1 className="text-xl font-bold text-gray-900 border-l border-gray-100 pl-8">{t('news.title')}</h1>
                     </div>
                     
                     <div className="hidden md:flex items-center gap-4">
@@ -93,7 +95,7 @@ export default function NewsPage() {
                         </div>
                         <input
                             type="text"
-                            placeholder="Search for articles, announcements, or topics..."
+                            placeholder={t('news.search.placeholder')}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="block w-full pl-14 pr-6 py-5 bg-white border border-gray-100 rounded-3xl text-gray-900 placeholder-gray-400 focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] outline-none transition-all shadow-sm font-medium"
@@ -112,7 +114,7 @@ export default function NewsPage() {
                                     : 'bg-white text-gray-500 border border-gray-100 hover:bg-gray-50'
                                 }`}
                             >
-                                {category}
+                                {t(`news.category.${category.toLowerCase()}`, category)}
                             </button>
                         ))}
                     </div>
@@ -140,7 +142,7 @@ export default function NewsPage() {
                                         <Clock size={14} className="text-gray-400" />
                                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{item.date}</span>
                                         <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-                                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">5 min read</span>
+                                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('news.readtime', '5 min read')}</span>
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-[#2E7D32] transition-colors">
                                         {item.title}
@@ -152,7 +154,7 @@ export default function NewsPage() {
                                         href={`/news/${item.id}`} 
                                         className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all"
                                     >
-                                        Read More
+                                        {t('news.readMore')}
                                         <ArrowRight size={16} />
                                     </Link>
                                 </div>
@@ -164,13 +166,13 @@ export default function NewsPage() {
                         <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-300">
                             <Search size={40} />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">No articles found</h3>
-                        <p className="text-gray-500 font-medium">Try adjusting your search or category filters.</p>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{t('news.none')}</h3>
+                        <p className="text-gray-500 font-medium">{t('news.none.help')}</p>
                         <button 
                             onClick={() => {setSelectedCategory('All'); setSearchQuery('');}}
                             className="mt-8 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:underline"
                         >
-                            Reset all filters
+                            {t('news.reset')}
                         </button>
                     </div>
                 )}
@@ -181,18 +183,18 @@ export default function NewsPage() {
                         <Mail size={160} className="text-white" />
                     </div>
                     <div className="relative z-10 max-w-2xl mx-auto">
-                        <h2 className="text-3xl font-black text-white mb-4">Stay Informed</h2>
+                        <h2 className="text-3xl font-black text-white mb-4">{t('news.cta.title')}</h2>
                         <p className="text-green-50/70 font-medium mb-10 text-lg">
-                            Get the latest climate-smart agriculture updates delivered straight to your inbox every week.
+                            {t('news.cta.desc')}
                         </p>
                         <form className="flex flex-col sm:flex-row gap-4">
                             <input 
                                 type="email" 
-                                placeholder="Enter your email" 
+                                placeholder={t('news.cta.email')}
                                 className="flex-1 px-8 py-5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-green-100/40 outline-none focus:bg-white/20 transition-all font-medium"
                             />
                             <button className="px-10 py-5 bg-[#81C784] hover:bg-[#66BB6A] text-[#0F4C3A] font-black uppercase tracking-widest rounded-2xl transition-all shadow-lg shadow-black/20">
-                                Subscribe
+                                {t('news.cta.subscribe')}
                             </button>
                         </form>
                     </div>
@@ -207,9 +209,9 @@ export default function NewsPage() {
                         <span className="text-lg font-black tracking-tighter text-[#0F4C3A]">CSA Hub</span>
                     </div>
                     <div className="flex gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                        <Link href="#" className="hover:text-gray-600">Privacy</Link>
-                        <Link href="#" className="hover:text-gray-600">Terms</Link>
-                        <Link href="#" className="hover:text-gray-600">Support</Link>
+                        <Link href="#" className="hover:text-gray-600">{t('common.privacy.short')}</Link>
+                        <Link href="#" className="hover:text-gray-600">{t('common.terms.short')}</Link>
+                        <Link href="#" className="hover:text-gray-600">{t('common.support')}</Link>
                     </div>
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">© 2026 CSA Hub Nexus</p>
                 </div>

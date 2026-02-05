@@ -6,9 +6,11 @@ import { Logo } from '../../components/Logo';
 import { UserCheck, Zap, ArrowRight, Mail, Lock } from 'lucide-react';
 import { auth } from '../../lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useI18n } from '../../lib/i18n';
 
 export default function LoginPage() {
     const router = useRouter();
+    const { t } = useI18n();
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -120,12 +122,12 @@ export default function LoginPage() {
 
                     <div className="mb-10">
                         <h2 className="text-3xl font-black text-gray-900 mb-3">
-                            {isLogin ? 'Welcome Back' : 'Create Account'}
+                            {isLogin ? t('login.title.login') : t('login.title.signup')}
                         </h2>
                         <p className="text-gray-500 font-medium">
                             {isLogin 
-                                ? 'Enter your details to access your dashboard' 
-                                : 'Start your journey towards climate-smart farming today'}
+                                ? t('login.subtitle.login') 
+                                : t('login.subtitle.signup')}
                         </p>
                     </div>
 
@@ -138,7 +140,7 @@ export default function LoginPage() {
                         <div>
                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1 flex items-center gap-2">
                                 <Mail size={14} className="text-[#2E7D32]" />
-                                Email Address
+                                {t('login.email')}
                             </label>
                             <input 
                                 type="email" 
@@ -154,11 +156,11 @@ export default function LoginPage() {
                             <div className="flex justify-between mb-2 px-1">
                                 <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest flex items-center gap-2">
                                     <Lock size={14} className="text-[#2E7D32]" />
-                                    Password
+                                    {t('login.password')}
                                 </label>
                                 {isLogin && (
                                     <Link href="#" className="text-xs font-bold text-[#2E7D32] hover:underline">
-                                        Forgot?
+                                        {t('login.forgot')}
                                     </Link>
                                 )}
                             </div>
@@ -181,7 +183,7 @@ export default function LoginPage() {
                                 <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
                             ) : (
                                 <>
-                                    {isLogin ? 'Login' : 'Create Account'}
+                                    {isLogin ? t('login.submit.login') : t('login.submit.signup')}
                                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                 </>
                             )}
@@ -194,7 +196,7 @@ export default function LoginPage() {
                                 <div className="w-full border-t border-gray-200"></div>
                             </div>
                             <div className="relative flex justify-center text-xs uppercase font-bold tracking-widest">
-                                <span className="px-4 bg-gray-50/30 text-gray-400">Or</span>
+                                <span className="px-4 bg-gray-50/30 text-gray-400">{t('common.or')}</span>
                             </div>
                         </div>
 
@@ -202,7 +204,7 @@ export default function LoginPage() {
                             onClick={handleGuestContinue}
                             className="w-full py-4 border-2 border-gray-200 hover:border-gray-300 text-gray-600 font-bold rounded-2xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                         >
-                            Continue as Guest
+                            {t('login.guest')}
                         </button>
 
                         <p className="text-center text-sm font-medium text-gray-500 mt-4">
@@ -219,8 +221,8 @@ export default function LoginPage() {
                 
                 {/* Footer Links */}
                 <div className="mt-auto pt-12 flex justify-center gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    <Link href="#" className="hover:text-gray-600 transition-colors">Privacy Policy</Link>
-                    <Link href="#" className="hover:text-gray-600 transition-colors">Terms of Service</Link>
+                    <Link href="#" className="hover:text-gray-600 transition-colors">{t('common.privacy')}</Link>
+                    <Link href="#" className="hover:text-gray-600 transition-colors">{t('common.terms')}</Link>
                 </div>
             </div>
         </div>

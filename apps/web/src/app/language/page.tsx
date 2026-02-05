@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
 import { Languages, CheckCircle2 } from 'lucide-react';
+import { useI18n } from '../../lib/i18n';
 
 interface Language {
     code: string;
@@ -21,11 +22,13 @@ const languages: Language[] = [
 
 export default function LanguageSelection() {
     const router = useRouter();
+    const { t, setLang } = useI18n();
     const [selectedLanguage, setSelectedLanguage] = useState<string>('');
 
     const handleLanguageSelect = (code: string) => {
         setSelectedLanguage(code);
         localStorage.setItem('preferredLanguage', code);
+        setLang(code as any);
         setTimeout(() => {
             router.push('/welcome');
         }, 300);
@@ -38,8 +41,8 @@ export default function LanguageSelection() {
                     <div className="flex items-center justify-center mb-8">
                         <Logo />
                     </div>
-                    <h1 className="text-xl font-black text-gray-900 uppercase tracking-[0.2em] mb-4">Choose Your Language</h1>
-                    <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Choisissez votre langue • Paw wo kasa</p>
+                    <h1 className="text-xl font-black text-gray-900 uppercase tracking-[0.2em] mb-4">{t('language.choose')}</h1>
+                    <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">{t('language.subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

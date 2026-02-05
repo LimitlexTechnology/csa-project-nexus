@@ -1,6 +1,5 @@
 {
-  "/page": "app/page.js",
+  "/language/page": "app/language/page.js",
   "/role-selection/page": "app/role-selection/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/welcome/page": "app/welcome/page.js"
+  "/login/page": "app/login/page.js"
 }
