@@ -1,9 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { Logo } from '../../../components/Logo';
-import { ArrowLeft, Share2, Heart, MessageCircle, X, Mail, Copy, Facebook, Linkedin, Twitter, Calendar, Clock } from 'lucide-react';
+import React from 'react';
+import { notFound } from 'next/navigation';
+import NewsDetailClient from './NewsDetailClient';
 
 const newsArticles = {
     1: {
@@ -193,6 +190,7 @@ const newsArticles = {
     }
 };
 
+<<<<<<< Updated upstream
 export default function NewsDetailPage() {
     const params = useParams();
     const articleId = parseInt(params.id as string);
@@ -549,4 +547,18 @@ export default function NewsDetailPage() {
             )}
         </div>
     );
+=======
+export function generateStaticParams() {
+  return Object.keys(newsArticles).map((id) => ({ id }));
+}
+
+export const dynamicParams = false;
+
+export default function Page({ params }: { params: { id: string } }) {
+  const id = parseInt(params.id);
+  const article = newsArticles[id as keyof typeof newsArticles];
+  if (!article) return notFound();
+  const relatedArticles = article.relatedArticles.map((rid) => newsArticles[rid as keyof typeof newsArticles]);
+  return <NewsDetailClient article={article} related={relatedArticles} articleId={id} />;
+>>>>>>> Stashed changes
 }

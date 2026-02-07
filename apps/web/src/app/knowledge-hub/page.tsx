@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Share2 } from 'lucide-react';
+import { useI18n } from '../../lib/i18n';
 
 const categories = [
     { id: 'all', name: 'All Resources', icon: '📚' },
@@ -71,6 +72,7 @@ const hubItems = [
 ];
 
 export default function KnowledgeHubPage() {
+    const { t } = useI18n();
     const [selectedCategory, setSelectedCategory] = useState('all');
 
     const filteredItems = hubItems.filter(item => 
@@ -88,12 +90,12 @@ export default function KnowledgeHubPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
                         </Link>
-                        <h1 className="text-xl font-bold text-gray-900">CSA Knowledge Hub</h1>
+                        <h1 className="text-xl font-bold text-gray-900">{t('hub.title')}</h1>
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-sm font-bold">
                             <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                            New Content Available
+                            {t('news.cta.title')}
                         </div>
                         <div className="w-10 h-10 bg-[#0F4C3A] rounded-xl flex items-center justify-center text-xl shadow-sm">💡</div>
                     </div>
@@ -105,7 +107,7 @@ export default function KnowledgeHubPage() {
                 {/* Category Sidebar */}
                 <aside className="lg:w-72 flex flex-col gap-8">
                     <div className="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100">
-                        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-8 px-2">Categories</h3>
+                        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-8 px-2">{t('hub.categories')}</h3>
                         <nav className="space-y-2">
                             {categories.map((cat) => (
                                 <button
@@ -118,7 +120,7 @@ export default function KnowledgeHubPage() {
                                     }`}
                                 >
                                     <span className="text-xl">{cat.icon}</span>
-                                    <span>{cat.name}</span>
+                                    <span>{t(`hub.category.${cat.id}`, cat.name)}</span>
                                 </button>
                             ))}
                         </nav>
@@ -129,11 +131,11 @@ export default function KnowledgeHubPage() {
                         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-700">
                             <span className="text-7xl">📕</span>
                         </div>
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-[#81C784] mb-4">Featured</h4>
-                        <h3 className="text-lg font-bold mb-4 leading-tight">CSA Masterclass: 2025 Edition</h3>
-                        <p className="text-sm text-green-50/70 font-medium mb-8">Download our complete guide to climate-resilient farming in Ghana.</p>
+                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-[#81C784] mb-4">{t('hub.featured')}</h4>
+                        <h3 className="text-lg font-bold mb-4 leading-tight">{t('hub.masterclass.title', 'CSA Masterclass: 2025 Edition')}</h3>
+                        <p className="text-sm text-green-50/70 font-medium mb-8">{t('hub.masterclass.desc', 'Download our complete guide to climate-resilient farming in Ghana.')}</p>
                         <button className="w-full py-3 bg-white text-[#0F4C3A] font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transition-all active:scale-95">
-                            Download PDF
+                            {t('hub.downloadPdf')}
                         </button>
                     </div>
                 </aside>
@@ -151,7 +153,7 @@ export default function KnowledgeHubPage() {
                                 </div>
                                 <input 
                                     type="text" 
-                                    placeholder="Search library..." 
+                                    placeholder={t('hub.search.placeholder')} 
                                     className="w-full pl-10 pr-4 py-3 bg-white border border-gray-100 rounded-2xl text-sm font-medium outline-none focus:ring-4 focus:ring-[#2E7D32]/5 focus:border-[#2E7D32] transition-all"
                                 />
                             </div>
@@ -179,7 +181,7 @@ export default function KnowledgeHubPage() {
                                     <div className="flex items-center gap-2 mb-4">
                                         <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.duration}</span>
                                         <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-                                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Beginner Friendly</span>
+                                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{t('hub.beginner')}</span>
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-[#2E7D32] transition-colors">
                                         {item.title}
@@ -189,7 +191,7 @@ export default function KnowledgeHubPage() {
                                     </p>
                                     <div className="flex items-center justify-between">
                                         <Link href={`/knowledge-hub/${item.id}`} className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all">
-                                            Read Now
+                                            {t('hub.readNow')}
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                         </Link>
                                         <button 
@@ -211,7 +213,7 @@ export default function KnowledgeHubPage() {
                     {/* Load More */}
                     <div className="mt-16 flex justify-center">
                         <button className="px-12 py-4 border-2 border-gray-100 hover:border-[#2E7D32] hover:text-[#2E7D32] text-gray-400 font-black uppercase tracking-widest text-xs rounded-2xl transition-all">
-                            Load More Resources
+                            {t('hub.loadMore')}
                         </button>
                     </div>
                 </main>

@@ -1,9 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { Logo } from '../../../components/Logo';
-import { ArrowLeft, Download, Share2, BookOpen, Clock, Zap, CheckCircle, Heart, MessageCircle, X, Mail, Copy, Facebook, Linkedin, Twitter } from 'lucide-react';
+import React from 'react';
+import { notFound } from 'next/navigation';
+import KnowledgeHubDetailClient from './KnowledgeHubDetailClient';
 
 const hubDetails = {
     1: {
@@ -313,6 +310,7 @@ const hubDetails = {
     }
 };
 
+<<<<<<< Updated upstream
 export default function KnowledgeHubDetailPage() {
     const params = useParams();
     const resourceId = parseInt(params.id as string);
@@ -685,4 +683,18 @@ export default function KnowledgeHubDetailPage() {
             )}
         </div>
     );
+=======
+export function generateStaticParams() {
+  return Object.keys(hubDetails).map((id) => ({ id }));
+}
+
+export const dynamicParams = false;
+
+export default function Page({ params }: { params: { id: string } }) {
+  const id = parseInt(params.id);
+  const resource = hubDetails[id as keyof typeof hubDetails];
+  if (!resource) return notFound();
+  const related = resource.relatedResources.map((rid) => hubDetails[rid as keyof typeof hubDetails]);
+  return <KnowledgeHubDetailClient resource={resource} related={related} resourceId={id} />;
+>>>>>>> Stashed changes
 }

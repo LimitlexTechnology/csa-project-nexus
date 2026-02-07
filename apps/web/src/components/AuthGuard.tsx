@@ -1,7 +1,7 @@
  'use client';
  import React, { useEffect, useState } from 'react';
  import { useRouter } from 'next/navigation';
- import { getFirebaseAuth } from '../lib/firebase';
+ import { auth } from '../lib/firebase';
  import { onAuthStateChanged } from 'firebase/auth';
  
  export default function AuthGuard({ children }: { children: React.ReactNode }) {
@@ -10,13 +10,6 @@
    const [authed, setAuthed] = useState(false);
  
    useEffect(() => {
-     const auth = getFirebaseAuth();
-     if (!auth) {
-       setAuthed(true);
-       setChecked(true);
-       return;
-     }
-
      const unsub = onAuthStateChanged(auth, (user) => {
        setAuthed(!!user);
        setChecked(true);
