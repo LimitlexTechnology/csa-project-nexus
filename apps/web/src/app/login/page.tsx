@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
 import { UserCheck, Zap, ArrowRight, Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { auth } from '../../lib/firebase';
+import { auth, db } from '../../lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useI18n } from '../../lib/i18n';
 import { useSearchParams } from 'next/navigation';
 
@@ -27,6 +28,7 @@ function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [userRole, setUserRole] = useState<string | null>(null);
 
     // Role-specific fields
     const [roleData, setRoleData] = useState({
@@ -36,16 +38,16 @@ function LoginForm() {
         ngo: { name: '', area: '' }
     });
 
-    const userRole = typeof window !== 'undefined' ? localStorage.getItem('userRole') : 'farmer';
-
     useEffect(() => {
-        // Check if user has selected a role
-        const userRole = localStorage.getItem('userRole');
-        if (!userRole) {
-            // Redirect to role selection if no role is selected
-            router.push('/role-selection');
+        const storedRole = localStorage.getItem('userRole');
+        if (storedRole) {
+            setUserRole(storedRole);
+        } else if (!isLogin) {
+            // Default to farmer for visibility if they somehow reached here without selection
+            localStorage.setItem('userRole', 'farmer');
+            setUserRole('farmer');
         }
-    }, [router]);
+    }, [isLogin]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,10 +57,25 @@ function LoginForm() {
             if (isLogin) {
                 await signInWithEmailAndPassword(auth, email, password);
             } else {
-                await createUserWithEmailAndPassword(auth, email, password);
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
                 // Save role-specific data for signup
-                if (userRole && roleData[userRole as keyof typeof roleData]) {
-                    localStorage.setItem('userRoleData', JSON.stringify(roleData[userRole as keyof typeof roleData]));
+                const finalRoleData = userRole && roleData[userRole as keyof typeof roleData]
+                    ? roleData[userRole as keyof typeof roleData]
+                    : {};
+
+                // Save to Firestore
+                await setDoc(doc(db, 'users', user.uid), {
+                    email: user.email,
+                    role: userRole,
+                    onboardingDone: true,
+                    ...finalRoleData,
+                    createdAt: new Date().toISOString()
+                });
+
+                if (userRole) {
+                    localStorage.setItem('userRoleData', JSON.stringify(finalRoleData));
                 }
             }
 
@@ -90,6 +107,7 @@ function LoginForm() {
                                     `Error: ${err.message || 'Something went wrong. Please try again.'}`;
             setError(message);
             setIsLoading(false);
+            console.error('Final Error state:', message);
         }
     };
 
@@ -213,14 +231,15 @@ function LoginForm() {
                             </div>
                         </div>
 
-                        {!isLogin && (
-                            <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
-                                {userRole === 'farmer' && (
+                        {!isLogin && userRole && (
+                            <div className="space-y-6">
+                                {(userRole === 'farmer' || userRole === 'explorer') && (
                                     <>
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Farm Location</label>
                                             <input
-                                                type="text" required
+                                                type="text"
+                                                required={userRole === 'farmer'}
                                                 value={roleData.farmer.location}
                                                 onChange={(e) => setRoleData({ ...roleData, farmer: { ...roleData.farmer, location: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -230,7 +249,8 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Primary Crop</label>
                                             <input
-                                                type="text" required
+                                                type="text"
+                                                required={userRole === 'farmer'}
                                                 value={roleData.farmer.crop}
                                                 onChange={(e) => setRoleData({ ...roleData, farmer: { ...roleData.farmer, crop: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -244,7 +264,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Specialization</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'expert'}
                                                 value={roleData.expert.specialization}
                                                 onChange={(e) => setRoleData({ ...roleData, expert: { ...roleData.expert, specialization: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -254,7 +274,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Organization</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'expert'}
                                                 value={roleData.expert.org}
                                                 onChange={(e) => setRoleData({ ...roleData, expert: { ...roleData.expert, org: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -268,7 +288,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Company Name</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'buyer'}
                                                 value={roleData.buyer.company}
                                                 onChange={(e) => setRoleData({ ...roleData, buyer: { ...roleData.buyer, company: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -278,7 +298,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Business Hub</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'buyer'}
                                                 value={roleData.buyer.hub}
                                                 onChange={(e) => setRoleData({ ...roleData, buyer: { ...roleData.buyer, hub: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -292,7 +312,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">NGO Name</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'ngo'}
                                                 value={roleData.ngo.name}
                                                 onChange={(e) => setRoleData({ ...roleData, ngo: { ...roleData.ngo, name: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
@@ -302,7 +322,7 @@ function LoginForm() {
                                         <div>
                                             <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Area of Operation</label>
                                             <input
-                                                type="text" required
+                                                type="text" required={!isLogin && userRole === 'ngo'}
                                                 value={roleData.ngo.area}
                                                 onChange={(e) => setRoleData({ ...roleData, ngo: { ...roleData.ngo, area: e.target.value } })}
                                                 className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"

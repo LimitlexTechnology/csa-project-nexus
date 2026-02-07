@@ -21,7 +21,16 @@ export default function RootPage() {
         } else if (!onboardingDone) {
             router.replace('/welcome');
         } else {
-            router.replace('/landing');
+            // Return to dashboard if already onboarded
+            const userRole = localStorage.getItem('userRole') || 'farmer';
+            const dashboardMap: { [key: string]: string } = {
+                'farmer': '/farmer-dashboard',
+                'expert': '/expert-dashboard',
+                'buyer': '/buyer-dashboard',
+                'ngo': '/ngo-dashboard',
+                'explorer': '/explorer-dashboard'
+            };
+            router.replace(dashboardMap[userRole] || '/dashboard');
         }
         setIsLoaded(true);
     }, [router]);

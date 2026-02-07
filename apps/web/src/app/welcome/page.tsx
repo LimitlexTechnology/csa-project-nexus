@@ -14,10 +14,10 @@ const slides = [
         overlay: 'none',
         cards: [
             { type: 'image', content: "https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=600", overlay: 'alert' },
-            { 
-                type: 'stats', 
-                uvIndex: 7, 
-                uvLabel: '(high)', 
+            {
+                type: 'stats',
+                uvIndex: 7,
+                uvLabel: '(high)',
                 windSpeed: '10%',
                 graph: [20, 40, 30, 50, 45, 60, 55]
             },
@@ -50,10 +50,10 @@ const slides = [
         overlay: 'success',
         cards: [
             { type: 'image', content: 'https://images.pexels.com/photos/235925/pexels-photo-235925.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'sensor' },
-            { 
-                type: 'stats', 
-                uvIndex: 4, 
-                uvLabel: '(low)', 
+            {
+                type: 'stats',
+                uvIndex: 4,
+                uvLabel: '(low)',
                 windSpeed: '5%',
                 graph: [10, 20, 15, 25, 30, 25, 20]
             },
@@ -86,10 +86,10 @@ const slides = [
         overlay: 'market',
         cards: [
             { type: 'image', content: 'https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'growth' },
-            { 
-                type: 'stats', 
-                uvIndex: 2, 
-                uvLabel: '(low)', 
+            {
+                type: 'stats',
+                uvIndex: 2,
+                uvLabel: '(low)',
                 windSpeed: '12%',
                 graph: [40, 50, 60, 55, 45, 40, 35]
             },
@@ -122,10 +122,10 @@ const slides = [
         overlay: 'community',
         cards: [
             { type: 'image', content: 'https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'users' },
-            { 
-                type: 'stats', 
-                uvIndex: 5, 
-                uvLabel: '(mod)', 
+            {
+                type: 'stats',
+                uvIndex: 5,
+                uvLabel: '(mod)',
                 windSpeed: '8%',
                 graph: [25, 30, 35, 40, 35, 30, 25]
             },
@@ -158,10 +158,10 @@ const slides = [
         overlay: 'data',
         cards: [
             { type: 'image', content: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'analytics' },
-            { 
-                type: 'stats', 
-                uvIndex: 8, 
-                uvLabel: '(v.high)', 
+            {
+                type: 'stats',
+                uvIndex: 8,
+                uvLabel: '(v.high)',
                 windSpeed: '20%',
                 graph: [60, 70, 80, 75, 65, 60, 55]
             },
@@ -194,10 +194,10 @@ const slides = [
         overlay: 'ready',
         cards: [
             { type: 'image', content: 'https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=600', overlay: 'sprouts' },
-            { 
-                type: 'stats', 
-                uvIndex: 3, 
-                uvLabel: '(low)', 
+            {
+                type: 'stats',
+                uvIndex: 3,
+                uvLabel: '(low)',
                 windSpeed: '10%',
                 graph: [20, 30, 40, 30, 20, 10, 5]
             },
@@ -231,14 +231,7 @@ export default function WelcomeCarousel() {
     const totalSlides = slides.length;
     const slide = slides[currentSlide];
 
-    useEffect(() => {
-        // Check if user has selected a role
-        const userRole = localStorage.getItem('userRole');
-        if (!userRole) {
-            // Redirect to role selection if no role is selected
-            router.push('/role-selection');
-        }
-    }, [router]);
+    // Removed auto-redirect to allow users to see the carousel first
 
     if (!slide) return null;
 
@@ -246,12 +239,12 @@ export default function WelcomeCarousel() {
         if (currentSlide < totalSlides - 1) {
             setCurrentSlide(prev => prev + 1);
         } else {
-            router.push('/role-selection');
+            router.push('/landing');
         }
     };
 
     const handleSkip = () => {
-        router.push('/role-selection');
+        router.push('/landing');
     };
 
     return (
@@ -260,7 +253,7 @@ export default function WelcomeCarousel() {
                 {/* Header */}
                 <header className="px-6 md:px-10 py-6 flex items-center justify-between">
                     <Logo />
-                    
+
                     <nav className="hidden lg:flex items-center gap-10">
                         <Link href="/about" className="text-gray-900 font-semibold relative py-1">
                             About
@@ -286,15 +279,15 @@ export default function WelcomeCarousel() {
 
                 {/* Main Content Area */}
                 <main className="flex-1 flex flex-col px-6 md:px-12 py-10 overflow-y-auto">
-                    
+
                     {/* Section 1: Challenges */}
                     <section className="mb-14">
                         <h2 className="text-2xl font-extrabold text-[#1A1A1A] mb-10 tracking-tight uppercase">{slide.title}</h2>
-                        
+
                         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
                             <div className="w-full lg:w-[320px] aspect-[1.6/1] bg-gray-100 rounded-3xl overflow-hidden relative shadow-lg border-4 border-white">
                                 <div className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${slide.overlay === 'warning' ? 'mix-blend-multiply opacity-70' : 'mix-blend-normal opacity-100'}`} style={{ backgroundImage: `url(${slide.mainImage})` }}></div>
-                                
+
                                 {slide.overlay === 'warning' && (
                                     <div className="absolute inset-0 p-6 flex flex-col justify-between">
                                         <div className="flex justify-between">
@@ -325,35 +318,35 @@ export default function WelcomeCarousel() {
                                 )}
 
                                 {slide.overlay === 'data' && (
-                                     <div className="absolute inset-0 p-6 flex items-center justify-center">
-                                         <div className="w-16 h-16 bg-[#2E7D32]/80 backdrop-blur-xl rounded-full flex items-center justify-center text-white shadow-2xl border border-white/20 animate-bounce">
-                                             <Database className="w-8 h-8" />
-                                         </div>
-                                     </div>
-                                 )}
+                                    <div className="absolute inset-0 p-6 flex items-center justify-center">
+                                        <div className="w-16 h-16 bg-[#2E7D32]/80 backdrop-blur-xl rounded-full flex items-center justify-center text-white shadow-2xl border border-white/20 animate-bounce">
+                                            <Database className="w-8 h-8" />
+                                        </div>
+                                    </div>
+                                )}
 
-                                 {slide.overlay === 'market' && (
-                                     <div className="absolute top-4 left-4">
-                                         <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm border border-gray-100">
-                                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></div>
-                                             <span className="text-[8px] font-black text-gray-900 tracking-tighter uppercase">Live Market Data</span>
-                                         </div>
-                                     </div>
-                                 )}
+                                {slide.overlay === 'market' && (
+                                    <div className="absolute top-4 left-4">
+                                        <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center gap-1 shadow-sm border border-gray-100">
+                                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></div>
+                                            <span className="text-[8px] font-black text-gray-900 tracking-tighter uppercase">Live Market Data</span>
+                                        </div>
+                                    </div>
+                                )}
 
-                                 {slide.overlay === 'community' && (
-                                     <div className="absolute inset-0 flex items-center justify-center p-8">
-                                         <div className="w-full h-full border-2 border-dashed border-white/40 rounded-2xl flex items-center justify-center">
-                                             <Users className="w-12 h-12 text-white/50" />
-                                         </div>
-                                     </div>
-                                 )}
+                                {slide.overlay === 'community' && (
+                                    <div className="absolute inset-0 flex items-center justify-center p-8">
+                                        <div className="w-full h-full border-2 border-dashed border-white/40 rounded-2xl flex items-center justify-center">
+                                            <Users className="w-12 h-12 text-white/50" />
+                                        </div>
+                                    </div>
+                                )}
 
-                                 {slide.overlay === 'ready' && (
-                                     <div className="absolute inset-0 bg-gradient-to-t from-[#2E7D32]/40 to-transparent"></div>
-                                 )}
-                             </div>
-                            
+                                {slide.overlay === 'ready' && (
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E7D32]/40 to-transparent"></div>
+                                )}
+                            </div>
+
                             <div className="flex-1 pt-0 lg:pt-4">
                                 <p className="text-xl text-[#37474F] font-medium leading-[1.6] max-w-md">
                                     {slide.mainText}
@@ -365,7 +358,7 @@ export default function WelcomeCarousel() {
                     {/* Section 2: Solution Header */}
                     <div className="flex justify-between items-center mb-8">
                         <h2 className="text-sm font-bold text-[#1A1A1A] uppercase tracking-[0.15em]">{slide.subtitle}</h2>
-                        <div 
+                        <div
                             onClick={() => setIsToggled(!isToggled)}
                             className={`w-14 h-7 rounded-full relative p-1.5 cursor-pointer shadow-inner transition-colors duration-300 ${isToggled ? 'bg-[#4CAF50]' : 'bg-[#37474F]'}`}
                         >
@@ -380,7 +373,7 @@ export default function WelcomeCarousel() {
                                 {card.type === 'image' && (
                                     <div className="w-full aspect-square bg-gray-100 rounded-3xl overflow-hidden relative shadow-md group">
                                         <div className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700" style={{ backgroundImage: `url(${card.content})` }}></div>
-                                        
+
                                         {card.overlay === 'alert' && (
                                             <div className="absolute inset-0 bg-red-500/10 backdrop-none flex items-center justify-center">
                                                 <div className="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 animate-ping">
@@ -469,7 +462,7 @@ export default function WelcomeCarousel() {
 
                 {/* Footer Navigation */}
                 <footer className="px-14 py-10 flex items-center justify-between bg-gray-50/50">
-                    <button 
+                    <button
                         onClick={handleSkip}
                         className="text-sm font-black text-black uppercase tracking-[0.2em] hover:opacity-50 transition-all"
                     >
@@ -478,14 +471,14 @@ export default function WelcomeCarousel() {
 
                     <div className="flex gap-2 md:gap-3">
                         {[0, 1, 2, 3, 4, 5].map(i => (
-                            <div 
-                                key={i} 
+                            <div
+                                key={i}
                                 className={`w-2 md:w-2.5 h-2 md:h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-[#1B5E20] scale-125 shadow-md' : 'bg-[#CFD8DC]'}`}
                             ></div>
                         ))}
                     </div>
 
-                    <button 
+                    <button
                         onClick={handleNext}
                         className="px-8 md:px-14 py-3 md:py-4 bg-[#4CAF50] hover:bg-[#388E3C] text-white font-black rounded-2xl uppercase tracking-[0.15em] shadow-[0_10px_20px_rgba(76,175,80,0.3)] transition-all active:scale-95 active:shadow-none text-xs md:text-base flex items-center gap-2"
                     >
