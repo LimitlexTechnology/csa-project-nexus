@@ -3,19 +3,40 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
-import { UserCheck, Zap, ArrowRight, Mail, Lock } from 'lucide-react';
+import { UserCheck, Zap, ArrowRight, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { auth } from '../../lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useI18n } from '../../lib/i18n';
+import { useSearchParams } from 'next/navigation';
 
 export default function LoginPage() {
+    return (
+        <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <LoginForm />
+        </React.Suspense>
+    );
+}
+
+function LoginForm() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const { t } = useI18n();
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(!searchParams.get('signup'));
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    // Role-specific fields
+    const [roleData, setRoleData] = useState({
+        farmer: { location: '', crop: '' },
+        expert: { specialization: '', org: '' },
+        buyer: { company: '', hub: '' },
+        ngo: { name: '', area: '' }
+    });
+
+    const userRole = typeof window !== 'undefined' ? localStorage.getItem('userRole') : 'farmer';
 
     useEffect(() => {
         // Check if user has selected a role
@@ -35,32 +56,41 @@ export default function LoginPage() {
                 await signInWithEmailAndPassword(auth, email, password);
             } else {
                 await createUserWithEmailAndPassword(auth, email, password);
+                // Save role-specific data for signup
+                if (userRole && roleData[userRole as keyof typeof roleData]) {
+                    localStorage.setItem('userRoleData', JSON.stringify(roleData[userRole as keyof typeof roleData]));
+                }
             }
+
+            // Mark onboarding as done
+            localStorage.setItem('onboardingDone', 'true');
+
+            // Get user role and redirect to appropriate dashboard
+            const curRole = localStorage.getItem('userRole');
+            const dashboardMap: { [key: string]: string } = {
+                'farmer': '/farmer-dashboard',
+                'expert': '/expert-dashboard',
+                'buyer': '/buyer-dashboard',
+                'ngo': '/ngo-dashboard',
+                'explorer': '/explorer-dashboard'
+            };
+
+            const targetPath = dashboardMap[curRole || 'farmer'] || '/dashboard';
+            console.log('Redirecting to:', targetPath);
+            router.push(targetPath);
         } catch (err: any) {
+            console.error('Auth Error:', err);
             const code = err?.code || 'auth/error';
             const message =
                 code === 'auth/invalid-email' ? 'Invalid email address' :
-                code === 'auth/user-not-found' ? 'No account found for this email' :
-                code === 'auth/wrong-password' ? 'Incorrect password' :
-                code === 'auth/email-already-in-use' ? 'Email already in use' :
-                'Something went wrong. Please try again.';
+                    code === 'auth/user-not-found' ? 'No account found for this email' :
+                        code === 'auth/wrong-password' ? 'Incorrect password' :
+                            code === 'auth/email-already-in-use' ? 'Email already in use' :
+                                code === 'auth/weak-password' ? 'Password should be at least 6 characters' :
+                                    `Error: ${err.message || 'Something went wrong. Please try again.'}`;
             setError(message);
             setIsLoading(false);
-            return;
         }
-        setIsLoading(false);
-        
-        // Get user role and redirect to appropriate dashboard
-        const userRole = localStorage.getItem('userRole');
-        const dashboardMap: { [key: string]: string } = {
-            'farmer': '/farmer-dashboard',
-            'expert': '/expert-dashboard',
-            'buyer': '/buyer-dashboard',
-            'ngo': '/ngo-dashboard',
-            'explorer': '/explorer-dashboard'
-        };
-        
-        router.push(dashboardMap[userRole || 'farmer'] || '/dashboard');
     };
 
     const handleGuestContinue = () => {
@@ -71,24 +101,24 @@ export default function LoginPage() {
         <div className="min-h-screen flex flex-col md:flex-row bg-white font-sans">
             {/* Left Side: Visual Content (Hidden on mobile) */}
             <div className="hidden md:flex md:w-1/2 bg-[#0F4C3A] relative overflow-hidden items-center justify-center p-12">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
                     style={{ backgroundImage: `url('https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1600')` }}
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0F4C3A]/80 to-transparent"></div>
-                
+
                 <div className="relative z-10 max-w-lg">
                     <div className="mb-12">
                         <Logo className="scale-125 origin-left" />
                     </div>
-                    
+
                     <h1 className="text-5xl font-black text-white leading-tight mb-6">
                         Empowering Farmers with <span className="text-[#81C784]">Climate Intelligence</span>.
                     </h1>
                     <p className="text-xl text-green-50/80 font-medium leading-relaxed">
                         Join the global network of climate-smart farmers and access real-time data to future-proof your harvest.
                     </p>
-                    
+
                     <div className="mt-16 flex gap-8">
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2 mb-1">
@@ -125,8 +155,8 @@ export default function LoginPage() {
                             {isLogin ? t('login.title.login') : t('login.title.signup')}
                         </h2>
                         <p className="text-gray-500 font-medium">
-                            {isLogin 
-                                ? t('login.subtitle.login') 
+                            {isLogin
+                                ? t('login.subtitle.login')
                                 : t('login.subtitle.signup')}
                         </p>
                     </div>
@@ -142,8 +172,8 @@ export default function LoginPage() {
                                 <Mail size={14} className="text-[#2E7D32]" />
                                 {t('login.email')}
                             </label>
-                            <input 
-                                type="email" 
+                            <input
+                                type="email"
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -164,17 +194,127 @@ export default function LoginPage() {
                                     </Link>
                                 )}
                             </div>
-                            <input 
-                                type="password" 
-                                required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
-                                placeholder="••••••••"
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium pr-14"
+                                    placeholder="••••••••"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#2E7D32] transition-colors"
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
                         </div>
 
-                        <button 
+                        {!isLogin && (
+                            <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
+                                {userRole === 'farmer' && (
+                                    <>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Farm Location</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.farmer.location}
+                                                onChange={(e) => setRoleData({ ...roleData, farmer: { ...roleData.farmer, location: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Northern Region, Ghana"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Primary Crop</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.farmer.crop}
+                                                onChange={(e) => setRoleData({ ...roleData, farmer: { ...roleData.farmer, crop: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Maize, Cocoa"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                {userRole === 'expert' && (
+                                    <>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Specialization</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.expert.specialization}
+                                                onChange={(e) => setRoleData({ ...roleData, expert: { ...roleData.expert, specialization: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Agronomy, Soil Science"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Organization</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.expert.org}
+                                                onChange={(e) => setRoleData({ ...roleData, expert: { ...roleData.expert, org: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Ministry of Agriculture"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                {userRole === 'buyer' && (
+                                    <>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Company Name</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.buyer.company}
+                                                onChange={(e) => setRoleData({ ...roleData, buyer: { ...roleData.buyer, company: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. FreshAgro Ltd"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Business Hub</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.buyer.hub}
+                                                onChange={(e) => setRoleData({ ...roleData, buyer: { ...roleData.buyer, hub: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Kumasi Central Market"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                {userRole === 'ngo' && (
+                                    <>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">NGO Name</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.ngo.name}
+                                                onChange={(e) => setRoleData({ ...roleData, ngo: { ...roleData.ngo, name: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Green Earth Foundation"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 px-1">Area of Operation</label>
+                                            <input
+                                                type="text" required
+                                                value={roleData.ngo.area}
+                                                onChange={(e) => setRoleData({ ...roleData, ngo: { ...roleData.ngo, area: e.target.value } })}
+                                                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] outline-none transition-all font-medium"
+                                                placeholder="e.g. Environmental Conservation"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        )}
+
+                        <button
                             type="submit"
                             disabled={isLoading}
                             className={`w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
@@ -200,7 +340,7 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <button 
+                        <button
                             onClick={handleGuestContinue}
                             className="w-full py-4 border-2 border-gray-200 hover:border-gray-300 text-gray-600 font-bold rounded-2xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                         >
@@ -209,7 +349,7 @@ export default function LoginPage() {
 
                         <p className="text-center text-sm font-medium text-gray-500 mt-4">
                             {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
-                            <button 
+                            <button
                                 onClick={() => setIsLogin(!isLogin)}
                                 className="text-[#2E7D32] font-bold hover:underline"
                             >
@@ -218,7 +358,7 @@ export default function LoginPage() {
                         </p>
                     </div>
                 </div>
-                
+
                 {/* Footer Links */}
                 <div className="mt-auto pt-12 flex justify-center gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
                     <Link href="#" className="hover:text-gray-600 transition-colors">{t('common.privacy')}</Link>
@@ -228,3 +368,5 @@ export default function LoginPage() {
         </div>
     );
 }
+
+

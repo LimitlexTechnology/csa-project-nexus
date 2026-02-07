@@ -44,18 +44,9 @@ export default function RoleSelection() {
     const handleContinue = () => {
         if (selectedRole) {
             localStorage.setItem('userRole', selectedRole);
-            localStorage.setItem('onboardingDone', 'true');
-            
-            // Route to role-specific dashboard
-            const dashboardMap: { [key: string]: string } = {
-                'farmer': '/farmer-dashboard',
-                'expert': '/expert-dashboard',
-                'buyer': '/buyer-dashboard',
-                'ngo': '/ngo-dashboard',
-                'explorer': '/explorer-dashboard'
-            };
-            
-            router.push(dashboardMap[selectedRole] || '/dashboard');
+
+            // Redirect to signup page
+            router.push('/login?signup=true');
         }
     };
 
@@ -81,15 +72,13 @@ export default function RoleSelection() {
                             <button
                                 key={role.id}
                                 onClick={() => setSelectedRole(role.id)}
-                                className={`relative group flex flex-col items-center p-8 rounded-[32px] border-2 transition-all duration-500 min-h-[200px] justify-center text-center ${
-                                    selectedRole === role.id 
-                                    ? 'border-[#2E7D32] bg-white shadow-[0_20px_40px_rgba(46,125,50,0.12)] scale-[1.02]' 
-                                    : 'border-gray-100 bg-white/50 hover:border-green-200 hover:bg-white'
-                                }`}
+                                className={`relative group flex flex-col items-center p-8 rounded-[32px] border-2 transition-all duration-500 min-h-[200px] justify-center text-center ${selectedRole === role.id
+                                        ? 'border-[#2E7D32] bg-white shadow-[0_20px_40px_rgba(46,125,50,0.12)] scale-[1.02]'
+                                        : 'border-gray-100 bg-white/50 hover:border-green-200 hover:bg-white'
+                                    }`}
                             >
-                                <div className={`mb-6 transition-all duration-500 text-[#2E7D32] ${
-                                    selectedRole === role.id ? 'scale-110' : 'grayscale group-hover:grayscale-0 opacity-40'
-                                }`}>
+                                <div className={`mb-6 transition-all duration-500 text-[#2E7D32] ${selectedRole === role.id ? 'scale-110' : 'grayscale group-hover:grayscale-0 opacity-40'
+                                    }`}>
                                     {role.icon}
                                 </div>
                                 <h3 className="text-sm font-extrabold text-gray-900 uppercase tracking-widest mb-2 leading-tight">

@@ -1,0 +1,29 @@
+{
+    "common": {
+        "or": "OR",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+    },
+    "login": {
+        "title": {
+            "login": "Login",
+            "signup": "Create Account"
+        },
+        "subtitle": {
+            "login": "Welcome back! Please login to your account.",
+            "signup": "Start your journey towards climate-smart farming today"
+        },
+        "email": "Email Address",
+        "password": "Password",
+        "forgot": "Forgot Password?",
+        "submit": {
+            "login": "Login",
+            "signup": "Create Account"
+        },
+        "guest": "Continue as Guest"
+    },
+    "language": {
+        "choose": "Choose Your Language",
+        "subtitle": "Select your preferred language to continue"
+    }
+}
