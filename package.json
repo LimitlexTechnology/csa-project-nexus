@@ -12,6 +12,7 @@
         "deploy:web:preview": "firebase hosting:channel:deploy preview --only hosting"
     },
     "devDependencies": {
+        "firebase-tools": "^15.5.1",
         "prettier": "^3.1.0",
         "turbo": "^2.8.1",
         "typescript": "^5.3.0"

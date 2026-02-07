@@ -57,8 +57,8 @@ export default function NewsPage() {
 
     const filteredNews = newsItems.filter(item => {
         const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-        const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                             item.summary.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.summary.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });
 
@@ -73,7 +73,7 @@ export default function NewsPage() {
                         </Link>
                         <h1 className="text-xl font-bold text-gray-900 border-l border-gray-100 pl-8">{t('news.title')}</h1>
                     </div>
-                    
+
                     <div className="hidden md:flex items-center gap-4">
                         <button className="p-2 hover:bg-gray-50 rounded-lg text-gray-400">
                             <Bell size={24} />
@@ -108,13 +108,12 @@ export default function NewsPage() {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
-                                    selectedCategory === category
-                                    ? 'bg-[#2E7D32] text-white shadow-lg shadow-green-900/10'
-                                    : 'bg-white text-gray-500 border border-gray-100 hover:bg-gray-50'
-                                }`}
+                                className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${selectedCategory === category
+                                        ? 'bg-[#2E7D32] text-white shadow-lg shadow-green-900/10'
+                                        : 'bg-white text-gray-500 border border-gray-100 hover:bg-gray-50'
+                                    }`}
                             >
-                                {t(`news.category.${category.toLowerCase()}`, category)}
+                                {t(`news.category.${category.toLowerCase()}`)}
                             </button>
                         ))}
                     </div>
@@ -126,9 +125,9 @@ export default function NewsPage() {
                         {filteredNews.map((item) => (
                             <article key={item.id} className="bg-white rounded-[32px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 group">
                                 <div className="aspect-[16/10] bg-gray-100 relative overflow-hidden">
-                                    <img 
-                                        src={item.image} 
-                                        alt={item.title} 
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
                                     <div className="absolute top-4 left-4">
@@ -142,7 +141,7 @@ export default function NewsPage() {
                                         <Clock size={14} className="text-gray-400" />
                                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{item.date}</span>
                                         <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-                                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('news.readtime', '5 min read')}</span>
+                                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('news.readtime')}</span>
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-[#2E7D32] transition-colors">
                                         {item.title}
@@ -150,8 +149,8 @@ export default function NewsPage() {
                                     <p className="text-sm text-gray-500 font-medium leading-relaxed mb-8 line-clamp-3">
                                         {item.summary}
                                     </p>
-                                    <Link 
-                                        href={`/news/${item.id}`} 
+                                    <Link
+                                        href={`/news/${item.id}`}
                                         className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:gap-3 transition-all"
                                     >
                                         {t('news.readMore')}
@@ -168,8 +167,8 @@ export default function NewsPage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-900 mb-2">{t('news.none')}</h3>
                         <p className="text-gray-500 font-medium">{t('news.none.help')}</p>
-                        <button 
-                            onClick={() => {setSelectedCategory('All'); setSearchQuery('');}}
+                        <button
+                            onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
                             className="mt-8 text-sm font-black uppercase tracking-widest text-[#2E7D32] hover:underline"
                         >
                             {t('news.reset')}
@@ -188,8 +187,8 @@ export default function NewsPage() {
                             {t('news.cta.desc')}
                         </p>
                         <form className="flex flex-col sm:flex-row gap-4">
-                            <input 
-                                type="email" 
+                            <input
+                                type="email"
                                 placeholder={t('news.cta.email')}
                                 className="flex-1 px-8 py-5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-green-100/40 outline-none focus:bg-white/20 transition-all font-medium"
                             />
