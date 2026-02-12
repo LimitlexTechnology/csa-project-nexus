@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Logo } from '../../components/Logo';
-import { UserCheck, Zap, ArrowRight, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { UserCheck, Zap, ArrowRight, Mail, Lock, Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { auth, db } from '../../lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useI18n } from '../../lib/i18n';
 import { useSearchParams } from 'next/navigation';
 
@@ -28,6 +28,7 @@ function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [userRole, setUserRole] = useState<string | null>(null);
 
     // Role-specific fields
@@ -49,14 +50,47 @@ function LoginForm() {
         }
     }, [isLogin]);
 
+    const getDashboardPath = (role: string) => {
+        const dashboardMap: { [key: string]: string } = {
+            'farmer': '/farmer-dashboard',
+            'expert': '/expert-dashboard',
+            'buyer': '/buyer-dashboard',
+            'ngo': '/ngo-dashboard',
+            'explorer': '/explorer-dashboard'
+        };
+        return dashboardMap[role] || '/dashboard';
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError(null);
+        setSuccessMessage(null);
+
         try {
             if (isLogin) {
-                await signInWithEmailAndPassword(auth, email, password);
+                // LOGIN FLOW
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Fetch role from Firestore to keep localStorage in sync
+                try {
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.role) {
+                            localStorage.setItem('userRole', userData.role);
+                        }
+                    }
+                } catch (firestoreErr) {
+                    console.warn('Could not fetch user role from Firestore:', firestoreErr);
+                }
+
+                localStorage.setItem('onboardingDone', 'true');
+                const curRole = localStorage.getItem('userRole') || 'farmer';
+                router.push(getDashboardPath(curRole));
             } else {
+                // SIGNUP FLOW
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
@@ -69,6 +103,8 @@ function LoginForm() {
                 await setDoc(doc(db, 'users', user.uid), {
                     email: user.email,
                     role: userRole,
+                    fullName: '',
+                    photoURL: '',
                     onboardingDone: true,
                     ...finalRoleData,
                     createdAt: new Date().toISOString()
@@ -77,24 +113,20 @@ function LoginForm() {
                 if (userRole) {
                     localStorage.setItem('userRoleData', JSON.stringify(finalRoleData));
                 }
+
+                localStorage.setItem('onboardingDone', 'true');
+
+                // Show success message
+                setSuccessMessage('🎉 Registration successful! Redirecting to your dashboard...');
+                setIsLoading(false);
+
+                // Redirect after a short delay so user sees the success message
+                const curRole = userRole || 'farmer';
+                setTimeout(() => {
+                    router.push(getDashboardPath(curRole));
+                }, 2000);
+                return;
             }
-
-            // Mark onboarding as done
-            localStorage.setItem('onboardingDone', 'true');
-
-            // Get user role and redirect to appropriate dashboard
-            const curRole = localStorage.getItem('userRole');
-            const dashboardMap: { [key: string]: string } = {
-                'farmer': '/farmer-dashboard',
-                'expert': '/expert-dashboard',
-                'buyer': '/buyer-dashboard',
-                'ngo': '/ngo-dashboard',
-                'explorer': '/explorer-dashboard'
-            };
-
-            const targetPath = dashboardMap[curRole || 'farmer'] || '/dashboard';
-            console.log('Redirecting to:', targetPath);
-            router.push(targetPath);
         } catch (err: any) {
             console.error('Auth Error:', err);
             const code = err?.code || 'auth/error';
@@ -104,11 +136,11 @@ function LoginForm() {
                         code === 'auth/wrong-password' ? 'Incorrect password' :
                             code === 'auth/email-already-in-use' ? 'Email already in use' :
                                 code === 'auth/weak-password' ? 'Password should be at least 6 characters' :
-                                    `Error: ${err.message || 'Something went wrong. Please try again.'}`;
+                                    code === 'auth/invalid-credential' ? 'Invalid email or password. Please try again.' :
+                                        `Error: ${err.message || 'Something went wrong. Please try again.'}`;
             setError(message);
-            setIsLoading(false);
-            console.error('Final Error state:', message);
         }
+        setIsLoading(false);
     };
 
     const handleGuestContinue = () => {
@@ -180,6 +212,15 @@ function LoginForm() {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Success Message */}
+                        {successMessage && (
+                            <div className="px-4 py-4 rounded-2xl bg-green-50 border border-green-200 text-green-700 font-medium flex items-center gap-3 animate-in slide-in-from-top duration-500">
+                                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                                <span>{successMessage}</span>
+                            </div>
+                        )}
+
+                        {/* Error Message */}
                         {error && (
                             <div className="px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium">
                                 {error}
@@ -336,8 +377,8 @@ function LoginForm() {
 
                         <button
                             type="submit"
-                            disabled={isLoading}
-                            className={`w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            disabled={isLoading || !!successMessage}
+                            className={`w-full py-5 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-black text-lg rounded-2xl uppercase tracking-[0.2em] shadow-lg shadow-green-900/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group ${(isLoading || successMessage) ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {isLoading ? (
                                 <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -370,7 +411,7 @@ function LoginForm() {
                         <p className="text-center text-sm font-medium text-gray-500 mt-4">
                             {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
                             <button
-                                onClick={() => setIsLogin(!isLogin)}
+                                onClick={() => { setIsLogin(!isLogin); setError(null); setSuccessMessage(null); }}
                                 className="text-[#2E7D32] font-bold hover:underline"
                             >
                                 {isLogin ? 'Create one now' : 'Login here'}
@@ -388,5 +429,3 @@ function LoginForm() {
         </div>
     );
 }
-
-
