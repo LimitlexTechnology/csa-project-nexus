@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if the user is the owner of the document
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // Profile photos rules
+    match /profilePhotos/{userId} {
+      // Allow users to upload and read their own profile photos
+      // We also check for image type and size if needed, but keeping it basic for now
+      allow read, write: if isAuthenticated() && isOwner(userId);
+    }
+
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
